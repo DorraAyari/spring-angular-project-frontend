@@ -1,0 +1,20 @@
+<!-- chambre-modification.component.html -->
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <form (ngSubmit)="updateChambre()">
+    <label>ID Chambre: </label>
+    <input type="text" [(ngModel)]="chambre.idChambre"  name="idChambre"  disabled>
+    <label>Num Chambre: </label>
+    <input type="text" [(ngModel)]="chambre.numeroChambre" name="numeroChambre" >
+    <label>Type Chambre: </label>
+    <input type="text" [(ngModel)]="chambre.typeChambre" name="typeChambre">
+    <!-- Other input fields for chambre properties -->
+    
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div>
+</div>
+
+</div>
+
