@@ -34,12 +34,13 @@ export class ChambreComponent {
     );
   }
 
- 
+         // Handle error, e.g., display an error message to the user
+
   openModificationPopup(chambre: Chambre): void {
     // Navigate to the chambre modification route, passing the chambre ID
     this.router.navigate(['/chambre-modification', chambre.idChambre]);
   }
-  
+
 
   deleteChambre(chambreId: number): void {
     if (confirm('Are you sure you want to delete this chambre?')) {
@@ -62,7 +63,7 @@ export class ChambreComponent {
     this.showDeleteModal = false;
   }
 
-  
+
   navigateToAjouter(): void {
     this.router.navigate(['/chambre-ajouter']);
   }
