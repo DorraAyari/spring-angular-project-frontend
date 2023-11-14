@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
 import { FormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.compo
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    DataTablesModule,
+
   ],
   providers: [
     ChambreService, // Add this line

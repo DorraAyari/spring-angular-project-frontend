@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
 import { Chambre } from '../models/chambre';
 import { ChambreService } from '../services/chambre.service';
-import { ChambreModificationComponent } from '../chambre-modification/chambre-modification.component';
 import { Router } from '@angular/router';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+
+declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
 
 @Component({
   selector: 'app-chambre',
   templateUrl: './chambre.component.html',
   styleUrls: ['./chambre.component.css']
 })
-export class ChambreComponent {
+export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   chambres: Chambre[] = [];
   showDeleteModal = false;
   chambreToDeleteId!: number;
+  dataTablesInstance: any;
 
   constructor(private chambreService: ChambreService, private router: Router) {}
 
@@ -20,35 +22,37 @@ export class ChambreComponent {
     this.getChambres();
   }
 
+  ngAfterViewInit(): void {
+    // Activer DataTables une fois que la vue a été initialisée
+    this.dataTablesInstance = $('#chambresTable').DataTable({
+      // Options DataTables ici
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Détruire DataTables lorsque le composant est détruit pour éviter les fuites de mémoire
+    if (this.dataTablesInstance) {
+      this.dataTablesInstance.destroy();
+    }
+  }
+
   getChambres(): void {
     this.chambreService.getChambres()
       .subscribe(chambres => this.chambres = chambres);
   }
-  loadChambres(): void {
-    this.chambreService.getChambres().subscribe(
-      (chambres) => (this.chambres = chambres),
-      (error) => {
-        console.error('Error loading chambres:', error);
-        // Handle error, e.g., display an error message to the user
-      }
-    );
-  }
-
-         // Handle error, e.g., display an error message to the user
 
   openModificationPopup(chambre: Chambre): void {
     // Navigate to the chambre modification route, passing the chambre ID
     this.router.navigate(['/chambre-modification', chambre.idChambre]);
   }
 
-
   deleteChambre(chambreId: number): void {
     if (confirm('Are you sure you want to delete this chambre?')) {
       this.chambreService.deleteChambre(chambreId).subscribe(
         () => {
           console.log('Chambre deleted successfully');
-          // Optionally, reload the chambre list or handle it as needed
-          this.loadChambres();
+          // Recharger les données DataTables
+          this.dataTablesInstance.ajax.reload();
         },
         (error) => {
           console.error('Error deleting chambre', error);
@@ -57,7 +61,6 @@ export class ChambreComponent {
       );
     }
   }
-
   // Close the confirmation modal
   cancelDelete(): void {
     this.showDeleteModal = false;
