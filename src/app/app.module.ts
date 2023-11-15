@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -10,11 +9,14 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
 import { HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
+import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
+import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 
 @NgModule({
   declarations: [
@@ -26,17 +28,19 @@ import { DataTablesModule } from 'angular-datatables';
     ChambreComponent,
     ChambreModificationComponent,
     ChambreAjouterComponent,
-
+    AddBlocComponent,
+    DeleteBlocComponent,
+    EditBlocComponent,
+    ShowBlocComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
     DataTablesModule,
-
-  ],
+    ReactiveFormsModule
+    ],
   providers: [
     ChambreService, // Add this line
 
