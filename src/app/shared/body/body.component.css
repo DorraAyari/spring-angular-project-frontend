@@ -1,0 +1,9 @@
+body {
+  padding-right: 0 !important;
+}
+.container {
+  padding: 0;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}

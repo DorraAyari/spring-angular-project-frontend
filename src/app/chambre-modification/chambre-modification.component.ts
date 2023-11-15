@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ChambreService } from '../services/chambre.service';
 import { Chambre } from '../models/chambre';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chambre-modification',
@@ -41,13 +42,31 @@ export class ChambreModificationComponent implements OnInit {
     this.chambreService.updateChambre(this.chambre.idChambre, this.chambre).subscribe(
       (updatedChambre: Chambre) => {
         console.log('Chambre updated successfully', updatedChambre);
-        // Optionally, navigate back to the chambre list or any other route
-        this.router.navigate(['/chambre']);
+
+        // Show SweetAlert2 confirmation popup
+        Swal.fire({
+          title: 'Succès!',
+          text: 'Chambre mise à jour avec succès.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          // Optionally, navigate back to the chambre list or any other route
+          this.router.navigate(['/chambre']);
+        });
       },
       (error) => {
         console.error('Error updating chambre', error);
+
+        // Show SweetAlert2 error popup
+        Swal.fire({
+          title: 'Erreur!',
+          text: 'Une erreur s\'est produite lors de la mise à jour de la chambre.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+
         // Handle error as needed
       }
     );
-  }
+}
 }
