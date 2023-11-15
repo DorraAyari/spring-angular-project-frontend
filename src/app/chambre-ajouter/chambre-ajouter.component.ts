@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Chambre } from '../models/chambre';
 import { ChambreService } from '../services/chambre.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chambre-ajouter',
@@ -18,27 +19,45 @@ export class ChambreAjouterComponent {
   ) { }
   // Other component methods
 
-  // Handle the addition of a new chambre
   ajouterChambre(): void {
     if (!this.newChambre.numeroChambre && !this.newChambre.typeChambre) {
       alert('Veuillez remplir le formulaire avant de soumettre.');
       return;
     }
+
     // Convert numeroChambre to a number before sending it to the service
     this.newChambre.numeroChambre = +this.newChambre.numeroChambre;
 
     this.chambreService.ajouterChambre(this.newChambre).subscribe(
       (addedChambre: Chambre) => {
         console.log('Chambre added successfully', addedChambre);
-        // Optionally, reload the chambre list or navigate to another route
-        this.loadChambres();
-        this.router.navigate(['/chambre']);
 
-        // Reset the newChambre object for a new entry
-        this.newChambre = { idChambre: 0, numeroChambre: 0, typeChambre: '' };
+        // Show SweetAlert2 confirmation popup
+        Swal.fire({
+          title: 'Succès!',
+          text: 'Chambre ajoutée avec succès.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          // Optionally, reload the chambre list or navigate to another route
+          this.loadChambres();
+          this.router.navigate(['/chambre']);
+
+          // Reset the newChambre object for a new entry
+          this.newChambre = { idChambre: 0, numeroChambre: 0, typeChambre: '' };
+        });
       },
       (error) => {
         console.error('Error adding chambre', error);
+
+        // Show SweetAlert2 error popup
+        Swal.fire({
+          title: 'Erreur!',
+          text: 'Une erreur s\'est produite lors de l\'ajout de la chambre.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+
         // Handle error as needed
       }
     );

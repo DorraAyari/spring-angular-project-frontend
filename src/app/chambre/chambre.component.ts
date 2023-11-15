@@ -2,6 +2,7 @@ import { Chambre } from '../models/chambre';
 import { ChambreService } from '../services/chambre.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import Swal from 'sweetalert2';
 
 declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
 
@@ -23,9 +24,14 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    if (this.dataTablesInstance) {
+      this.dataTablesInstance.destroy();
+    }
+
     // Activer DataTables une fois que la vue a été initialisée
     this.dataTablesInstance = $('#chambresTable').DataTable({
-      // Options DataTables ici
+      // Options DataTables here
+      destroy: true
     });
   }
 
@@ -47,19 +53,32 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   deleteChambre(chambreId: number): void {
-    if (confirm('Are you sure you want to delete this chambre?')) {
-      this.chambreService.deleteChambre(chambreId).subscribe(
-        () => {
-          console.log('Chambre deleted successfully');
-          // Recharger les données DataTables
-          this.dataTablesInstance.ajax.reload();
-        },
-        (error) => {
-          console.error('Error deleting chambre', error);
-          // Handle error as needed
-        }
-      );
-    }
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Voulez-vous vraiment supprimer cette chambre ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer!',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.chambreService.deleteChambre(chambreId).subscribe(
+          () => {
+            console.log('Chambre deleted successfully');
+            // Recharger les données DataTables
+            if (this.dataTablesInstance) {
+              this.dataTablesInstance.ajax.reload(null, false);
+            }
+          },
+          (error) => {
+            console.error('Error deleting chambre', error);
+            // Handle error as needed
+          }
+        );
+      }
+    });
   }
   // Close the confirmation modal
   cancelDelete(): void {

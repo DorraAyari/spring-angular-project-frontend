@@ -1,3 +1,42 @@
-body {
-  padding-right: 0 !important;
+/* Ajoutez ces styles dans votre fichier CSS ou dans le fichier de style de votre composant */
+
+/* Ajustements pour la table */
+.table-responsive {
+  margin-top: 20px; /* Ajoute un espacement en haut de la table */
+}
+
+.table th, .table td {
+  text-align: center; /* Centre le texte dans les cellules */
+}
+
+/* Styles pour les badges */
+.badge-info {
+  background-color: #5bc0de; /* Couleur bleue pour le badge info */
+  color: #fff; /* Texte blanc sur fond bleu */
+}
+
+/* Styles pour les boutons */
+.btn-success {
+  background-color: #5cb85c; /* Couleur verte pour le bouton de succès */
+  border-color: #4cae4c; /* Couleur de la bordure pour le bouton de succès */
+}
+
+.btn-primary, .btn-info {
+  background-color: #5bc0de; /* Couleur bleue pour les boutons primaire et info */
+  border-color: #46b8da; /* Couleur de la bordure pour les boutons primaire et info */
+}
+
+.btn-danger {
+  background-color: #d9534f; /* Couleur rouge pour le bouton de danger */
+  border-color: #d43f3a; /* Couleur de la bordure pour le bouton de danger */
+}
+
+/* Ajustements pour le titre */
+h2 {
+  color: #337ab7; /* Couleur bleue pour les titres h2 */
+}
+
+/* Ajustements pour les icônes */
+i {
+  margin-right: 5px; /* Ajoute un espacement à droite des icônes */
 }
