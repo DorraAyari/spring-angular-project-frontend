@@ -20,6 +20,10 @@ export class ChambreAjouterComponent {
 
   // Handle the addition of a new chambre
   ajouterChambre(): void {
+    if (!this.newChambre.numeroChambre && !this.newChambre.typeChambre) {
+      alert('Veuillez remplir le formulaire avant de soumettre.');
+      return;
+    }
     // Convert numeroChambre to a number before sending it to the service
     this.newChambre.numeroChambre = +this.newChambre.numeroChambre;
 

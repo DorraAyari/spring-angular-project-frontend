@@ -1,11 +1,3 @@
-/* Ajoutez ce style dans votre fichier CSS ou dans le fichier de style de votre composant */
-.content-page {
-    padding: 20px;
+body {
+  padding-right: 0 !important;
 }
-
-.container-fluid {
-    max-width: 80%;
-    margin: 0 auto;
-}
-
-  

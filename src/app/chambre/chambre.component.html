@@ -1,34 +1,47 @@
+<!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
+<!-- Ajoutez la liaison vers Font Awesome -->
+<!-- Ajoutez la liaison vers Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 <div class="content-page">
   <div class="content">
-      <div class="container-fluid">
-          <h2>Liste des Chambres</h2>
-          <button class="btn btn-success" (click)="navigateToAjouter()">Ajouter</button>
+    <div class="container-fluid">
+      <h2 class="mb-4">Liste des Chambres</h2>
+      <button class="btn btn-success mb-3" (click)="navigateToAjouter()">
+        <i class="fas fa-plus"></i> Ajouter une chambre
+      </button>
 
-          <table id="chambresTable" class="table table-striped table-bordered">
-              <thead>
-                  <tr>
-                      <th>ID Chambre</th>
-                      <th>Numéro Chambre</th>
-                      <th>Type Chambre</th>
-                      <th>Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let chambre of chambres">
-                      <td>{{ chambre.idChambre }}</td>
-                      <td>{{ chambre.numeroChambre }}</td>
-                      <td>
-                          <span [ngStyle]="{'background-color': getTypeChambreColor(chambre.typeChambre)}">
-                              {{ chambre.typeChambre }}
-                          </span>
-                      </td>
-                      <td>
-                          <button class="btn btn-primary" (click)="openModificationPopup(chambre)">Modifier</button>
-                          <button class="btn btn-danger" (click)="deleteChambre(chambre.idChambre)">Supprimer</button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+      <table id="chambresTable" class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID Chambre</th>
+            <th>Numéro Chambre</th>
+            <th>Type Chambre</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let chambre of chambres">
+            <td>{{ chambre.idChambre }}</td>
+            <td>{{ chambre.numeroChambre }}</td>
+            <td>
+              <span class="badge badge-pill badge-primary" [ngStyle]="{'background-color': getTypeChambreColor(chambre.typeChambre)}">
+                {{ chambre.typeChambre }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="openModificationPopup(chambre)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteChambre(chambre.idChambre)">
+                <i class="fas fa-trash-alt"></i> 
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

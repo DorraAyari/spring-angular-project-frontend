@@ -25,7 +25,8 @@ import { DataTablesModule } from 'angular-datatables';
     SidebarComponent,
     ChambreComponent,
     ChambreModificationComponent,
-    ChambreAjouterComponent
+    ChambreAjouterComponent,
+
   ],
   imports: [
     BrowserModule,
