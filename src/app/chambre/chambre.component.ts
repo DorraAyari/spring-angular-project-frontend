@@ -69,8 +69,10 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
             console.log('Chambre deleted successfully');
             // Recharger les données DataTables
             if (this.dataTablesInstance) {
-              this.dataTablesInstance.ajax.reload(null, false);
+              this.dataTablesInstance.destroy();
             }
+            // Reload DataTables data
+            this.getChambres();
           },
           (error) => {
             console.error('Error deleting chambre', error);
