@@ -13,6 +13,10 @@ import { ChambreModificationComponent } from './chambre-modification/chambre-mod
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
+import { UniversiteService } from './services/universite.service';
+import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
+import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
@@ -28,6 +32,10 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     ChambreComponent,
     ChambreModificationComponent,
     ChambreAjouterComponent,
+    AjouterUniversiteComponent,
+    ListeUniversitesComponent,
+    DetailsUniversiteComponent,
+
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
@@ -40,9 +48,12 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule
+
+  ],
     ],
   providers: [
     ChambreService, // Add this line
+    UniversiteService,
 
   ],
   bootstrap: [AppComponent]

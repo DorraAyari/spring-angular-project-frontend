@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
 
-declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
+
+
+// Déclaration de $ pour éviter les erreurs de TypeScript
 
 @Component({
   selector: 'app-chambre',
