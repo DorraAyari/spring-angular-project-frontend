@@ -1,0 +1,22 @@
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid"><h2>Ajouter une nouvelle Bloc</h2>
+<form (ngSubmit)="addBloc()">
+  <div class="form-group">
+    <label for="nomBloc">Nom Bloc:</label>
+    <input type="text" id="nomBloc" [(ngModel)]="newBloc.nomBloc" name="nomBloc" class="form-control" required minlength="4"#nomBloc="ngModel">
+    <span *ngIf="nomBloc.invalid && nomBloc.touched">
+<span *ngIf="nomBloc.errors?.['required']">
+    required
+</span></span>
+  </div>
+  <div class="form-group">
+    <label for="capaciteBloc">Capacite Bloc:</label>
+      <input type="text" id="capaciteBloc" [(ngModel)]="newBloc.capaciteBloc" name="capaciteBloc" class="form-control" required>
+
+  </div>
+  <button type="submit" class="btn btn-success">Ajouter</button>
+</form>
+</div>
+</div>
+</div>

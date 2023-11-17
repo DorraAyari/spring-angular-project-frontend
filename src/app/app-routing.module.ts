@@ -9,6 +9,10 @@ import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajou
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
 import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
 
+import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
+import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+
 const routes: Routes = [
   {path:'chambre',component:ChambreComponent},
   {path:'',component:BodyComponent},
@@ -19,6 +23,11 @@ const routes: Routes = [
   {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
   {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
  
+
+
+  {path:'bloc', component:ShowBlocComponent},
+  {path:'bloc/:id',component:EditBlocComponent},
+  {path:'add',component:AddBlocComponent}
 
 
 ];

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -10,7 +9,6 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
 import { HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
@@ -19,6 +17,10 @@ import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajou
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
 import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
+import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
+import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
+import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 
 @NgModule({
   declarations: [
@@ -33,19 +35,22 @@ import { DetailsUniversiteComponent } from './universite/details-universite/deta
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
-  
-  
+
+    AddBlocComponent,
+    DeleteBlocComponent,
+    EditBlocComponent,
+    ShowBlocComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule
 
   ],
+    ],
   providers: [
     ChambreService, // Add this line
     UniversiteService,
