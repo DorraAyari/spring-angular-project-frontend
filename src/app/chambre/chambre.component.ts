@@ -3,7 +3,9 @@ import { ChambreService } from '../services/chambre.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 
-declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
+
+
+// Déclaration de $ pour éviter les erreurs de TypeScript
 
 @Component({
   selector: 'app-chambre',

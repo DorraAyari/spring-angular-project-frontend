@@ -24,6 +24,7 @@ export class ChambreModificationComponent implements OnInit {
       this.loadChambre(id);
 
     });
+    
   }
 
   loadChambre(id: number): void {
