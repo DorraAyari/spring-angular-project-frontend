@@ -22,8 +22,8 @@ const routes: Routes = [
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
   {path:'foyer/home-foyer',component:HomeFoyerComponent},
-  { path: 'editFoyer/:id', component:EditFoyerComponent },
-  { path: 'addFoyer', component:AddFoyerComponent },
+  { path:'foyer/editFoyer/:id', component:EditFoyerComponent },
+  { path:'foyer/add-foyer', component:AddFoyerComponent },
 
 ];
 

@@ -21,6 +21,7 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
+import { FoyerService } from './services/foyer.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
     ReactiveFormsModule
     ],
   providers: [
-    ChambreService, // Add this line
+    ChambreService,
+    FoyerService // Add this line
 
   ],
   bootstrap: [AppComponent]
