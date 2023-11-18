@@ -18,6 +18,10 @@ import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.compo
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 
+import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
+import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
+import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,10 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
-    ShowBlocComponent
+    ShowBlocComponent,
+    AddFoyerComponent,
+    EditFoyerComponent,
+    HomeFoyerComponent
   ],
   imports: [
     BrowserModule,

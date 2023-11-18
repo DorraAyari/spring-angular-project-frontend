@@ -8,6 +8,9 @@ import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.compo
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
+import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
+import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 
 
 const routes: Routes = [
@@ -17,7 +20,10 @@ const routes: Routes = [
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
-  {path:'add',component:AddBlocComponent}
+  {path:'add',component:AddBlocComponent},
+  {path:'foyer/home-foyer',component:HomeFoyerComponent},
+  { path: 'editFoyer/:id', component:EditFoyerComponent },
+  { path: 'addFoyer', component:AddFoyerComponent },
 
 ];
 
