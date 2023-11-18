@@ -12,6 +12,9 @@ import { DetailsUniversiteComponent } from './universite/details-universite/deta
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
+import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
+import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 
 const routes: Routes = [
   {path:'chambre',component:ChambreComponent},
@@ -27,7 +30,10 @@ const routes: Routes = [
 
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
-  {path:'add',component:AddBlocComponent}
+  {path:'add',component:AddBlocComponent},
+  {path:'foyer/home-foyer',component:HomeFoyerComponent},
+  { path:'foyer/editFoyer/:id', component:EditFoyerComponent },
+  { path:'foyer/add-foyer', component:AddFoyerComponent },
 
 
 ];
