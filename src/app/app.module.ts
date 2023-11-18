@@ -17,6 +17,8 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
-    ShowBlocComponent
+    ShowBlocComponent,
+    LoginRegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     ],
   providers: [
     ChambreService, // Add this line
-
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })

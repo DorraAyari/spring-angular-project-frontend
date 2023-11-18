@@ -8,16 +8,20 @@ import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.compo
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+import { HomeComponent } from './home/home.component';
+import { authGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   {path:'chambre',component:ChambreComponent},
-  {path:'',component:BodyComponent},
+  {path:'auth',component:LoginRegisterComponent},
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
-  {path:'add',component:AddBlocComponent}
+  {path:'add',component:AddBlocComponent},
+  {path:'home',component:HomeComponent,canActivate: [authGuard]}
 
 ];
 
