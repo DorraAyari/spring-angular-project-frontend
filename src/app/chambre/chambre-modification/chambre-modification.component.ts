@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ChambreService } from '../services/chambre.service';
-import { Chambre } from '../models/chambre';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ChambreService } from 'src/app/services/chambre.service';
+import { Chambre } from 'src/app/models/chambre';
 
 @Component({
   selector: 'app-chambre-modification',
@@ -25,7 +25,7 @@ export class ChambreModificationComponent implements OnInit {
       this.loadChambre(id);
 
     });
-    
+
   }
 
   loadChambre(id: number): void {

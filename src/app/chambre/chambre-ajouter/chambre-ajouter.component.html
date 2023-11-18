@@ -29,7 +29,10 @@
             Type Chambre est requis.
           </div>
         </div>
-
+        <label for="bloc">Bloc:</label>
+        <select id="bloc" [(ngModel)]="selectedBlocNom" name="bloc" (change)="updateBlocId()">
+          <option *ngFor="let blocItem of bloc" [ngValue]="blocItem.nomBloc">{{ blocItem.nomBloc }}</option>
+        </select>
         <button type="submit" class="btn btn-success btn-block" [disabled]="chambreForm.invalid">Ajouter</button>
         <div *ngIf="chambreForm.invalid" class="error-message">
           Veuillez remplir le formulaire avant de soumettre.

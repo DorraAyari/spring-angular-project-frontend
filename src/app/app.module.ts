@@ -9,9 +9,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
 import { HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
+import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
+import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
@@ -50,7 +50,7 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     ReactiveFormsModule
 
   ],
-    ],
+
   providers: [
     ChambreService, // Add this line
     UniversiteService,

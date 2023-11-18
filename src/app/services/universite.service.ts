@@ -8,13 +8,13 @@ import { Universite } from '../models/universite';
 })
 export class UniversiteService {
 
-  private baseUrl="http://localhost:8088/universites"
+  private baseUrl="http://localhost:8089/universites"
 
   constructor(private httpClient : HttpClient) { }
 
   getAllUniversities() : Observable<Universite[]>{
     return this.httpClient.get<Universite[]>(`${this.baseUrl}/findAll`);
-    
+
   }
 
   getUniversiteById(idUniversite : number) : Observable<Universite> {
