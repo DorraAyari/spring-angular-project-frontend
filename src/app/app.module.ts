@@ -9,9 +9,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
 import { HTTP_INTERCEPTORS, HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
+import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
+import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
@@ -80,11 +80,10 @@ import { FoyerService } from './services/foyer.service';
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
-   
+
 
   ],
 
-    
   providers: [
 
     HttpClient,{
@@ -92,7 +91,7 @@ import { FoyerService } from './services/foyer.service';
     useClass: TokenInterceptor,
     multi: true
   },
-    
+
   ],
   bootstrap: [AppComponent]
 })

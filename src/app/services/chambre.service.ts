@@ -8,7 +8,7 @@ import { Chambre } from '../models/chambre';
   providedIn: 'root'
 })
 export class ChambreService {
-  private apiUrl = 'http://localhost:8088'; 
+  private apiUrl = 'http://localhost:8089'; 
 
   constructor(private http: HttpClient) {}
 

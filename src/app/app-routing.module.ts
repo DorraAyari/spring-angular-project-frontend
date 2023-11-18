@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ChambreComponent } from './chambre/chambre.component';
-
-import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
-import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
-
+import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
+import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
 import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
@@ -31,10 +29,10 @@ const routes: Routes = [
   { path: 'confirmreservation', component: AddReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
   {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
-  {path : 'showUniversites' , component : ListeUniversitesComponent}, 
+  {path : 'showUniversites' , component : ListeUniversitesComponent},
   {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
   {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
- 
+
 
 
   {path:'bloc', component:ShowBlocComponent},
