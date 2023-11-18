@@ -1,0 +1,29 @@
+/* Style du bouton Rechercher */
+.button-rechercher {
+    background-color: #4caf50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 15px; /* Espacement interne */
+    font-size: 16px; /* Taille de la police */
+    border: none; /* Supprimer la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de la souris */
+  }
+  
+  /* Style du bouton Rechercher au survol */
+  .button-rechercher:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+  }
+
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 100% de la hauteur de la vue (viewport height) */
+  }
+
+  .form-container {
+    text-align: center;
+  }
+  
+  
