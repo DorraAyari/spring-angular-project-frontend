@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { Router } from '@angular/router';
 
 
 
@@ -25,7 +26,7 @@ export class AddReservationComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,  
+    private router: Router,  
     private reservationService: ReservationService // Inject the service
   ) 
   {
@@ -40,11 +41,13 @@ export class AddReservationComponent {
   }
 
   addReservationToRoomAndStudent(): void {
+    
     this.reservationService.ajouterReservationEtAssignerAChambreEtAEtudiant(this.reservation.numeroChambre, this.reservation.cin).subscribe(
       
       (reservation) => {
         console.log("Reservation added", reservation);
-        this.ngOnInit();
+        alert('Nouvelle réservation ajoutée avec succès!');
+        this.router.navigate(['/gestionreservation']);
       },
       (error)=>{
         console.log("Error adding reservation", error);
@@ -83,7 +86,7 @@ export class AddReservationComponent {
       )
     }
   
-
+   
   
  
 

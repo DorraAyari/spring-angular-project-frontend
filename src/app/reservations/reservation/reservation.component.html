@@ -1,59 +1,6 @@
-<!-- 
-
-  <br>
-  <br>
-  <br>
-  <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">anneeUniversitaire</th>
-          <th scope="col">estValide</th>
-          <th scope="col">Status</th>
-          <th scope="col">payment method</th>
-          
-
-        </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let m of Reservations">
-          <td>{{m.idReservation}}</td>
-          <td>{{m.anneeUniversitaire}}</td>
-          <td>{{m.estValide}}</td>
-          <td [ngClass]="{
-            'status-active': m.status === 'ACTIVE',
-            'status-refused': m.status === 'REFUSED'
-          }">
-          
-      {{ m.status }}
-    </td>
-    <td>{{m.paymentMethod}}</td> -->
-    
-      
-      <!--   <td>
-          <button type="button" class="btn btn-info" (click)="ajouterReservationEtAssignerAChambreEtAEtudiant(numChambre,cin)">ajouter-test</button>
-        </td>  -->
-        
-   <!--      <td>
-          <button class="btn btn-success" (click)="onAccept(m.idReservation)">Accept reservation</button>
-        </td>
-        <td>
-          <button class="btn btn-warning" (click)="onRefuse(m.idReservation)">Refuse reservation</button>
-        </td>
-
-        <td>
-          <button class="btn btn-danger" (click)="cancelReservations(m.idReservation)">delete Reservation</button>
-        </td>
-
-
-        <td>
-        <button class="btn btn-primary" (click)="addReservationToRoomAndStudent(numChambre, cin)">Add Reservation</button>
-      </td> 
-        </tr>
-
-      </tbody>
-    </table>
-    <app-footer></app-footer> -->
+<div class="content-page">
+  <div class="content">
+    <div class="container">
 
     <div class="reservation-page">
       <div class="container">
@@ -67,7 +14,7 @@
                 <th>Année Universitaire</th>
                 <th>Est Valide</th>
                 <th>Status</th>
-                <th>Méthode de Paiement</th>
+    
                 <th>Actions</th>
               </tr>
               
@@ -78,7 +25,7 @@
                 <td>{{ m.anneeUniversitaire | date:'shortDate' }}</td>
                 <td>{{ m.estValide ? 'Oui' : 'Non' }}</td>
                 <td [ngClass]="getStatusClass(m.status)">{{ m.status }}</td>
-                <td>{{ m.paymentMethod }}</td>
+                
                 <td>
                   <button class="btn btn-success" (click)="onAccept(m.idReservation)">Accepter</button>
                   <button class="btn btn-warning" (click)="onRefuse(m.idReservation)">Refuser</button>
@@ -90,5 +37,8 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+</div>
   
     
