@@ -13,6 +13,10 @@ import { ChambreModificationComponent } from './chambre-modification/chambre-mod
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
+import { UniversiteService } from './services/universite.service';
+import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
+import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
@@ -27,6 +31,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastModule } from 'primeng/toast';
 
 
+import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
+import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
+import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
+import { FoyerService } from './services/foyer.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +46,19 @@ import { ToastModule } from 'primeng/toast';
     ChambreComponent,
     ChambreModificationComponent,
     ChambreAjouterComponent,
+    AjouterUniversiteComponent,
+    ListeUniversitesComponent,
+    DetailsUniversiteComponent,
+
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
     ShowBlocComponent,
     LoginRegisterComponent,
-    HomeComponent
+    HomeComponent,
+    AddFoyerComponent,
+    EditFoyerComponent,
+    HomeFoyerComponent
   ],
   imports: [
     BrowserModule,
@@ -58,14 +74,21 @@ import { ToastModule } from 'primeng/toast';
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
+    ReactiveFormsModule
+
+  ],
     ],
   providers: [
+
+    FoyerService, // Add this line,
+
     ChambreService, // Add this line
     HttpClient,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   }
+    UniversiteService,
   ],
   bootstrap: [AppComponent]
 })

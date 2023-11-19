@@ -1,0 +1,95 @@
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Foyer } from 'src/app/models/foyer';
+import { FoyerService } from 'src/app/services/foyer.service';
+import Swal from 'sweetalert2';
+
+
+declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
+@Component({
+  selector: 'app-home-foyer',
+  templateUrl: './home-foyer.component.html',
+  styleUrls: ['./home-foyer.component.css']
+})
+export class HomeFoyerComponent implements OnInit, AfterViewInit, OnDestroy{
+  foyes: Foyer[] = [];
+  showDeleteModal = false;
+  foyerToDeleteId!: number;
+  dataTablesInstance: any;
+
+  constructor(private foyerService: FoyerService , private router: Router) {}
+
+  ngOnInit(): void {
+    this.getFoyes();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.dataTablesInstance) {
+      this.dataTablesInstance.destroy();
+    }
+
+    // Activer DataTables une fois que la vue a été initialisée
+    this.dataTablesInstance = $('#foyesTable').DataTable({
+      // Options DataTables here
+      destroy: true
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Détruire DataTables lorsque le composant est détruit pour éviter les fuites de mémoire
+    if (this.dataTablesInstance) {
+      this.dataTablesInstance.destroy();
+    }
+  }
+
+  getFoyes(): void {
+    this.foyerService.getFoyes()
+      .subscribe(foyes => this.foyes = foyes);
+  }
+
+  openModificationPopup(foyer: Foyer): void {
+    // Navigate to the chambre modification route, passing the chambre ID
+    this.router.navigate(['foyer/editFoyer', foyer.idFoyer]);
+  }
+
+  deleteFoyer(idFoyer: number): void {
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Voulez-vous vraiment supprimer cette foyer ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, supprimer!',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.foyerService.deleteFoyer(idFoyer).subscribe(
+          () => {
+            console.log('foyer deleted successfully');
+            // Destroy DataTables instance before reloading data
+            if (this.dataTablesInstance) {
+              this.dataTablesInstance.destroy();
+            }
+            // Reload DataTables data
+            this.getFoyes();
+          },
+          (error) => {
+            console.error('Error deleting foyer', error);
+            // Handle error as needed
+          }
+        );
+      }
+    });
+  }
+  // Close the confirmation modal
+  cancelDelete(): void {
+    this.showDeleteModal = false;
+  }
+
+
+  navigateToAjouter(): void {
+    this.router.navigate(['foyer/add-foyer']);
+  }
+ 
+}

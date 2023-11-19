@@ -1,0 +1,31 @@
+<!-- chambre-modification.component.html -->
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <form (ngSubmit)="updateFoyer()" #foyerForm="ngForm" class="foyer-form" novalidate>
+                <label>ID Foyer: </label>
+                <input type="text" [(ngModel)]="foyer.idFoyer" name="idFoyer" class="form-control" disabled>
+  
+                <label>Nom Foyer: </label>
+                <input type="text" [(ngModel)]="foyer.nomFoyer" name="nomFoyer" class="form-control" required>
+                <div *ngIf="foyerForm.controls['nomFoyer'].hasError('required') && (foyerForm.submitted || foyerForm.controls['nomFoyer'].touched)"
+                  class="error-message">
+                  nom foyer est requis.
+                </div>
+  
+                <label>capacité foyer: </label>
+                <input type="number" [(ngModel)]="foyer.capaciteFoyer" name="capaciteFoyer" class="form-control" required>
+                <div *ngIf="foyerForm.controls['capaciteFoyer'].hasError('required') && (foyerForm.submitted || foyerForm.controls['capaciteFoyer'].touched)"
+                  class="error-message">
+                  Capacité foyer est requis.
+                </div>
+                
+  
+                <!-- Other input fields for chambre properties -->
+  
+                <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  
