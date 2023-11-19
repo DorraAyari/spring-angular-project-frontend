@@ -344,3 +344,14 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
 }
+
+
+.success-toast {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.warning-toast {
+  background-color: #ff9800; /* Orange */
+  color: white;
+}
