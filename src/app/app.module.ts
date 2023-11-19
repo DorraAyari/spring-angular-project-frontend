@@ -58,13 +58,12 @@ import { FoyerService } from './services/foyer.service';
     ReactiveFormsModule
 
   ],
-    ],
   providers: [
 
-    FoyerService // Add this line
+    FoyerService,// Add this line
 
     ChambreService, // Add this line
-    UniversiteService,
+    UniversiteService
 
 
   ],
