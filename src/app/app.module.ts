@@ -12,9 +12,13 @@ import { HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ReservationComponent } from './reservations/reservation/reservation.component';
+import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { DataTablesModule } from 'angular-datatables';
     SidebarComponent,
     ChambreComponent,
     ChambreModificationComponent,
-    ChambreAjouterComponent
+    ChambreAjouterComponent,
+    ReservationComponent,
+    AddReservationComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,7 @@ import { DataTablesModule } from 'angular-datatables';
     BrowserAnimationsModule,
     FormsModule,
     DataTablesModule,
-
+    ReactiveFormsModule,
   ],
   providers: [
     ChambreService, // Add this line
