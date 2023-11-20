@@ -1,0 +1,44 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container">
+
+    <div class="reservation-page">
+      <div class="container">
+        <h2 class="page-title">Liste des Réservations</h2>
+        <button class="btn btn-success" (click)="navigateToAddreservation()">add reservations</button>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Année Universitaire</th>
+                <th>Est Valide</th>
+                <th>Status</th>
+    
+                <th>Actions</th>
+              </tr>
+              
+            </thead>
+            <tbody>
+              <tr *ngFor="let m of Reservations">
+                <td>{{ m.idReservation }}</td>
+                <td>{{ m.anneeUniversitaire | date:'shortDate' }}</td>
+                <td>{{ m.estValide ? 'Oui' : 'Non' }}</td>
+                <td [ngClass]="getStatusClass(m.status)">{{ m.status }}</td>
+                
+                <td>
+                  <button class="btn btn-success" (click)="onAccept(m.idReservation)">Accepter</button>
+                  <button class="btn btn-warning" (click)="onRefuse(m.idReservation)">Refuser</button>
+                  <button class="btn btn-danger" (click)="cancelReservations(m.idReservation)">Supprimer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+    

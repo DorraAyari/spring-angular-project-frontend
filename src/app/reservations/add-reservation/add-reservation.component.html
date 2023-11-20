@@ -1,0 +1,25 @@
+<div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <h2>Ajouter une nouvelle reservation</h2>
+        <form (ngSubmit)="addReservationToRoomAndStudent()">
+          <div class="form-group">
+            <label for="numeroChambre">Numéro Chambre:</label>
+            <!-- <select id="numeroChambre" [(ngModel)]="reservation.numeroChambre" name="numeroChambre" class="form-control" required>
+              <option *ngFor="let room of allRooms" [value]="room.numeroChambre">{{ room.numeroChambre }}</option>
+            </select> -->
+            <input type="text" class="form-control" id="numeroChambre" [(ngModel)]="reservation.numeroChambre" name="numeroChambre" required>
+          </div>
+          <div class="form-group">
+            <label for="cin">CIN:</label>
+          <!--   <select id="cin" [(ngModel)]="reservation.cin" name="cin" class="form-control" required>
+              <option *ngFor="let student of allCINs" [value]="student.cin">{{ student.cin }}</option>
+            </select> -->
+            <input type="text" class="form-control" id="cin" [(ngModel)]="reservation.cin" name="cin" required>
+          </div>
+          <button type="submit" class="btn btn-success">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

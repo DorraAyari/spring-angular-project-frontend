@@ -1,0 +1,47 @@
+<!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-page">
+  
+  <div class="content">
+    <div class="container-fluid">
+      <h2 class="mb-4 text-primary">Liste des Foyes</h2>
+      <button class="btn btn-success mb-3" (click)="navigateToAjouter()">
+        <i class="fas fa-plus"></i> Ajouter un foyer
+      </button>
+
+      <div class="table-responsive">
+        <form (ngSubmit)="searchFoyersByNomFoyer()">
+          <input type="text" [(ngModel)]="nomFoyer" name="nomFoyer" placeholder="Nom du foyer" />
+          <button type="submit">Rechercher</button>
+        </form>
+        <table id="foyesTable" class="table table-striped table-bordered table-hover">
+          <thead class="thead-custom">
+            <tr>
+              <th>nom Foyer</th>
+              <th>capacite Foyer</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let foyer of foyes">
+              <td>{{ foyer.nomFoyer }}</td>
+              <td>{{ foyer.capaciteFoyer }}</td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="openModificationPopup(foyer)">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="deleteFoyer(foyer.idFoyer)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
