@@ -1,21 +1,42 @@
+<!-- chambre-ajouter.component.html -->
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 <div class="content-page">
-    <div class="content">
-        <div class="container-fluid"><h2>Ajouter une nouvelle chambre</h2>
-<form (ngSubmit)="ajouterChambre()">
-  <div class="form-group">
-    <label for="numeroChambre">Numéro Chambre:</label>
-    <input type="text" id="numeroChambre" [(ngModel)]="newChambre.numeroChambre" name="numeroChambre" class="form-control" required>
+  <div class="content">
+    <div class="container">
+      <h2 class="text-center mb-4">Ajouter une nouvelle chambre</h2>
+      <form (ngSubmit)="ajouterChambre()" #chambreForm="ngForm" class="chambre-form">
+
+        <div class="form-group">
+          <label for="numeroChambre">Numéro Chambre:</label>
+          <input type="number" id="numeroChambre" [(ngModel)]="newChambre.numeroChambre" name="numeroChambre"
+            class="form-control" required>
+          <div *ngIf="chambreForm.controls['numeroChambre'].hasError('required') && (chambreForm.controls['numeroChambre'].dirty || chambreForm.controls['numeroChambre'].touched)"
+            class="error-message">
+            Numéro Chambre est requis.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="typeChambre">Type Chambre:</label>
+          <select id="typeChambre" [(ngModel)]="newChambre.typeChambre" name="typeChambre" class="form-control"
+            required>
+            <option value="" disabled selected>Choisissez le type</option>
+            <option value="SIMPLE">Simple</option>
+            <option value="DOUBLE">Double</option>
+            <option value="TRIPLE">Triple</option>
+          </select>
+          <div *ngIf="chambreForm.controls['typeChambre'].hasError('required') && (chambreForm.controls['typeChambre'].dirty || chambreForm.controls['typeChambre'].touched)"
+            class="error-message">
+            Type Chambre est requis.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block" [disabled]="chambreForm.invalid">Ajouter</button>
+        <div *ngIf="chambreForm.invalid" class="error-message">
+          Veuillez remplir le formulaire avant de soumettre.
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="typeChambre">Type Chambre:</label>
-    <select id="typeChambre" [(ngModel)]="newChambre.typeChambre" name="typeChambre" class="form-control" required>
-      <option value="SIMPLE">Simple</option>
-      <option value="DOUBLE">Double</option>
-      <option value="TRIPLE">Triple</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-success">Ajouter</button>
-</form>
-</div>
-</div>
 </div>

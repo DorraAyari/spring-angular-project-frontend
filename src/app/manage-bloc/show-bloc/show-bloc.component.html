@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+ <div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <h2>Liste des Bloc</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID Bloc</th>
+                        <th>Numéro Bloc</th>
+                        <th>Capacite Bloc</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bloc of blocs">
+                        <td>{{ bloc.idBloc }}</td>
+                        <td>{{ bloc.nomBloc }}</td>
+                        <td>{{bloc.capaciteBloc}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="updateBloc(bloc.idBloc)">Modifier</button>
+                            <button class="btn btn-danger" (click)="deleteBloc(bloc.idBloc)">Supprimer</button>
+                        </td>
+                    </tr>
+                    <br>
+                    <button class="btn btn-success" (click)="addBloc()">Add Bloc</button>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+  
