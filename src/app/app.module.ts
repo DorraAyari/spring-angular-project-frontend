@@ -13,6 +13,10 @@ import { ChambreModificationComponent } from './chambre-modification/chambre-mod
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ReservationComponent } from './reservations/reservation/reservation.component';
+import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+
+
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
@@ -46,6 +50,8 @@ import { FoyerService } from './services/foyer.service';
     ChambreComponent,
     ChambreModificationComponent,
     ChambreAjouterComponent,
+    ReservationComponent,
+    AddReservationComponent,
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
