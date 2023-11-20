@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule, Routes } from '@angular/router';
 import { ChambreComponent } from './chambre/chambre.component';
-import { BodyComponent } from './shared/body/body.component';
+
 import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
-  {path:'home',component:HomeComponent,canActivate: [authGuard]}
+  {path:'home',component:HomeComponent,canActivate: [authGuard]},
   {path:'foyer/home-foyer',component:HomeFoyerComponent},
   { path:'foyer/editFoyer/:id', component:EditFoyerComponent },
   { path:'foyer/add-foyer', component:AddFoyerComponent },
