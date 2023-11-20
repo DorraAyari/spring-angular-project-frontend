@@ -1,21 +1,37 @@
+
 <!-- Bloc-modification.component.html -->
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 <div class="content-page">
-    <div class="content">
-        <div class="container-fluid">
-            <form (ngSubmit)="updateBloc()">
-    <label>ID Bloc: </label>
-    <input type="text" [(ngModel)]="bloc.idBloc"  name="idBloc"  >
-    <label>Num Bloc: </label>
-    <input type="text" [(ngModel)]="bloc.nomBloc" name="nomBloc" >
-    <label>Capacite Bloc: </label>
-    <input type="text" [(ngModel)]="bloc.capaciteBloc" name="capaciteBloc">
-    <!-- Other input fields for Bloc properties -->
-    
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-  </form>
-</div>
-</div>
+  <div class="content">
+      <div class="container-fluid">
+          <form (ngSubmit)="updateBloc()" #blocForm="ngForm" class="bloc-form" novalidate>
+              <label>ID bloc: </label>
+              <input type="text" [(ngModel)]="bloc.idBloc" name="idbloc" class="form-control" disabled>
 
+              <label>Num bloc: </label>
+              <input type="text" [(ngModel)]="bloc.nomBloc" name="numerobloc" class="form-control" required>
+              <div *ngIf="blocForm.controls['numerobloc'].hasError('required') && (blocForm.submitted || blocForm.controls['numerobloc'].touched)"
+                class="error-message">
+                Numéro bloc est requis.
+              </div>
+              <label>Capacite Bloc</label>
+              <input type="text" [(ngModel)]="bloc.capaciteBloc" name="capaciteBloc" class="form-control" required>
+              <div *ngIf="blocForm.controls['capaciteBloc'].hasError('required') && (blocForm.submitted || blocForm.controls['capaciteBloc'].touched)"
+                class="error-message">
+                Capacite bloc est requis.
+              </div>
+
+             
+              <div *ngIf="blocForm.controls['typebloc'].hasError('required') && (blocForm.submitted || blocForm.controls['typebloc'].touched)"
+                class="error-message">
+                Type bloc est requis.
+              </div>
+
+              <!-- Other input fields for bloc properties -->
+
+              <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+          </form>
+      </div>
+  </div>
 </div>

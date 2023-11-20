@@ -32,5 +32,16 @@ export class BlocService {
   findById(idBloc: number):Observable<Bloc> {
     return this.http.get<Bloc>(this.baseUrl + idBloc);
   }
-  
+  // bloc.service.ts
+findByNomBlocAndCapaciteBloc(nomBloc: string, capacite: number): Observable<Bloc[]> {
+  const url = `${this.baseUrl}findByNomBlocAndCapaciteBloc?name=${nomBloc}&capacite=${capacite}`;
+  return this.http.get<Bloc[]>(url);
+}
+findByNomBloc(nomBloc: string): Observable<Bloc[]> {
+  // Effectuer la requête de recherche en utilisant le nom du foyer comme critère
+  const url = `${this.baseUrl}findByNameBloc?name=${nomBloc}`;
+
+  return this.http.get<Bloc[]>(url);
+}
+
 }
