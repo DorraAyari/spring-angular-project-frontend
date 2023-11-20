@@ -74,21 +74,22 @@ import { FoyerService } from './services/foyer.service';
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
-    ReactiveFormsModule
+   
 
   ],
-    ],
+    
   providers: [
 
-    FoyerService, // Add this line,
+   // FoyerService, // Add this line,
 
-    ChambreService, // Add this line
+    //ChambreService, // Add this line
+    //UniversiteService,
     HttpClient,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }
-    UniversiteService,
+  },
+    
   ],
   bootstrap: [AppComponent]
 })
