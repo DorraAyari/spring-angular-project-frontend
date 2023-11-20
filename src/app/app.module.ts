@@ -77,13 +77,10 @@ import { FoyerService } from './services/foyer.service';
    
 
   ],
+
     
   providers: [
 
-   // FoyerService, // Add this line,
-
-    //ChambreService, // Add this line
-    //UniversiteService,
     HttpClient,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

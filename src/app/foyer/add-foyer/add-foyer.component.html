@@ -23,7 +23,19 @@
               class="form-control" required>
             <div *ngIf="foyerForm.controls['capaciteFoyer'].hasError('required') && (foyerForm.controls['capaciteFoyer'].dirty || foyerForm.controls['capaciteFoyer'].touched)"
               class="error-message">
-              Nom du foyer est requis.
+             capacité du foyer est requis.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="universite">Université:</label>
+            <select id="universite" [(ngModel)]="newFoyer.universite" name="universite" class="form-control" required>
+              <option value="" disabled selected>Sélectionner une université</option>
+              <option *ngFor="let universiteItem of universite" [value]="universiteItem.idUniversite">{{ universiteItem.nomUniversite }}</option>
+            </select>
+            <div *ngIf="foyerForm.controls['universite'].hasError('required') && (foyerForm.controls['universite'].dirty || foyerForm.controls['universite'].touched)"
+              class="error-message">
+              Université est requise.
             </div>
           </div>
   
