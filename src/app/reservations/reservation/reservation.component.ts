@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { count } from 'rxjs';
 import { ReservationService } from 'src/app/services/reservation.service';
 
 
@@ -17,6 +18,11 @@ export class ReservationComponent {
   numChambre: any;
   cin: any;
 
+
+  startDate: string = '';
+  endDate: string = '';
+  reservationCount: number = 0;
+  showDateInput:boolean = false;
 
 
   constructor(private router: Router,private reservationService: ReservationService,private route: ActivatedRoute) { }
@@ -85,6 +91,31 @@ export class ReservationComponent {
     navigateToAddreservation(): void {
       this.router.navigate(['/ajouterreservation']);
     } 
+
+    
+    toggleDateInput(): void {
+      this.showDateInput = !this.showDateInput;
+    }
+    
+    getReservationCount() {
+      if (this.startDate && this.endDate) {
+        this.reservationService.getReservationCount(this.startDate, this.endDate)
+          .subscribe(count => {
+            this.reservationCount = count;
+            this.toggleDateInput(); // after fetching the count we can hide it
+          }, error => {
+            // handle errors here
+            console.error('There was an error!', error);
+          });
+      }
+    }
+
+
+
+
+
+
+
 
   }
 

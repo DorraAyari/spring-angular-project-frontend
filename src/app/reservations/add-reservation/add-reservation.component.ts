@@ -29,15 +29,13 @@ export class AddReservationComponent {
     private router: Router,  
     private reservationService: ReservationService // Inject the service
   ) 
-  {
-    
-  }
+  {  }
   
   ngOnInit(): void {
     this.fetchAllRooms();
     this.fetchAllCINs();
     
-   
+    
   }
 
   addReservationToRoomAndStudent(): void {
@@ -47,6 +45,8 @@ export class AddReservationComponent {
       (reservation) => {
         console.log("Reservation added", reservation);
         alert('Nouvelle réservation ajoutée avec succès!');
+
+        // Navigate to the home page
         this.router.navigate(['/gestionreservation']);
       },
       (error)=>{
@@ -62,9 +62,7 @@ export class AddReservationComponent {
         (rooms)=>
         {
           this.allRooms = rooms;
-          console.log("Rooms fetched successfully", rooms);
-          console.log(this.allRooms);
-          
+          console.log("Rooms fetched successfully", rooms);  
         },
         (error)=>{
           console.log("Error fetching rooms", error);
@@ -77,6 +75,7 @@ export class AddReservationComponent {
       this.reservationService.getAllCINs().subscribe(
         (cin)=>
           { 
+
             this.allCINs = cin;
             console.log("CINs fetched successfully", cin);
           },
@@ -85,7 +84,8 @@ export class AddReservationComponent {
           }
       )
     }
-  
+
+   
    
   
  

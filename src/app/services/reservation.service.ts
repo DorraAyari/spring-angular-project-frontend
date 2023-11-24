@@ -51,6 +51,14 @@ export class ReservationService {
     return this.client.get<any[]>(`${this.reservationURL}/cins`);
   }
 
-  
-  
+  getReservationCount(startDate:string,endDate:string): Observable<any> {
+    return this.client.get<any>(`${this.reservationURL}/getReservationParAnneeUniversitaire`,{
+    params: {
+        debutAnnee: startDate,
+        finAnnee: endDate
+      }
+    });
+  }
+
+ 
 }

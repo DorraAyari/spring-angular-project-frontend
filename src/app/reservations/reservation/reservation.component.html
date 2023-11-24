@@ -1,4 +1,4 @@
-<div class="content-page">
+<!-- <div class="content-page">
   <div class="content">
     <div class="container">
 
@@ -6,7 +6,22 @@
       <div class="container">
         <h2 class="page-title">Liste des Réservations</h2>
         <button class="btn btn-success" (click)="navigateToAddreservation()">add reservations</button>
-        <div class="table-responsive">
+        <button class="btn btn-success mb-3" (click)="toggleDateInput()">Count Reservation By Date</button>
+
+        <br>
+        <br>
+        <div class="input-group mb-3" *ngIf="showDateInput">
+          <input type="date" class="form-control" [(ngModel)]="startDate" placeholder="Start Date" />
+          <input type="date" class="form-control" [(ngModel)]="endDate" placeholder="End Date" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" (click)="getReservationCount()">count reservation</button>
+          </div>
+          <br>
+          <br>
+          <p class="mb-3">Reservation count: {{reservationCount}}</p>
+        </div>
+       
+       <div class="table-responsive">
           <table class="table table-bordered table-hover">
             <thead class="thead-dark">
               <tr>
@@ -41,4 +56,57 @@
 </div>
 </div>
   
+     -->
+     <div class="content-page">
+      <div class="content">
+        <div class="container">
+     <div class="container my-4" >
+      <h2 class="mb-4">Liste des Réservations</h2>
+      <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-success" (click)="navigateToAddreservation()">+ Ajouter reservation</button>
+        <button class="btn btn-info" (click)="toggleDateInput()">Compter par Date</button>
+      </div>
+    
+      <div class="row mb-3" *ngIf="showDateInput">
+        <div class="col">
+          <input type="date" class="form-control" [(ngModel)]="startDate" placeholder="Start Date" />
+        </div>
+        <div class="col">
+          <input type="date" class="form-control" [(ngModel)]="endDate" placeholder="End Date" />
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-primary" (click)="getReservationCount()">Compter</button>
+        </div>
+      </div>
+      
+      <p *ngIf="showDateInput" class="mb-3">Nombre de réservations : {{reservationCount}}</p>
+      
+      <div class="table-responsive">
+        <table class="table table table-strip">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>Année Universitaire</th>
+              <th>Est Valide</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of Reservations">
+              <td>{{ m.idReservation }}</td>
+              <!-- <td>{{ m.anneeUniversitaire | date:'shortDate' }}</td> -->
+              <td>{{ m.idReservation | academicYear }}</td>
+              <td>{{ m.estValide ? 'Oui' : 'Non' }}</td>
+              <td [ngClass]="getStatusClass(m.status)">{{ m.status }}</td>
+              <td>
+                <button class="btn btn-outline-success" (click)="onAccept(m.idReservation)">✔ Accepter</button>
+                <button class="btn btn-outline-warning" (click)="onRefuse(m.idReservation)">✘ Refuser</button>
+               <!--  <button class="btn btn-outline-danger" (click)="cancelReservations(m.idReservation)">🗑 Supprimer</button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     

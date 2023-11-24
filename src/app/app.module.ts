@@ -17,6 +17,7 @@ import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.compo
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+import { AcademicYearPipe } from './academic-year.pipe';
 
 
 
@@ -32,6 +33,7 @@ import { AddReservationComponent } from './reservations/add-reservation/add-rese
     ChambreAjouterComponent,
     ReservationComponent,
     AddReservationComponent,
+    AcademicYearPipe,
   ],
   imports: [
     BrowserModule,
