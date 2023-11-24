@@ -73,22 +73,20 @@ import { FoyerService } from './services/foyer.service';
     ToastModule
     ],
     schemas: [
-      CUSTOM_ELEMENTS_SCHEMA
-    ReactiveFormsModule
-
-  ],
+    CUSTOM_ELEMENTS_SCHEMA
     ],
   providers: [
 
     FoyerService, // Add this line,
 
     ChambreService, // Add this line
-    HttpClient,{
+    HttpClient,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }
-    UniversiteService,
+    },
+    UniversiteService
   ],
   bootstrap: [AppComponent]
 })

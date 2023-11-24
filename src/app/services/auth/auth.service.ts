@@ -91,7 +91,7 @@ export class AuthService {
 
     renewToken(refreshToken: any){
       const headers = new HttpHeaders({
-        Authorization: `Bearer ${refreshToken}`,
+        Authorization: `Bearer ${refreshToken}`
       });
       return this.http.post(this.baseApiUrl + "/etudiant/refresh-token",{headers});
     }
