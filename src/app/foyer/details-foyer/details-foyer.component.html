@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-xl-4" *ngFor="let f of foyer">
+                   <app-detail [foyer]="f" (passId)="parentDeleteFoyer($event)" ></app-detail>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

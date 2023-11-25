@@ -18,16 +18,17 @@ import { authGuard } from './guards/auth.guard';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
+import { DetailsFoyerComponent } from './foyer/details-foyer/details-foyer.component';
 
 const routes: Routes = [
   {path:'chambre',component:ChambreComponent},
   {path:'auth',component:LoginRegisterComponent},
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
-  {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
-  {path : 'showUniversites' , component : ListeUniversitesComponent}, 
-  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
-  {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  {path : 'ajouterUniversite', component : AjouterUniversiteComponent,canActivate: [authGuard]},
+  {path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]}, 
+  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent,canActivate: [authGuard]},
+  {path : 'detailsUniversites' , component : DetailsUniversiteComponent,canActivate: [authGuard]},
  
 
 
@@ -35,9 +36,10 @@ const routes: Routes = [
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
   {path:'home',component:HomeComponent,canActivate: [authGuard]},
-  {path:'foyer/home-foyer',component:HomeFoyerComponent},
-  { path:'foyer/editFoyer/:id', component:EditFoyerComponent },
-  { path:'foyer/add-foyer', component:AddFoyerComponent },
+  {path:'home-foyer',component:HomeFoyerComponent,canActivate: [authGuard]},
+  { path:'editFoyer/:id', component:EditFoyerComponent,canActivate: [authGuard]},
+  { path:'add-foyer', component:AddFoyerComponent,canActivate: [authGuard] },
+  { path:'detailsFoyer', component:DetailsFoyerComponent,canActivate: [authGuard] },
 
 
 ];

@@ -35,6 +35,8 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
+import { DetailsFoyerComponent } from './foyer/details-foyer/details-foyer.component';
+import { DetailComponent } from './foyer/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { FoyerService } from './services/foyer.service';
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
-    HomeFoyerComponent
+    HomeFoyerComponent,
+    DetailsFoyerComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

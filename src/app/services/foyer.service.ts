@@ -38,4 +38,10 @@ export class FoyerService {
   
     return this.http.get<Foyer[]>(url);
   }
+ 
+  getCountChambresByFoyerId(idFoyer: any): Observable<any> {
+    const url = `${this.apiUrl}/foyer/${idFoyer}/countChambres`;
+    return this.http.get<Foyer>(url);
+  }
+  
 }

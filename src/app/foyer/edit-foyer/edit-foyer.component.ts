@@ -53,7 +53,7 @@ export class EditFoyerComponent implements OnInit {
           confirmButtonText: 'OK'
         }).then(() => {
           // Optionally, navigate back to the chambre list or any other route
-          this.router.navigate(['foyer/home-foyer']);
+          this.router.navigate(['home-foyer']);
         });
       },
       (error) => {
