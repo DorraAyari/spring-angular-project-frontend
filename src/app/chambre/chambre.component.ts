@@ -5,7 +5,6 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
 
 
-
 // Déclaration de $ pour éviter les erreurs de TypeScript
 
 @Component({

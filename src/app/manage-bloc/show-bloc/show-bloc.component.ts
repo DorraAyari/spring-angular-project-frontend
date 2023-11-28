@@ -45,8 +45,28 @@ export class ShowBlocComponent implements OnInit {
       this.resultatsBlocs = [];
     }
   }
+  /* rechercherParNomBloc(event: Event) {
+    event.preventDefault();
+    console.log('Recherche en cours avec le nom :', this.nomBloc);
   
-
+    if (this.nomBloc.trim() !== '') {
+      // Appelez la fonction du service pour rechercher par nom de bloc
+      this.service.findByNomBlocContaining(this.nomBloc).subscribe(
+        (blocs) => {
+          // Assurez-vous que blocs est un tableau
+          this.resultatsBlocs = Array.isArray(blocs) ? blocs : [blocs];
+        },
+        (error) => {
+          console.error('Erreur lors de la recherche des blocs par nom', error);
+          // Gérez l'erreur selon vos besoins
+        }
+      );
+    } else {
+      // Si le champ de recherche est vide, réinitialisez les résultats
+      this.resultatsBlocs = [];
+    }
+  }
+*/
   deleteBloc(id: number) {
     this.service.deleteBloc(id).subscribe(
       () => {

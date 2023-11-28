@@ -43,5 +43,10 @@ findByNomBloc(nomBloc: string): Observable<Bloc[]> {
 
   return this.http.get<Bloc[]>(url);
 }
+findByNomBlocContaining(nomBloc: string): Observable<Bloc | Bloc[]> {
+  const url = `${this.baseUrl}votre_endpoint_de_recherche_partielle`; // Remplacez cela par votre endpoint d'API
 
+  // Utilisez la méthode HttpClient pour effectuer la requête HTTP appropriée
+  return this.http.get<Bloc | Bloc[]>(`${url}?nomBloc=${nomBloc}`);
+}
 }
