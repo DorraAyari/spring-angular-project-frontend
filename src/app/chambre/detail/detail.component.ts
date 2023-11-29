@@ -27,5 +27,5 @@ export class DetailComponent {
     }
     ngOnInit() {
     }
-
+//heloo
 }
