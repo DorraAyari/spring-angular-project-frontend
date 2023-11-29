@@ -12,6 +12,7 @@ import { DetailsUniversiteComponent } from './universite/details-universite/deta
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 
 const routes: Routes = [
   {path:'chambre',component:ChambreComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path : 'showUniversites' , component : ListeUniversitesComponent},
   {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
   {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  { path:'detailsChambre', component:DetailsChambreComponent },
 
 
 

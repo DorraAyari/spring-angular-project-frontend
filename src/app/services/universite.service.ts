@@ -8,7 +8,7 @@ import { Universite } from '../models/universite';
 })
 export class UniversiteService {
 
-  private baseUrl="http://localhost:8089/universites"
+  private baseUrl="http://localhost:8088/universites"
 
   constructor(private httpClient : HttpClient) { }
 

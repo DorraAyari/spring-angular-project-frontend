@@ -10,25 +10,14 @@
 }
 
 /* Styles pour les badges */
-.badge-info {
-  background-color: #5bc0de; /* Couleur bleue pour le badge info */
-  color: #fff; /* Texte blanc sur fond bleu */
+.badge-occupied {
+  background-color: #d9534f; /* Couleur rouge pour "Oui" */
+  color: #fff; /* Texte blanc sur fond rouge */
 }
 
-/* Styles pour les boutons */
-.btn-success {
-  background-color: #5cb85c; /* Couleur verte pour le bouton de succès */
-  border-color: #4cae4c; /* Couleur de la bordure pour le bouton de succès */
-}
-
-.btn-primary, .btn-info {
-  background-color: #5bc0de; /* Couleur bleue pour les boutons primaire et info */
-  border-color: #46b8da; /* Couleur de la bordure pour les boutons primaire et info */
-}
-
-.btn-danger {
-  background-color: #d9534f; /* Couleur rouge pour le bouton de danger */
-  border-color: #d43f3a; /* Couleur de la bordure pour le bouton de danger */
+.badge-not-occupied {
+  background-color: #5cb85c; /* Couleur verte pour "Non" */
+  color: #fff; /* Texte blanc sur fond vert */
 }
 
 /* Ajustements pour le titre */
@@ -39,4 +28,11 @@ h2 {
 /* Ajustements pour les icônes */
 i {
   margin-right: 5px; /* Ajoute un espacement à droite des icônes */
+}
+.occupied-row {
+  background-color: #ff8080; /* or any color you prefer */
+}
+
+.not-occupied-row {
+  background-color: #80ff80; /* or any color you prefer */
 }

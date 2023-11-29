@@ -21,6 +21,8 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+import { DetailComponent } from './chambre/detail/detail.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
-    ShowBlocComponent
+    ShowBlocComponent,
+    DetailComponent,
+    DetailsChambreComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     HttpClientModule,
     FormsModule,
     DataTablesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
 
