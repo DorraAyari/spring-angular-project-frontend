@@ -25,6 +25,7 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+<<<<<<< HEAD
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -39,6 +40,10 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
+=======
+import { DetailComponent } from './chambre/detail/detail.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+>>>>>>> b2a7a6d (fonctionnalités avancés)
 
 @NgModule({
   declarations: [
@@ -60,11 +65,16 @@ import { FoyerService } from './services/foyer.service';
     DeleteBlocComponent,
     EditBlocComponent,
     ShowBlocComponent,
+<<<<<<< HEAD
     LoginRegisterComponent,
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent
+=======
+    DetailComponent,
+    DetailsChambreComponent,
+>>>>>>> b2a7a6d (fonctionnalités avancés)
   ],
   imports: [
     BrowserModule,
@@ -73,6 +83,7 @@ import { FoyerService } from './services/foyer.service';
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     NgToastModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
@@ -81,6 +92,8 @@ import { FoyerService } from './services/foyer.service';
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
 
+=======
+>>>>>>> b2a7a6d (fonctionnalités avancés)
 
   ],
 
