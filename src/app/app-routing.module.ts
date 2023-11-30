@@ -13,16 +13,14 @@ import { DetailsUniversiteComponent } from './universite/details-universite/deta
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
-<<<<<<< HEAD
+
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { authGuard } from './guards/auth.guard';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
-=======
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
->>>>>>> b2a7a6d (fonctionnalités avancés)
 
 const routes: Routes = [
   {path:'chambre',component:ChambreComponent},

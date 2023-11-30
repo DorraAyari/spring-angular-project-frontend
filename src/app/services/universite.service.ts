@@ -8,11 +8,7 @@ import { Universite } from '../models/universite';
 })
 export class UniversiteService {
 
-<<<<<<< HEAD
   private baseUrl="http://localhost:8088/universite"
-=======
-  private baseUrl="http://localhost:8088/universites"
->>>>>>> b2a7a6d (fonctionnalités avancés)
 
   constructor(private httpClient : HttpClient) { }
 

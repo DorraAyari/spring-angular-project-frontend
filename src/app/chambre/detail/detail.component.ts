@@ -13,7 +13,7 @@ export class DetailComponent {
     idChambre: 0,
     numeroChambre: 0,
     typeChambre: '',
-    bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0 }, // Initialize bloc
+    bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0,foyer_id_foyer:0 }, // Initialize bloc
     bloc_id_bloc: 0,
     isOccupied: false  // Ajoutez le champ isOccupee avec la valeur initiale
 }  ;
