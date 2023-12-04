@@ -10,7 +10,7 @@
                                 <label for="numeroChambre" class="form-label">Numéro Chambre:</label>
                                 <select formControlName="chambre" id="numeroChambreSelect" class="form-control">
                                     <option value="" disabled>Choisissez une chambre</option>
-                                    <option *ngFor="let roomId of allRooms" [value]="roomId">{{ roomId }}</option>
+                                    <option *ngFor="let roomId of allRooms" [value]="roomId">{{ roomId.idChambre }}</option>
                                 </select>
                             </div>
 
@@ -50,4 +50,4 @@
         </div>
     </div>
 </div>
-<router-outlet></router-outlet> 
+

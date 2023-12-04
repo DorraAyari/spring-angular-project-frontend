@@ -7,13 +7,14 @@ import { UpdateReportsComponent } from '../update-reports/update-reports.compone
 
 
 const routes: Routes = [
-  {
+ 
+   {
     path: '',component: ReportRoomComponent,
     children: [
       { path: 'list', component: ReportListComponent },
       { path: 'update/:id', component: UpdateReportsComponent },
     ]
-  }
+  } 
 ];
 
 @NgModule({

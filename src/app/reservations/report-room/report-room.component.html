@@ -10,7 +10,7 @@
                                 <label for="numeroChambreSelect" class="form-label">Numéro Chambre:</label>
                                <select formControlName="chambre" id="numeroChambreSelect" class="form-control" required>
                                     <option value="" disabled selected>Choisissez une chambre</option>
-                                    <option *ngFor="let room of allRooms" [value]="room.idChambre">{{ room }}</option>
+                                    <option *ngFor="let room of allRooms" [value]="room.idChambre">{{ room.idChambre }}</option>
                                 </select> 
     
                                 <div *ngIf="reportForm.controls['chambre'].touched ">
