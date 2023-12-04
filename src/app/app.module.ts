@@ -9,12 +9,16 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
 import { HTTP_INTERCEPTORS, HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
+import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
+import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+import { AcademicYearPipe } from './academic-year.pipe';
+import { ReportingModule } from './reservations/reporting/reporting.module';
+
+
 
 
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
@@ -25,6 +29,7 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -41,6 +46,10 @@ import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
 import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
 
+import { DetailComponent } from './chambre/detail/detail.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +62,7 @@ import { MessageErreurComponent } from './shared/message-erreur/message-erreur.c
     ChambreAjouterComponent,
     ReservationComponent,
     AddReservationComponent,
+    AcademicYearPipe,
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
@@ -66,6 +76,8 @@ import { MessageErreurComponent } from './shared/message-erreur/message-erreur.c
     AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent,
+    DetailComponent,
+    DetailsChambreComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,10 +86,22 @@ import { MessageErreurComponent } from './shared/message-erreur/message-erreur.c
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
+
+    MatSnackBarModule,
+  ],
+
+
+  providers: [
+    ChambreService, // Add this line
     NgToastModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    ToastModule
+    ToastModule,
+    HttpClient,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
@@ -86,15 +110,6 @@ import { MessageErreurComponent } from './shared/message-erreur/message-erreur.c
   ],
 
     
-  providers: [
-
-    HttpClient,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  },
-    
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
