@@ -7,6 +7,10 @@ import { ChambreModificationComponent } from './chambre-modification/chambre-mod
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+import { ReportingModule } from './reservations/reporting/reporting.module';
+import { ReportRoomComponent } from './reservations/report-room/report-room.component';
+import { ReportListComponent } from './reservations/report-list/report-list.component';
+import { UpdateReportsComponent } from './reservations/update-reports/update-reports.component';
 
 
 const routes: Routes = [
@@ -15,8 +19,16 @@ const routes: Routes = [
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
   { path: 'gestionreservation', component: ReservationComponent },
-  { path: 'confirmreservation', component: AddReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
+/*   { path: 'reporting', component: ReportRoomComponent },
+  { path: 'listreport', component: ReportListComponent }, 
+  { path: 'updatereport/:id', component: UpdateReportsComponent },  */
+  
+  {
+    path: 'reporting',
+    loadChildren: () => import('./reservations/reporting/reporting.module').then(m => m.ReportingModule)
+  },
+ 
 ];
 
 @NgModule({

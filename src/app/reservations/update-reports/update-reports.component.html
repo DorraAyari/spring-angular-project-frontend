@@ -1,0 +1,53 @@
+<div class="content-page">
+    <div class="content">
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <form [formGroup]="reportForm" (ngSubmit)="UpdateReport()">
+                            <!-- Chambre Selection -->
+                            <div class="form-group">
+                                <label for="numeroChambre" class="form-label">Numéro Chambre:</label>
+                                <select formControlName="chambre" id="numeroChambreSelect" class="form-control">
+                                    <option value="" disabled>Choisissez une chambre</option>
+                                    <option *ngFor="let roomId of allRooms" [value]="roomId">{{ roomId }}</option>
+                                </select>
+                            </div>
+
+                            <!-- Problem Type Selection -->
+                            <div class="form-group">
+                                <label for="problemType" class="form-label">Type de problème:</label>
+                                <select formControlName="problem" id="problemTypeSelect" class="form-control">
+                                    <option value="" disabled>Choisissez le type de problème</option>
+                                    <option value="BINOME">BINOME</option>
+                                    <option value="CHAUFFAGE">CHAUFFAGE</option>
+                                    <option value="EAU">EAU</option>
+                                    <option value="GAZ">GAZ</option>
+                                    <option value="AUTRE">AUTRE</option>
+                                </select>
+                            </div>
+
+                            <!-- Description Input -->
+                            <div class="form-group">
+                                <label for="description" class="form-label">Description:</label>
+                                <input formControlName="description" type="text" class="form-control" placeholder="Description" name="description">
+                            </div>
+
+                            <!-- Date of Report Input -->
+                            <div class="form-group">
+                                <label for="dateReport" class="form-label">Date of Report:</label>
+                                <input formControlName="dateReport" type="date" class="form-control" placeholder="Date of Report" name="dateReport">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary py-3 px-5" value="Update Report">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet> 

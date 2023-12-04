@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { count } from 'rxjs';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { AddReservationComponent } from '../add-reservation/add-reservation.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -12,7 +14,10 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class ReservationComponent {
 
-  
+  fetchRooms: any[] = [];
+  getAllCINs: any[] = [];
+
+
   Reservations: any[] = [];
   userId: any;
   numChambre: any;
@@ -22,21 +27,27 @@ export class ReservationComponent {
   startDate: string = '';
   endDate: string = '';
   reservationCount: number = 0;
+
   showDateInput:boolean = false;
+  showNonReservedRooms:boolean = false;
+  showNonReservedCINs:boolean = false;
 
 
-  constructor(private router: Router,private reservationService: ReservationService,private route: ActivatedRoute) { }
+  constructor(private router: Router,private reservationService: ReservationService,private route: ActivatedRoute,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.reservationService.getAllReservations().subscribe(
       (res) => {
         console.log("response from BackEnd", res);
         this.Reservations = res;
+       // console.log("testtttttt",this.fetchRooms);
       },
       (error) => {
         console.log("Error fetching reservations", error);
       }
     );
+
+  
   }
 
   getStatusClass(status: string): string {
@@ -73,7 +84,8 @@ export class ReservationComponent {
     console.log("test id on click",id); //afficher rani 5demt test click button
     this.reservationService.acceptReservation(id).subscribe(
         (response) => {
-          alert('Reservation accepted!');
+          // alert('Reservation accepted!');
+          this.snackBar.open('Reservation accepted!', 'OK', { duration: 3000 });
           this.ngOnInit(); // Refresh data
       }
   );
@@ -82,7 +94,8 @@ export class ReservationComponent {
   onRefuse(id: string): void {
     this.reservationService.refuseReservation(id).subscribe(
        (response) => {
-        alert('Reservation refused!');
+        // alert('Reservation refused!');
+        this.snackBar.open('Reservation refused!', 'OK', { duration: 3000 });
         this.ngOnInit(); // Refresh data
       },   
     );
@@ -102,7 +115,7 @@ export class ReservationComponent {
         this.reservationService.getReservationCount(this.startDate, this.endDate)
           .subscribe(count => {
             this.reservationCount = count;
-            this.toggleDateInput(); // after fetching the count we can hide it
+           // this.toggleDateInput(); // after fetching the count we can hide it
           }, error => {
             // handle errors here
             console.error('There was an error!', error);
@@ -111,7 +124,41 @@ export class ReservationComponent {
     }
 
 
+    // to get data from ADD-RESERVATION ( 2 functions for cins and rooms)
 
+    @ViewChild(AddReservationComponent) reservationComponent!: AddReservationComponent;
+
+   
+  
+    handleFetchedRooms(rooms: any[]) {
+      this.fetchRooms = rooms;
+    }
+  
+    handleFetchedCINs(cins: any[]) {
+      this.getAllCINs = cins;
+    }
+
+    toggleNonReservedRooms(): void {
+      this.showNonReservedRooms =! this.showNonReservedRooms;
+      if(this.showNonReservedRooms){
+        this.fetchUnreservedRooms
+      }
+    }
+
+    fetchUnreservedRooms() {
+      this.reservationComponent.fetchAllUnreservedRooms();
+    }
+
+    toggleNonReservedCins():void {
+      this.showNonReservedCINs =! this.showNonReservedCINs;
+      if(this.showNonReservedCINs){
+        this.fetchUnreservedCINs
+      }
+    }
+
+    fetchUnreservedCINs() {
+      this.reservationComponent.fetchAllUnreservedCINs();
+    }
 
 
 

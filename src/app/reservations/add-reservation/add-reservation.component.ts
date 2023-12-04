@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
@@ -16,7 +16,11 @@ export class AddReservationComponent {
 
   allRooms: any[] = [];
   allCINs: any[] = [];
- 
+  @Input() getAllRooms: any[] = [];
+  @Input() getAllCINs: any[] = [];
+  @Output() fetchRooms = new EventEmitter<any[]>();
+  @Output() fetchCINs = new EventEmitter<any[]>();
+
 
  // Initialize your reservation object
  reservation = {
@@ -32,10 +36,8 @@ export class AddReservationComponent {
   {  }
   
   ngOnInit(): void {
-    this.fetchAllRooms();
-    this.fetchAllCINs();
-    
-    
+    this.fetchAllUnreservedRooms();
+    this.fetchAllUnreservedCINs();
   }
 
   addReservationToRoomAndStudent(): void {
@@ -57,7 +59,49 @@ export class AddReservationComponent {
 
 
 
-    fetchAllRooms() {
+
+    fetchAllUnreservedRooms(){
+      this.reservationService.getAllUnreservedRooms().subscribe(
+        (rooms)=>
+        {
+          this.allRooms = rooms;
+          this.fetchRooms.emit(this.allRooms);
+          console.log("Rooms not reserved fetched successfully", rooms);  
+        },
+        (error)=>{
+          console.log("Error fetching rooms", error);
+        }
+        
+      )
+    }
+
+    fetchAllUnreservedCINs() {
+      this.reservationService.getAllUnreservedCins().subscribe(
+        (cin)=>
+          { 
+            this.allCINs = cin;
+            this.fetchCINs.emit(this.allCINs);
+            console.log("CINs not reserved fetched successfully", cin);
+          },
+          (error)=>{
+            console.log("Error fetching CINs", error);
+          }
+      )
+    }
+
+   
+   
+    fetchRoomsClicked() {
+      this.fetchRooms.emit();
+    }
+
+    fetchCINsClicked() {
+      this.fetchCINs.emit();
+    }
+ 
+
+    
+   /*  fetchAllRooms() {
       this.reservationService.getAllRooms().subscribe(
         (rooms)=>
         {
@@ -69,9 +113,9 @@ export class AddReservationComponent {
         }
         
       )
-    }
+    } */
 
-    fetchAllCINs() {
+/*     fetchAllCINs() {
       this.reservationService.getAllCINs().subscribe(
         (cin)=>
           { 
@@ -83,11 +127,5 @@ export class AddReservationComponent {
             console.log("Error fetching CINs", error);
           }
       )
-    }
-
-   
-   
-  
- 
-
+    } */
 }

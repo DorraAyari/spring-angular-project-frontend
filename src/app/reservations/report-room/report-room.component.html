@@ -1,0 +1,79 @@
+<div class="content-page">
+    <div class="content">
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+                            <!-- Chambre Selection -->
+                            <div class="form-group">
+                                <label for="numeroChambre" class="form-label">Numéro Chambre:</label>
+                               <select formControlName="chambre" id="numeroChambreSelect" class="form-control" required>
+                                    <option value="" disabled selected>Choisissez une chambre</option>
+                                    <option *ngFor="let room of allRooms" [value]="room.idChambre">{{ room }}</option>
+                                </select> 
+    
+                                <div *ngIf="reportForm.controls['chambre'].touched ">
+                                    <small class="form-text text-danger" *ngIf="reportForm.controls['chambre'].errors?.['required']">
+                                        The room number is required.
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <!-- Problem Type Selection -->
+                            <div class="form-group">
+                                <label for="problemType" class="form-label">Type de problème:</label>
+                                <select formControlName="problem" id="problemTypeSelect" class="form-control" required>
+                                    <option value="" disabled selected>Choisissez le type de problème</option>
+                                    <option value="BINOME">BINOME</option>
+                                    <option value="CHAUFFAGE">CHAUFFAGE</option>
+                                    <option value="EAU">EAU</option>
+                                    <option value="GAZ">GAZ</option>
+                                    <option value="AUTRE">AUTRE</option>
+                                </select>
+                                <div *ngIf="reportForm.controls['problem'].touched ">
+                                    <small class="form-text text-danger" *ngIf="reportForm.controls['problem'].errors?.['required']">
+                                        you have to choose the problem type please
+                                    </small>
+                                </div>
+                            </div>
+
+                            <!-- Description Input -->
+                            <div class="form-group">
+                                <label for="description" class="form-label">Description:</label>
+                                <input formControlName="description" type="text" class="form-control" placeholder="Description" name="description">
+                                <div *ngIf="reportForm.controls['description'].touched ">
+                                    <small class="form-text text-danger" *ngIf="reportForm.controls['description'].errors?.['required']">
+                                        Description is required.
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="reportForm.controls['description'].errors?.['minlength']">
+                                        Description must be at least 10 characters long.
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="reportForm.controls['description'].errors?.['maxlength']">
+                                        Description cannot be more than 20 characters long.
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="reportForm.controls['description'].errors?.['pattern']">
+                                        Description can only contain letters, numbers, and spaces.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <!-- Date of Report Input -->
+                            <div class="form-group">
+                                <label for="dateReport" class="form-label">Date of Report:</label>
+                                <input formControlName="dateReport" type="date" class="form-control" placeholder="Date of Report" name="dateReport">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary py-3 px-5" value="Submit Report">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet> <!-- changed here -->

@@ -18,6 +18,9 @@ import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { AcademicYearPipe } from './academic-year.pipe';
+import { ReportingModule } from './reservations/reporting/reporting.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 
@@ -43,6 +46,7 @@ import { AcademicYearPipe } from './academic-year.pipe';
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   providers: [
     ChambreService, // Add this line
