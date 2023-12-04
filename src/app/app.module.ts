@@ -15,6 +15,10 @@ import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.compo
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+import { AcademicYearPipe } from './academic-year.pipe';
+import { ReportingModule } from './reservations/reporting/reporting.module';
+
+
 
 
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
@@ -52,10 +56,10 @@ import { FoyerService } from './services/foyer.service';
     ChambreAjouterComponent,
     ReservationComponent,
     AddReservationComponent,
+    AcademicYearPipe,
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
-
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
@@ -73,10 +77,20 @@ import { FoyerService } from './services/foyer.service';
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
+
+    MatSnackBarModule,
+  ],
+  providers: [
+    ChambreService, // Add this line
     NgToastModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    ToastModule
+    ToastModule,
+    HttpClient,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA
@@ -85,15 +99,6 @@ import { FoyerService } from './services/foyer.service';
   ],
 
     
-  providers: [
-
-    HttpClient,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  },
-    
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
