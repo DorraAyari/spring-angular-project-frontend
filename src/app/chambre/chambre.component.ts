@@ -76,7 +76,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   chambreToDeleteId!: number;
   dataTablesInstance: any;
   numeroChambreSearch: number | undefined;
-
+  nomBlocSearch: string | undefined;
   constructor(
     private chambreService: ChambreService,
     private router: Router,
@@ -140,6 +140,46 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.dtElement) {
       this.dtTrigger.unsubscribe();
+    }
+  }
+  searchChambresByBloc(): void {
+    if (this.nomBlocSearch !== undefined) {
+      this.chambreService.searchChambresByBloc(this.nomBlocSearch).subscribe(
+        (chambres: Chambre[]) => {
+          // Fetch Bloc information for each chambre
+          const fetchBlocInfo = (chambre: Chambre) => {
+            this.chambreService.getBlocByChambre(chambre.idChambre).subscribe(
+              (bloc: Bloc) => {
+                // Assign the retrieved bloc to the chambre
+                chambre.bloc = bloc;
+              },
+              (error) => {
+                console.error('Error fetching bloc for chambre', error);
+                // Handle error as needed
+              }
+            );
+          };
+
+          // Update chambres array with fetched Bloc information
+          this.chambres = chambres.map((chambre) => {
+            chambre.isOccupied = chambre.isOccupied !== null ? chambre.isOccupied : false;
+            fetchBlocInfo(chambre);
+            return chambre;
+          });
+
+          // Update the DataTable with the new data
+          if (this.dataTablesInstance) {
+            this.dataTablesInstance.clear();
+            this.dataTablesInstance.rows.add(this.chambres);
+            this.dataTablesInstance.draw();
+            this.cdRef.detectChanges();
+          }
+        },
+        (error) => {
+          console.error('Error searching chambres by bloc', error);
+          // Handle error as needed
+        }
+      );
     }
   }
 

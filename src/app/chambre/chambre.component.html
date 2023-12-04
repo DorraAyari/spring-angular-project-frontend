@@ -23,6 +23,11 @@
           [(ngModel)]="numeroChambreSearch" class="form-control">
         <button class="btn btn-primary" (click)="searchChambreByNumeroChambre()">Rechercher</button>
       </div>
+      <div class="mb-3">
+  <label for="nomBlocSearch">Recherche par nom du bloc:</label>
+  <input type="text" id="nomBlocSearch" [(ngModel)]="nomBlocSearch" class="form-control">
+  <button class="btn btn-primary" (click)="searchChambresByBloc()">Rechercher par bloc</button>
+</div>
       <button (click)="navigateToDetails()" class="btn btn-info btn-sm">Détails</button>
 
       <div class="table-responsive">
