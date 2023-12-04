@@ -9,9 +9,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
 import { HTTP_INTERCEPTORS, HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
+import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
+import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
@@ -29,6 +29,7 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -43,6 +44,10 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
+
+import { DetailComponent } from './chambre/detail/detail.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+
 
 @NgModule({
   declarations: [
@@ -68,7 +73,9 @@ import { FoyerService } from './services/foyer.service';
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
-    HomeFoyerComponent
+    HomeFoyerComponent,
+    DetailComponent,
+    DetailsChambreComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +87,8 @@ import { FoyerService } from './services/foyer.service';
 
     MatSnackBarModule,
   ],
+
+
   providers: [
     ChambreService, // Add this line
     NgToastModule,

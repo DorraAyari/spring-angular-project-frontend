@@ -28,9 +28,9 @@ export class BlocService {
     const url = `${this.baseUrl}update/${idBloc}`;
     return this.http.put<Bloc>(url , updateBloc);
   }
-  
+
   findById(idBloc: number):Observable<Bloc> {
     return this.http.get<Bloc>(this.baseUrl + idBloc);
   }
-  
+
 }
