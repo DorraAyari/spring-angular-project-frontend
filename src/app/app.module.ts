@@ -23,6 +23,13 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+import { UniversitesComponent } from './universite/universites/universites.component';
+import { UniversitComponent } from './universite/universit/universit.component';
+import { CouleurDirective } from './directive/couleur.directive';
+import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
+import { HighlightDirective } from './directive/highlight.directive';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { PopupComponent } from './universite/popup/popup.component';
 
 
 @NgModule({
@@ -41,7 +48,14 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
-    ShowBlocComponent
+    ShowBlocComponent,
+    UniversitesComponent,
+    UniversitComponent,
+    CouleurDirective,
+    MessageErreurComponent,
+    HighlightDirective,
+    CapitalizePipe,
+    PopupComponent
 
   ],
   imports: [
@@ -50,12 +64,9 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
     HttpClientModule,
     FormsModule,
     DataTablesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
-
-  ],
-
-    
+    ],
 
   providers: [
     ChambreService, // Add this line
@@ -65,3 +76,5 @@ import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

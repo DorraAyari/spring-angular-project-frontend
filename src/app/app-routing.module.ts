@@ -11,6 +11,7 @@ import { DetailsUniversiteComponent } from './universite/details-universite/deta
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { UniversitesComponent } from './universite/universites/universites.component';
 
 
 const routes: Routes = [
@@ -18,14 +19,25 @@ const routes: Routes = [
   {path:'',component:BodyComponent},
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
-  {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
-  {path : 'showUniversites' , component : ListeUniversitesComponent}, 
-  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
-  {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+ 
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
-  {path:'add',component:AddBlocComponent}
+  {path:'add',component:AddBlocComponent},
+  {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
+  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
+  {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  {path : 'universites' , component : UniversitesComponent},
+  { path : 'showUniversites' , component : ListeUniversitesComponent},
 
+
+  // {
+  //   path : 'showUniversites' , component : ListeUniversitesComponent , children : [
+  //     {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
+  //     {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
+  //     {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  //     {path : 'universites' , component : UniversitesComponent}
+  //   ]
+  // }
 
 ];
 

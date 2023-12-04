@@ -1,0 +1,11 @@
+<div *ngIf="erreur!=null">
+    <div *ngIf="erreur.errors?.['required']">
+        Ce Champs est requis.
+    </div>
+    <div *ngIf="erreur.errors?.['minlength']">
+        minlength -> 3
+    </div>
+    <div *ngIf="erreur.errors?.['pattern']">
+        Le Nom doit contenir uniquement des lettres minuscules ou majuscules.
+    </div>
+</div>

@@ -1,63 +1,48 @@
 <div class="content-page">
-    <div class="content">
-  
-        <!-- Start Content-->
-        <div class="container-fluid">
-          <div class="row">
-  <div class="col-xl-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="dropdown float-end">
-            <a href="#" class="dropdown-toggle arrow-none card-drop"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="mdi mdi-dots-vertical"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end">
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Action</a>
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Another
-                action</a>
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Something
-                else</a>
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Separated
-                link</a>
-            </div>
-          </div>
-  
-          <h4 class="header-title mt-0 mb-3">{{title}}</h4>
-  
-          <div class="table-responsive">
-          
+  <div class="content">
+    <div class="container">
+      <h2 class="text-center mb-4">{{title }}</h2>
 
-  
-              <form   (ngSubmit)="addUniversite()">
-                  <div class="mb-3">
-                    <label for="nomUniversite"  class="form-label" >Nom Université</label>
-                    <input type="text" id="nomUniversite" class="form-control" [(ngModel)]="universite.nomUniversite" name="nomUniversite">
-                  </div>
-                  <div class="mb-3">
-                    <label for="adresse" class="form-label">Adresse</label>
-                    <input type="text" id="adresse" class="form-control" [(ngModel)]="universite.adresse" name="adresse">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Done</button>
-                </form>
-  
+
+      <form #addUnivForm="ngForm" (ngSubmit)="addUniversite()" class="universite-form">
+        <app-popup #popup (confirmed)="navigateToListe()"></app-popup>
+
+        <div class="form-group">
+          <label for="nomUniversite" class="form-label">Nom Université</label>
+          <input type="text" id="nomUniversite" class="form-control" [(ngModel)]="universite.nomUniversite" name="nomUniversite" pattern="^[a-zA-Z]+$" required>
+
+          <div
+            *ngIf="addUnivForm.controls['nomUniversite'].hasError('required') && (addUnivForm.controls['nomUniversite'].dirty || addUnivForm.controls['nomUniversite'].touched)"
+            class="error-message">
+            <app-message-erreur [erreur]="addUnivForm.controls['nomUniversite']"></app-message-erreur>
+
           </div>
+
         </div>
-      </div>
-  
+        <div class="form-group">
+          <label for="adresse" class="form-label">Adresse</label>
+          <input type="text" id="adresse" class="form-control" [(ngModel)]="universite.adresse" name="adresse"
+            minlength="3" required>
+          <div
+            *ngIf="addUnivForm.controls['adresse'].hasError('required') && (addUnivForm.controls['adresse'].dirty || addUnivForm.controls['adresse'].touched)"
+            class="error-message">
+
+            <app-message-erreur [erreur]="addUnivForm.controls['adresse']"></app-message-erreur>
+
+          </div>
+
+        </div>
+
+       
+
+        <button type="submit" class="btn btn-success btn-block" [disabled]="addUnivForm.invalid">Done</button>
+        <div *ngIf="addUnivForm.invalid" class="error-message">
+          Veuillez remplir le formulaire avant de soumettre.
+        </div>
+      </form>
+
+     
+
     </div>
   </div>
-  </div>
-  
-  </div>
-  </div>
-
-
-
-
-
- 
+</div>
