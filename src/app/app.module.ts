@@ -39,6 +39,7 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
+import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { FoyerService } from './services/foyer.service';
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
-
+    MessageErreurComponent,
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
@@ -64,7 +65,7 @@ import { FoyerService } from './services/foyer.service';
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
-    HomeFoyerComponent
+    HomeFoyerComponent,
   ],
   imports: [
     BrowserModule,

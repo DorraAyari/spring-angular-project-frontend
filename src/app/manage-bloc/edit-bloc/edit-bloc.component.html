@@ -2,6 +2,7 @@
 <!-- Bloc-modification.component.html -->
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
+<app-message-erreur [erreur]="blocForm.controls['numerobloc']" (onErreurClique)="gestionCliqueErreur()"></app-message-erreur>
 <div class="content-page">
   <div class="content">
       <div class="container-fluid">
@@ -9,28 +10,35 @@
               <label>ID bloc: </label>
               <input type="text" [(ngModel)]="bloc.idBloc" name="idbloc" class="form-control" disabled>
 
-              <label>Num bloc: </label>
-              <input type="text" [(ngModel)]="bloc.nomBloc" name="numerobloc" class="form-control" required>
-              <div *ngIf="blocForm.controls['numerobloc'].hasError('required') && (blocForm.submitted || blocForm.controls['numerobloc'].touched)"
-                class="error-message">
-                Numéro bloc est requis.
+              <div class="form-group">
+                <label>Nom bloc: </label>
+                <input type="text" [(ngModel)]="bloc.nomBloc" name="numerobloc" class="form-control" required minlength="3">
+                <app-message-erreur [erreur]="blocForm.controls['numerobloc']"></app-message-erreur>
               </div>
-              <label>Capacite Bloc</label>
-              <input type="text" [(ngModel)]="bloc.capaciteBloc" name="capaciteBloc" class="form-control" required>
-              <div *ngIf="blocForm.controls['capaciteBloc'].hasError('required') && (blocForm.submitted || blocForm.controls['capaciteBloc'].touched)"
-                class="error-message">
-                Capacite bloc est requis.
+      
+              <div class="form-group">
+                <label>Capacite Bloc</label>
+                <input type="text" [(ngModel)]="bloc.capaciteBloc" name="capaciteBloc" class="form-control" required pattern="[0-9]+">
+                <app-message-erreur [erreur]="blocForm.controls['capaciteBloc']"></app-message-erreur>
               </div>
+      
 
-             
-              <div *ngIf="blocForm.controls['typebloc'].hasError('required') && (blocForm.submitted || blocForm.controls['typebloc'].touched)"
-                class="error-message">
-                Type bloc est requis.
+             <br>
+              <div class="form-group">
+                <label for="Foyer">Foyer:</label>
+                <select id="foyer" [(ngModel)]="newBloc.foyer!.idFoyer" (change)="updateFoyerId($event)"
+                  name="selectedFoyerNom">
+                  <option *ngFor="let foyerItem of foyer" [ngValue]="foyerItem.idFoyer">{{ foyerItem.nomFoyer }}</option>
+                </select>
               </div>
 
               <!-- Other input fields for bloc properties -->
 
-              <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+              <button type="submit" class="btn btn-success btn-block" [disabled]="blocForm.invalid">Ajouter</button>
+              <div *ngIf="(blocForm.invalid || !newBloc.idBloc)  &&(blocForm.dirty || blocForm.touched)"
+                class="error-message">
+                Veuillez remplir le formulaire avant de soumettre.
+              </div>
           </form>
       </div>
   </div>
