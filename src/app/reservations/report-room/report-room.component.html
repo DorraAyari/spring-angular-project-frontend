@@ -7,7 +7,7 @@
                         <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
                             <!-- Chambre Selection -->
                             <div class="form-group">
-                                <label for="numeroChambre" class="form-label">Numéro Chambre:</label>
+                                <label for="numeroChambreSelect" class="form-label">Numéro Chambre:</label>
                                <select formControlName="chambre" id="numeroChambreSelect" class="form-control" required>
                                     <option value="" disabled selected>Choisissez une chambre</option>
                                     <option *ngFor="let room of allRooms" [value]="room.idChambre">{{ room }}</option>
@@ -23,7 +23,7 @@
 
                             <!-- Problem Type Selection -->
                             <div class="form-group">
-                                <label for="problemType" class="form-label">Type de problème:</label>
+                                <label for="problemTypeSelect" class="form-label">Type de problème:</label>
                                 <select formControlName="problem" id="problemTypeSelect" class="form-control" required>
                                     <option value="" disabled selected>Choisissez le type de problème</option>
                                     <option value="BINOME">BINOME</option>
