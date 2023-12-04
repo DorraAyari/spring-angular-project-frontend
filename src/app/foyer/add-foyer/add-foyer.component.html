@@ -1,0 +1,50 @@
+<!-- chambre-ajouter.component.html -->
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-page">
+    <div class="content">
+      <div class="container">
+        <h2 class="text-center mb-4">Ajouter un nouvelle foyer</h2>
+        <form (ngSubmit)="ajouterFoyer()" #foyerForm="ngForm" class="foyer-form">
+  
+          <div class="form-group">
+            <label for="nomFoyer">Nom du Foyer:</label>
+            <input type="text" id="nomFoyer" [(ngModel)]="newFoyer.nomFoyer" name="nomFoyer"
+              class="form-control" required>
+            <div *ngIf="foyerForm.controls['nomFoyer'].hasError('required') && (foyerForm.controls['nomFoyer'].dirty || foyerForm.controls['nomFoyer'].touched)"
+              class="error-message">
+              Nom du foyer est requis.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="capaciteFoyer">Capacité du Foyer:</label>
+            <input type="number" id="capaciteFoyer" [(ngModel)]="newFoyer.capaciteFoyer" name="capaciteFoyer"
+              class="form-control" required>
+            <div *ngIf="foyerForm.controls['capaciteFoyer'].hasError('required') && (foyerForm.controls['capaciteFoyer'].dirty || foyerForm.controls['capaciteFoyer'].touched)"
+              class="error-message">
+             capacité du foyer est requis.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="universite">Université:</label>
+            <select id="universite" [(ngModel)]="newFoyer.universite" name="universite" class="form-control" required>
+              <option value="" disabled selected>Sélectionner une université</option>
+              <option *ngFor="let universiteItem of universite" [value]="universiteItem.idUniversite">{{ universiteItem.nomUniversite }}</option>
+            </select>
+            <div *ngIf="foyerForm.controls['universite'].hasError('required') && (foyerForm.controls['universite'].dirty || foyerForm.controls['universite'].touched)"
+              class="error-message">
+              Université est requise.
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-success btn-block" [disabled]="foyerForm.invalid">Ajouter</button>
+          <div *ngIf="foyerForm.invalid" class="error-message">
+            Veuillez remplir le formulaire avant de soumettre.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
