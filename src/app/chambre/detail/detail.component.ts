@@ -9,6 +9,7 @@ import { ChambreService } from 'src/app/services/chambre.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent {
+
   @Input() chambre : Chambre = {
     idChambre: 0,
     numeroChambre: 0,
@@ -17,15 +18,19 @@ export class DetailComponent {
     bloc_id_bloc: 0,
     isOccupied: false  // Ajoutez le champ isOccupee avec la valeur initiale
 }  ;
+
+
   constructor(private chambreService: ChambreService){}
    //nasna3 fi evenement wahdek l evenement hedha yabeeoth data
-   @Output() passId = new EventEmitter <number> () ;
+   @Output() passId: EventEmitter<number> = new EventEmitter<number>();
 
 
-    deleteChambre(idChambre : number){
-      this.passId.emit(idChambre);
-    }
+   deleteChambre(chambreId: number) {
+    this.passId.emit(chambreId);
+  }
+
     ngOnInit() {
+      
     }
 //heloo
 }

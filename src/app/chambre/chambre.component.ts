@@ -8,17 +8,16 @@ import {
   OnDestroy,
   ViewChild,
   ChangeDetectorRef,
+  NgModule,
 } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { Bloc } from '../models/bloc';
+import { HighlightDirective } from './highlightDirective.component';
 
 declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
 
-<<<<<<< HEAD
-// Déclaration de $ pour éviter les erreurs de TypeScript
-=======
 import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
@@ -38,7 +37,6 @@ export class CustomDirective {
     }
   }
 }
->>>>>>> b2a7a6d (fonctionnalités avancés)
 
 @Component({
   selector: 'app-chambre',
@@ -59,6 +57,14 @@ export class CustomDirective {
 })
 
 export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
+  @NgModule({
+    declarations: [
+      // ... other components and directives
+      HighlightDirective,
+    ],
+    // ... other module configuration
+  })
+
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective | undefined;
 

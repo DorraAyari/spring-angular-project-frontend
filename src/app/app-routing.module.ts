@@ -41,7 +41,7 @@ const routes: Routes = [
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
-  {path:'home',component:HomeComponent,canActivate: [authGuard]},
+  {path:'home',component:HomeComponent},
   {path:'foyer/home-foyer',component:HomeFoyerComponent},
   { path:'foyer/editFoyer/:id', component:EditFoyerComponent },
   { path:'foyer/add-foyer', component:AddFoyerComponent },

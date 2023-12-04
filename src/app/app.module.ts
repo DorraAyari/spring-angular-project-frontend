@@ -7,7 +7,11 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { BodyComponent } from './shared/body/body.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
-import { HTTP_INTERCEPTORS, HttpClient ,HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
 import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,8 +19,7 @@ import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajout
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
-
-
+import { ToastModule } from 'primeng/toast';
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
@@ -32,8 +35,6 @@ import { NgToastModule } from 'ng-angular-popup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
-
 import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
@@ -41,6 +42,7 @@ import { FoyerService } from './services/foyer.service';
 
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 import { DetailComponent } from './chambre/detail/detail.component';
+import { HighlightDirective } from './chambre/highlightDirective.component';
 
 @NgModule({
   declarations: [
@@ -57,20 +59,20 @@ import { DetailComponent } from './chambre/detail/detail.component';
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
-DetailsChambreComponent,
+    DetailsChambreComponent,
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
+    HighlightDirective,
     ShowBlocComponent,
     LoginRegisterComponent,
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
-    HomeFoyerComponent
-
-
+    HomeFoyerComponent,
+    DetailComponent
   ],
- imports: [
+  imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -81,23 +83,16 @@ DetailsChambreComponent,
     BrowserAnimationsModule,
     MatSnackBarModule,
     ToastModule
-    ],
-    schemas: [
-      CUSTOM_ELEMENTS_SCHEMA
-
-
   ],
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   providers: [
-
-    HttpClient,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  },
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
