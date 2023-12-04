@@ -1,0 +1,11 @@
+<div *ngIf="erreur != null" (click)="notifierCliqueErreur()">
+    <div *ngIf="erreur.errors?.['required']">
+        Ce Champ est requis.
+    </div>
+    <div *ngIf="erreur.errors?.['minlength']">
+        minlength -> 3
+    </div>
+    <div *ngIf="erreur.errors?.['pattern']">
+        Le Nom doit contenir uniquement des chiffres.
+    </div>
+</div>
