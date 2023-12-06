@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { ChambreService } from 'src/app/services/chambre.service';
 import { Chambre } from 'src/app/models/chambre';
 import { Bloc } from 'src/app/models/bloc';
-import { BlocService } from 'src/app/manage-bloc/Service/bloc.service';
+import { BlocService } from 'src/app/services/bloc.service';
 
 @Component({
   selector: 'app-chambre-modification',

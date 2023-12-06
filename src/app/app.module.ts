@@ -56,13 +56,17 @@ import { DetailComponent } from './foyer/detail/detail.component';
 
 import { FoyerModule } from './foyer/foyer/foyer.module';
 
-import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 
 
 
 import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
 import { BarSideComponent } from './shared/bar-side/bar-side.component';
 
+
+
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+import { DetailsBlocComponent } from './manage-bloc/details-bloc/details-bloc.component';
+import { AddBlocDirectiveDirective } from './add-bloc-directive.directive';
 
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 
@@ -120,6 +124,9 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     HighlightDirective,
     EditFoyerComponent,
     HomeFoyerComponent,
+    DetailsChambreComponent,
+
+    AddBlocDirectiveDirective,
 
 
 

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Bloc } from 'src/app/models/bloc';
 import { Routes, RouterModule, ActivatedRoute, Router } from '@angular/router';
-import { BlocService } from '../Service/bloc.service';
+import { BlocService } from '../../services/bloc.service';
 import { Foyer } from 'src/app/models/foyer';
 import { FoyerService } from 'src/app/services/foyer.service';
 import Swal from 'sweetalert2';

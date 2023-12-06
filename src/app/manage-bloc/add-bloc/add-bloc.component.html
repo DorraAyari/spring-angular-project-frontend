@@ -1,10 +1,10 @@
-<app-navbar></app-navbar>
+<div class=""><app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 <div class="content-page">
   <div class="content">
     <div class="container">
       <h2 class="text-center mb-4">Ajouter un nouveau Bloc</h2>
-      <form (ngSubmit)="addBloc()" #blocForm="ngForm" class="bloc-form" *ngIf="newBloc">
+      <form (ngSubmit)="addBloc()" #blocForm="ngForm" class="bloc-form" *ngIf="newBloc" appAddBlocDirective>
 
         <div class="form-group">
           <label for="nomBloc">Nom bloc </label><br>
@@ -35,14 +35,12 @@
             <option *ngFor="let foyerItem of foyer" [ngValue]="foyerItem.idFoyer">{{ foyerItem.nomFoyer }}</option>
           </select>
         </div>
-
         <button type="submit" class="btn btn-success btn-block" [disabled]="blocForm.invalid">Ajouter</button>
-        <div *ngIf="(blocForm.invalid || !newBloc.idBloc)  &&(blocForm.dirty || blocForm.touched)"
-          class="error-message">
+        <div *ngIf="(blocForm.invalid || !newBloc.idBloc) && (blocForm.dirty || blocForm.touched)"
+             class="error-message">
           Veuillez remplir le formulaire avant de soumettre.
         </div>
-
       </form>
     </div>
   </div>
-</div>
+</div></div>

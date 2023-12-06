@@ -34,6 +34,7 @@ import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+import { DetailsBlocComponent } from './manage-bloc/details-bloc/details-bloc.component';
 
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 
@@ -118,6 +119,19 @@ const routes: Routes = [
 
   { path:'detailsChambre', component:DetailsChambreComponent },
 
+{
+    path: 'reporting',
+    loadChildren: () => import('./reservations/reporting/reporting.module').then(m => m.ReportingModule)
+  },
+  {
+    path: 'bloc',
+    loadChildren: () => import('./manage-bloc/bloc-routing/boc-routing.module').then(m => m.BocRoutingModule)
+  },
+/*
+  {path:'bloc', component:ShowBlocComponent},
+  {path:'bloc/:id',component:EditBlocComponent},
+  {path:'add',component:AddBlocComponent},*/
+  /*{path:'details',component:DetailsBlocComponent},*/
 
   {
     path: 'chambre',

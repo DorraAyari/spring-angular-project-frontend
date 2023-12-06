@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Bloc } from 'src/app/models/bloc';
 import { Observable } from 'rxjs/internal/Observable';
+import { Foyer } from '../models/foyer';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,16 @@ findByNomBlocContaining(nomBloc: string): Observable<Bloc | Bloc[]> {
 
   // Utilisez la méthode HttpClient pour effectuer la requête HTTP appropriée
   return this.http.get<Bloc | Bloc[]>(`${url}?nomBloc=${nomBloc}`);
+}
+getFoyerByBloc(idBloc: number): Observable<Foyer> {
+  return this.http.get<Foyer>(`${this.baseUrl}foyer/${idBloc}`);
+}
+// bloc.service.ts
+
+sortByCapacity(blocs: Bloc[]): Bloc[] {
+  return blocs.sort((a, b) => {
+    return b.capaciteBloc - a.capaciteBloc;
+  });
 }
 
 }

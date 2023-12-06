@@ -11,6 +11,7 @@ export class Bloc {
 
 
 
+
     constructor() {
         this.foyer_id_foyer = 0; // ou toute autre valeur par défaut que vous souhaitez attribuer
     }
