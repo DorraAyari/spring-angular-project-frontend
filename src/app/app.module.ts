@@ -25,10 +25,18 @@ import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajou
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
 import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
+
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
+import { UniversitesComponent } from './universite/universites/universites.component';
+import { UniversitComponent } from './universite/universit/universit.component';
+import { CouleurDirective } from './directive/couleur.directive';
+import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
+import { HighlightDirective } from './directive/highlight.directive';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { PopupComponent } from './universite/popup/popup.component';
 
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
@@ -66,11 +74,26 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
+
     MessageErreurComponent,
+
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
     ShowBlocComponent,
+    UniversitesComponent,
+    UniversitComponent,
+    CouleurDirective,
+    MessageErreurComponent,
+    HighlightDirective,
+    CapitalizePipe,
+    PopupComponent
+
+
+
+
+
+
     LoginRegisterComponent,
     HomeComponent,
     AddFoyerComponent,
@@ -78,6 +101,7 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     HomeFoyerComponent,
     DetailComponent,
     DetailsChambreComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -86,6 +110,9 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
+
+
+    ],
 
     MatSnackBarModule,
   ],
@@ -113,3 +140,5 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

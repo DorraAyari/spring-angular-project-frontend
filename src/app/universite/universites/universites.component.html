@@ -1,0 +1,17 @@
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-xl-4" *ngFor="let u of universites">
+                   <app-universit [universite]="u" (passId)="parentDeleteUnive($event)" ></app-universit>
+                   <app-popup #popup (confirmed)="getUniversites()"></app-popup>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="goToList()"> <i class="fas fa-list"></i> Retour à la liste des universités</button>
+
+</div>

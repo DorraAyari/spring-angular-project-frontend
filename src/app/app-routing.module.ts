@@ -23,6 +23,8 @@ import { DetailsUniversiteComponent } from './universite/details-universite/deta
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
+import { UniversitesComponent } from './universite/universites/universites.component';
+
 
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
@@ -38,6 +40,20 @@ const routes: Routes = [
   {path:'auth',component:LoginRegisterComponent},
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
+
+  {path:'bloc', component:ShowBlocComponent},
+  {path:'bloc/:id',component:EditBlocComponent},
+  {path:'add',component:AddBlocComponent},
+
+
+ // { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+  {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
+  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
+  {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  {path : 'universites' , component : UniversitesComponent},
+  { path : 'showUniversites' , component : ListeUniversitesComponent},
+
   { path: 'gestionreservation', component: ReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
 /*   { path: 'reporting', component: ReportRoomComponent },
@@ -57,6 +73,15 @@ const routes: Routes = [
   { path:'detailsChambre', component:DetailsChambreComponent },
 
 
+
+  // {
+  //   path : 'showUniversites' , component : ListeUniversitesComponent , children : [
+  //     {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
+  //     {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
+  //     {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  //     {path : 'universites' , component : UniversitesComponent}
+  //   ]
+  // }
 
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
