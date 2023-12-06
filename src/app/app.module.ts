@@ -13,7 +13,6 @@ import { ChambreModificationComponent } from './chambre-modification/chambre-mod
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
-
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
@@ -30,7 +29,6 @@ import { MessageErreurComponent } from './shared/message-erreur/message-erreur.c
 import { HighlightDirective } from './directive/highlight.directive';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { PopupComponent } from './universite/popup/popup.component';
-
 
 @NgModule({
   declarations: [
@@ -56,6 +54,10 @@ import { PopupComponent } from './universite/popup/popup.component';
     HighlightDirective,
     CapitalizePipe,
     PopupComponent
+
+
+
+
 
   ],
   imports: [
