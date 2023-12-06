@@ -14,10 +14,6 @@ import { ReportListComponent } from './reservations/report-list/report-list.comp
 import { UpdateReportsComponent } from './reservations/update-reports/update-reports.component';
 
 
-import { BodyComponent } from './shared/body/body.component';
-import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
-import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
-
 
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
@@ -41,7 +37,6 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
 
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 
-import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 
 
 
@@ -51,7 +46,7 @@ const routes: Routes = [
   {path:'home-foyer',loadChildren:()=>import('../app/foyer/foyer/foyer.module').then((t)=>t.FoyerModule)},
   {path:'chambre',component:ChambreComponent},
 
- 
+
   { path: 'gestionreservation', component: ReservationComponent },
 
   { path: 'confirmreservation', component: AddReservationComponent },
@@ -81,7 +76,7 @@ const routes: Routes = [
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
 
   {path : 'ajouterUniversite', component : AjouterUniversiteComponent,canActivate: [authGuard]},
-  {path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]}, 
+  {path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]},
   {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent,canActivate: [authGuard]},
   {path : 'detailsUniversites' , component : DetailsUniversiteComponent,canActivate: [authGuard]},
 
@@ -143,7 +138,7 @@ const routes: Routes = [
   {path:'add',component:AddBlocComponent},
 
   {path:'home',component:HomeComponent,canActivate: [authGuard]},
- 
+
 
   {path:'**',component:NotfoundComponent}
 

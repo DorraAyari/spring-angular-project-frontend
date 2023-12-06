@@ -9,7 +9,6 @@ import {
   ViewChild,
   ChangeDetectorRef,
   NgModule,
-
 } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
@@ -66,7 +65,6 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
     // ... other module configuration
   })
 
-
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective | undefined;
 
@@ -79,18 +77,6 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   dataTablesInstance: any;
   numeroChambreSearch: number | undefined;
   nomBlocSearch: string | undefined;
-  constructor(
-    private chambreService: ChambreService,
-    private router: Router,
-    private cdRef: ChangeDetectorRef
-  ) {}
-  ngOnInit(): void {
-    this.dtOptions = {
-      destroy: true,
-    };
-
-
-
   constructor(
     private chambreService: ChambreService,
     private router: Router,
@@ -194,7 +180,6 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
           // Handle error as needed
         }
       );
-
     }
   }
 
@@ -232,7 +217,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chambreService
       .isChambreOccupee(chambreId)
       .subscribe((result: boolean) => {
-        console.log(`Chambre ${chambreId} is occupied: ${result}`);
+        //console.log(Chambre ${chambreId} is occupied: ${result});
 
         // Mettez à jour la propriété isOccupied de la chambre
         const chambreToUpdate = this.chambres.find(
@@ -247,9 +232,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
 
         // Vérifiez si le résultat est true ou false pour afficher "Oui" ou "Non"
         const occupationStatus = result ? 'Oui' : 'Non';
-        console.log(
-          `Chambre ${chambreId} occupation status: ${occupationStatus}`
-        );
+
       });
   }
 
@@ -270,7 +253,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chambreService
       .isChambreOccupee(chambreId)
       .subscribe((result: boolean) => {
-        console.log(`Chambre ${chambreId} is occupied: ${result}`);
+        //console.log(Chambre ${chambreId} is occupied: ${result});
 
         // Mettez à jour la propriété isOccupied de la chambre
         const chambreToUpdate = this.chambres.find(
@@ -292,8 +275,6 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   navigateToDetails(){
     this.router.navigate(['/chambre/detailsChambre'])
   }
-
- 
   deleteChambre(chambreId: number): void {
     Swal.fire({
       title: 'Confirmation',

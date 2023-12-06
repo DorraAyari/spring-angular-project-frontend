@@ -53,22 +53,17 @@ import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
 import { DetailsFoyerComponent } from './foyer/details-foyer/details-foyer.component';
 import { DetailComponent } from './foyer/detail/detail.component';
-import { CouleurDirective } from './foyer/CouleurDirective';
-import { HighlightDirective } from './foyer/highlight.directive';
+
 import { FoyerModule } from './foyer/foyer/foyer.module';
 
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
-import { DetailComponent } from './chambre/detail/detail.component';
-import { HighlightDirective } from './chambre/highlightDirective.component';
+
 
 
 import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
 import { BarSideComponent } from './shared/bar-side/bar-side.component';
 
 
-
-import { DetailComponent } from './chambre/detail/detail.component';
-import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 
 
@@ -117,27 +112,16 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     HighlightDirective,
     CapitalizePipe,
     PopupComponent,
-
-
-
-
-
-
     LoginRegisterComponent,
     HomeComponent,
 
-   
-    CouleurDirective,
-    HighlightDirective
 
-    AddFoyerComponent,
+    CouleurDirective,
+    HighlightDirective,
     EditFoyerComponent,
     HomeFoyerComponent,
 
-    DetailComponent
 
-
-    SidebarComponent,
 
     DetailComponent,
     DetailsChambreComponent,
@@ -165,8 +149,6 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     MatSnackBarModule,
     ToastModule
 
-
-    BrowserAnimationsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -181,22 +163,3 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-
-
-
-
-  providers: [
-
-    HttpClient,{
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
-
-    ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
-

@@ -14,12 +14,11 @@ import Swal from 'sweetalert2';
 })
 export class AddFoyerComponent implements OnInit {
 
-
    foyer : Foyer = {
      idFoyer: 0,
      nomFoyer: '',
      capaciteFoyer: 0
-   }  
+   }
    addfoyerForm !: FormGroup ;
    title : String = 'Ajouter une nouvelle foyer' ;
    id : any;
@@ -27,18 +26,13 @@ export class AddFoyerComponent implements OnInit {
    universities!: Universite[];
    selectuniversite!: number;
 
-   
-  newFoyer: Foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
-    idUniversite:0,
-    nomUniversite:'',
-    adresse:''  }};
- 
+
 
   constructor(
     private foyerService: FoyerService,
     private router : Router,
     private activateRoute : ActivatedRoute,
-   
+
   ) { }
 
   ngOnInit(): void {
@@ -49,9 +43,9 @@ export class AddFoyerComponent implements OnInit {
     }
     this.ajoute();  // Call the ajoute() method to fetch universities
   }
-  
 
-  
+
+
 
   addFoyer() : void {
 
@@ -60,7 +54,7 @@ export class AddFoyerComponent implements OnInit {
       this.foyerService.updateFoyer(this.foyer.idFoyer, this.foyer).subscribe(
         (data: Foyer) => {
           console.log('foyer updated successfully', data);
- 
+
           Swal.fire({
             title: 'Succès!',
             text: 'foyer a été modifié avec succés',
@@ -76,36 +70,23 @@ export class AddFoyerComponent implements OnInit {
           // Handle error as needed
         }
       )
-      
-      
+
+
     } else {
 
       this.foyerService.ajouterFoyer(this.foyer,this.selectuniversite).subscribe(
         (response : Foyer) => {
           console.log('add success',response);
           //alert("L'université a été ajouté avec succés");
-        
+
         Swal.fire({
           title: 'Succès!',
           text: 'foyer a été ajouté avec succés',
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(() => {
-
           // Optionally, reload the chambre list or navigate to another route
           this.router.navigate(['/home-foyer']);
-
-          this.loadFoyers();
-          this.router.navigate(['foyer/home-foyer']);
-          this.newFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,  universite: {
-            idUniversite:0,
-            nomUniversite:'',
-            adresse:''  } };
-        });
-      },
-      (error) => {
-        console.error('Error adding foyer', error);
-
 
           // Reset the newChambre object for a new entry
           this.foyer = {
@@ -123,12 +104,12 @@ export class AddFoyerComponent implements OnInit {
             icon: 'error',
             confirmButtonText: 'OK'
           });
-  
+
         }
-      );  
-      
+      );
+
     }
-   
+
   }
   ajoute(): void {
     this.foyerService.findAllUniversite().subscribe(data => {
@@ -141,7 +122,7 @@ export class AddFoyerComponent implements OnInit {
       (data : Foyer )=>{
          console.log("Get Univesite By Id",data) ;
          this.foyer = data ;
-        
+
        },
        (error) => {
          console.error('Error loading chambre', error);

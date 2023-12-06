@@ -1,5 +1,5 @@
 
-import { Universite } from "./universite";
+
 
 import { Universite } from '../models/universite';
 
@@ -10,12 +10,12 @@ export interface Foyer {
     capaciteFoyer: number;
 
     universite?:Universite;
-    
+
 
 
   //  bloc: Bloc;
   //  reservations: Reservation[];
- 
+
 
 
   }

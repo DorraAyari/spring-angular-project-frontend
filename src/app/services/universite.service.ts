@@ -8,14 +8,14 @@ import { Universite } from '../models/universite';
 })
 export class UniversiteService {
 
-  private baseUrl="http://localhost:8088/universite"
+  private baseUrl="http://localhost:8088/universite";
 
   constructor(private httpClient : HttpClient) { }
 
 
   getAllUniversities() : Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/findAll`);
-    
+  }
 
 
   getUniversiteById(idUniversite : number) : Observable<Universite> {
@@ -54,7 +54,7 @@ getByNombreMinChambres(nombreMinChambres: number): Observable<Universite[]> {
   return this.httpClient.get<Universite[]>(`${this.baseUrl}/nombreMinChambres/${nombreMinChambres}`);
 }
 
-
-
-
 }
+
+
+

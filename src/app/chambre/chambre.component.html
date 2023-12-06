@@ -44,7 +44,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let chambre of chambres" [appHighlight]="chambre.isOccupied">
+            <tr *ngFor="let chambre of chambres" >
               <td>{{ chambre.idChambre }}</td>
               <td>{{ chambre.numeroChambre }}</td>
               <td>
@@ -86,6 +86,3 @@
   </div>
 
 </div>
-
-</div>
-<app-footer></app-footer>

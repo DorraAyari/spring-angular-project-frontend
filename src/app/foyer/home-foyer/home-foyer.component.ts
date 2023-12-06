@@ -22,17 +22,17 @@ export class HomeFoyerComponent implements OnInit, AfterViewInit {
   nomRecherchee: Foyer['nomFoyer'] = '' ;
   universiteName: string = '';
   universite!: Universite[];
-  
+
 
   constructor(
     private router : Router,
     private foyerService : FoyerService
-    
-   
+
+
   ){}
 
   ngOnInit(): void {
-    
+
     this.getFoyes();
   }
 
@@ -49,25 +49,25 @@ export class HomeFoyerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataTablesInstance = $('#foyerTable').DataTable({});
-   
-  }
-  
 
-  
+  }
+
+
+
   getFoyes() {
     this.foyerService.getFoyes().subscribe(
       (reponse: Foyer[]) => {
         this.foyer = reponse;
-  
-       
+
+
       },
       (error) => {
         console.error('Erreur lors de la récupération des foyers', error);
       }
     );
   }
-  
-  
+
+
 
   deleteFoyer(idFoyer : number){
 
@@ -91,22 +91,22 @@ export class HomeFoyerComponent implements OnInit, AfterViewInit {
 
 
   navigateTo(id : number){
-    this.router.navigate(['editFoyer/'+id]);
+    this.router.navigate(['home-foyer/editFoyer/'+id]);
   }
 
   navigateToDetails(){
-    this.router.navigate(['detailsFoyer'])
+    this.router.navigate(['home-foyer/detailsFoyer'])
   }
 
 
   navigateToAjouter(){
-    this.router.navigate(['add-foyer']);
+    this.router.navigate(['home-foyer/add-foyer']);
   }
 
   rechercherParNomm(): void {
     if (this.nomRecherchee) {
       this.foyerService.searchFoyersByNomFoyer(this.nomRecherchee).subscribe(
-        reponse => this.foyer = reponse 
+        reponse => this.foyer = reponse
       );
     }
   }
