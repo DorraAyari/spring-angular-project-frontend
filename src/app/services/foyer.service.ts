@@ -32,4 +32,10 @@ export class FoyerService {
     const url = `${this.apiUrl}/foyer/add`;
     return this.http.post<Foyer>(url, newFoyer);
   }
+  searchFoyersByNomFoyer(nomFoyer: string): Observable<Foyer[]> {
+    // Effectuer la requête de recherche en utilisant le nom du foyer comme critère
+    const url = `${this.apiUrl}/foyer/search/${encodeURIComponent(nomFoyer)}`;
+  
+    return this.http.get<Foyer[]>(url);
+  }
 }

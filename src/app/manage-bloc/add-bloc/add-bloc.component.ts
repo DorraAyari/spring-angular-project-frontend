@@ -9,6 +9,7 @@ import { BlocService } from '../Service/bloc.service';
 })
 export class AddBlocComponent {
   newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 };
+  
   constructor( private service: BlocService, private route: ActivatedRoute, private router: Router) {}
 
   addBloc(): void {

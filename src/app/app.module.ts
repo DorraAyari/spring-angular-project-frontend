@@ -13,6 +13,10 @@ import { ChambreModificationComponent } from './chambre-modification/chambre-mod
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ReservationComponent } from './reservations/reservation/reservation.component';
+import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+
+
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
@@ -35,6 +39,10 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
+import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
+import { BarSideComponent } from './shared/bar-side/bar-side.component';
+
+
 
 @NgModule({
   declarations: [
@@ -46,6 +54,8 @@ import { FoyerService } from './services/foyer.service';
     ChambreComponent,
     ChambreModificationComponent,
     ChambreAjouterComponent,
+    ReservationComponent,
+    AddReservationComponent,
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
@@ -58,7 +68,8 @@ import { FoyerService } from './services/foyer.service';
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
-    HomeFoyerComponent
+    HomeFoyerComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,23 +81,22 @@ import { FoyerService } from './services/foyer.service';
     NgToastModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    ToastModule
+    ToastModule,
+    ManageUserModule
     ],
     schemas: [
+
     CUSTOM_ELEMENTS_SCHEMA
     ],
+
+
+
   providers: [
-
-    FoyerService, // Add this line,
-
-    ChambreService, // Add this line
-    HttpClient,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-    },
-    UniversiteService
+  }
   ],
   bootstrap: [AppComponent]
 })
