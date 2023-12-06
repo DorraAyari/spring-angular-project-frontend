@@ -23,20 +23,20 @@ import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 
 const routes: Routes = [
-  {path:'chambre',component:ChambreComponent},
-  {path:'auth',component:LoginRegisterComponent},
-  { path: 'chambre-modification/:id', component: ChambreModificationComponent },
-  { path: 'chambre-ajouter', component: ChambreAjouterComponent },
+ 
   { path: 'gestionreservation', component: ReservationComponent },
+
   { path: 'confirmreservation', component: AddReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
   {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
   {path : 'showUniversites' , component : ListeUniversitesComponent},
   {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
   {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
-  { path:'detailsChambre', component:DetailsChambreComponent },
 
-
+  {
+    path: 'chambre',
+    loadChildren: () => import('./chambre/chambre-route/chambre-route-routing.module').then(m => m.ChambreRouteRoutingModule)
+  },
 
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},

@@ -272,10 +272,10 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openModificationPopup(chambre: Chambre): void {
     // Navigate to the chambre modification route, passing the chambre ID
-    this.router.navigate(['/chambre-modification', chambre.idChambre]);
+    this.router.navigate(['/chambre/chambre-modification', chambre.idChambre]);
   }
   navigateToDetails(){
-    this.router.navigate(['detailsChambre'])
+    this.router.navigate(['/chambre/detailsChambre'])
   }
   deleteChambre(chambreId: number): void {
     Swal.fire({
@@ -313,7 +313,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   navigateToAjouter(): void {
-    this.router.navigate(['/chambre-ajouter']);
+    this.router.navigate(['/chambre/chambre-ajouter']);
   }
   getTypeChambreColor(typeChambre: string): string {
     switch (typeChambre) {
