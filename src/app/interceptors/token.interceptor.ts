@@ -28,17 +28,17 @@ export class TokenInterceptor implements HttpInterceptor {
       })
     }
 
-
-
-
-
-
     return next.handle(request).pipe(
       catchError((err:any)=>{
         if(err instanceof HttpErrorResponse){
           console.log('err: ',err);
+
           if(err.status === 403 || err.status === 0){
-            this.auth.signOut();
+           // this.auth.signOut();
+
+          if(err.status === 403 ){
+            //this.auth.signOut();
+
             //console.log('err: ',err);
             //return this.handleUnAuthorizedError(request,next);
           }
@@ -49,24 +49,47 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   handleUnAuthorizedError(req: HttpRequest<any>, next: HttpHandler){
-    let tokenApiModel = new TokenApiModel();
-    tokenApiModel.accessToken = this.auth.getToken()!;
-    tokenApiModel.refreshToken = this.auth.getRefreshToken()!;
+   // let tokenApiModel = new TokenApiModel();
+    //tokenApiModel.accessToken = this.auth.getToken()!;
+    //tokenApiModel.refreshToken = this.auth.getRefreshToken()!;
     //console.log('req: ',req);
     //console.log('accessT: ',tokenApiModel.accessToken);
     //console.log('refreshT: ',tokenApiModel.refreshToken);
 
+    /* return this.auth.renewToken(this.auth.getRefreshToken()).subscribe(
+      {
+        next: (res:any) => {
+          console.log("Resultat refrshToken : ",res);
+          this.auth.storeToken(res.accessToken);
+          const myToken2 = this.auth.getToken();
+
+          req = req.clone({
+            setHeaders: {Authorization: `Bearer ${myToken2}`}
+          });
+          return next.handle(req);
+        }
+      }
+     );  */
+
      return this.auth.renewToken(this.auth.getRefreshToken())
     .pipe(
       switchMap((data:any)=>{
-        console.log('data refresh :',data);
+        /*console.log('data refresh :',data);
         this.auth.storeRefreshToken(data.refreshToken);
         this.auth.storeToken(data.accessToken);
 
         req = req.clone({
           setHeaders: {Authorization: `Bearer ${data.accessToken}`}
         });
-        return next.handle(req);
+        return next.handle(req);*/
+        console.log("Resultat refrshToken : ",data);
+          this.auth.storeToken(data.accessToken);
+          const myToken2 = this.auth.getToken();
+
+          req = req.clone({
+            setHeaders: {Authorization: `Bearer ${myToken2}`}
+          });
+          return next.handle(req);
       }),
       catchError((err)=>{
         return throwError(()=>{

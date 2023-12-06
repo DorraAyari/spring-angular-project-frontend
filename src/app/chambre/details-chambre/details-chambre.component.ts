@@ -32,6 +32,7 @@ export class DetailsChambreComponent {
 
     if (confirm('Are you sure you want to delete this chambre ?')) {
       this.chambreService.deleteChambre(chambreId).subscribe(
+
         () => {
           console.log('chambre deleted successfully');
           // Recharger les données DataTables

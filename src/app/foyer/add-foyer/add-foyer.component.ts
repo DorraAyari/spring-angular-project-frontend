@@ -15,7 +15,10 @@ import Swal from 'sweetalert2';
 export class AddFoyerComponent implements OnInit {
   universite: Universite[] = []; // Liste des universités
 
-  newFoyer: Foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: null };
+  newFoyer: Foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+    idUniversite:0,
+    nomUniversite:'',
+    adresse:''  }};
  
   constructor(
     private route: ActivatedRoute,
@@ -58,7 +61,10 @@ export class AddFoyerComponent implements OnInit {
         }).then(() => {
           this.loadFoyers();
           this.router.navigate(['foyer/home-foyer']);
-          this.newFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: null };
+          this.newFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,  universite: {
+            idUniversite:0,
+            nomUniversite:'',
+            adresse:''  } };
         });
       },
       (error) => {

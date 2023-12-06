@@ -9,6 +9,7 @@ import {
   ViewChild,
   ChangeDetectorRef,
   NgModule,
+
 } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
@@ -65,6 +66,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
     // ... other module configuration
   })
 
+
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective | undefined;
 
@@ -77,6 +79,18 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   dataTablesInstance: any;
   numeroChambreSearch: number | undefined;
   nomBlocSearch: string | undefined;
+  constructor(
+    private chambreService: ChambreService,
+    private router: Router,
+    private cdRef: ChangeDetectorRef
+  ) {}
+  ngOnInit(): void {
+    this.dtOptions = {
+      destroy: true,
+    };
+
+
+
   constructor(
     private chambreService: ChambreService,
     private router: Router,
@@ -180,6 +194,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
           // Handle error as needed
         }
       );
+
     }
   }
 
@@ -277,6 +292,8 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   navigateToDetails(){
     this.router.navigate(['/chambre/detailsChambre'])
   }
+
+ 
   deleteChambre(chambreId: number): void {
     Swal.fire({
       title: 'Confirmation',

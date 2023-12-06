@@ -1,8 +1,4 @@
-<!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
-<link rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 
@@ -28,6 +24,7 @@
   <input type="text" id="nomBlocSearch" [(ngModel)]="nomBlocSearch" class="form-control">
   <button class="btn btn-primary" (click)="searchChambresByBloc()">Rechercher par bloc</button>
 </div>
+
       <button (click)="navigateToDetails()" class="btn btn-info btn-sm">Détails</button>
 
       <div class="table-responsive">
@@ -87,4 +84,8 @@
       </div>
     </div>
   </div>
+
 </div>
+
+</div>
+<app-footer></app-footer>

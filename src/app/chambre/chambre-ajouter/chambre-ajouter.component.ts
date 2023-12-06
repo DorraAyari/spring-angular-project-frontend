@@ -42,6 +42,9 @@ export class ChambreAjouterComponent {
 
   updateBlocId(event: any) {
     const selectedBlocValue: string = event.target.value;
+
+ //   const selectedBlocValue: string = event.target.value.split(': ')[1];
+
     const selectedBloc = this.bloc.find(b => b.nomBloc === selectedBlocValue);
 
     if (selectedBloc) {
@@ -55,7 +58,8 @@ export class ChambreAjouterComponent {
     this.blocService.findAll().subscribe(
       (blocs: Bloc[]) => {
         this.bloc = blocs;
-        // this.cdr.detectChanges(); // Remove this line
+
+        this.cdr.detectChanges();
       },
       (error) => {
         console.error('Error fetching blocs', error);
@@ -104,7 +108,9 @@ export class ChambreAjouterComponent {
       (error) => {
         console.error('Error adding chambre', error);
 
+
         if (error.status === 409 || error.status === 403 || error.status === 500) {
+
           Swal.fire({
             title: 'Erreur!',
             text: 'Le numéro de chambre doit être unique.',

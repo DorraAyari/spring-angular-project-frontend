@@ -1,44 +1,95 @@
-<div class="content-page">
-  <div class="content">
-    <div class="container">
+<div class="">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 
-    <div class="reservation-page">
-      <div class="container">
-        <h2 class="page-title">Liste des Réservations</h2>
-        <button class="btn btn-success" (click)="navigateToAddreservation()">add reservations</button>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th>ID</th>
-                <th>Année Universitaire</th>
-                <th>Est Valide</th>
-                <th>Status</th>
-    
-                <th>Actions</th>
-              </tr>
-              
-            </thead>
-            <tbody>
-              <tr *ngFor="let m of Reservations">
-                <td>{{ m.idReservation }}</td>
-                <td>{{ m.anneeUniversitaire | date:'shortDate' }}</td>
-                <td>{{ m.estValide ? 'Oui' : 'Non' }}</td>
-                <td [ngClass]="getStatusClass(m.status)">{{ m.status }}</td>
-                
-                <td>
-                  <button class="btn btn-success" (click)="onAccept(m.idReservation)">Accepter</button>
-                  <button class="btn btn-warning" (click)="onRefuse(m.idReservation)">Refuser</button>
-                  <button class="btn btn-danger" (click)="cancelReservations(m.idReservation)">Supprimer</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+<div class="content-page">
+      <div class="content">
+        <div class="container">
+     <div class="container my-4" >
+      <h2 class="mb-4">Liste des Réservations</h2>
+
+                <!-- Search and Add Reservation Section -->
+                <div class="search-add-section my-4">
+                 
+                  <div class="button-group mb-3">
+                      <button class="btn-add btn-primary" (click)="navigateToAddreservation()">+ Ajouter reservation</button>
+                      <button class="btn-info" (click)="toggleDateInput()">Compter par Date</button>
+                  </div>
+                  <br>
+                  <br>
+                  <input type="text" class="search-input" placeholder="chercher par status ....." (input)="filter($event)">
+                  
+              </div>
+    <br>
+       <!-- Date Filter Section -->
+       <div class="date-filter row mb-3" *ngIf="showDateInput">
+        <div class="col">
+            <input type="date" class="form-control" [(ngModel)]="startDate" placeholder="Start Date" />
         </div>
+        <div class="col">
+            <input type="date" class="form-control" [(ngModel)]="endDate" placeholder="End Date" />
+        </div>
+        <div class="col-auto">
+            <button class="btn-count btn-primary" (click)="getReservationCount()">Compter</button>
+        </div>
+    </div>
+
+  
+                <!-- Reservation Count Display -->
+            <p class="reservation-count" *ngIf="showDateInput">Nombre de réservations : {{reservationCount}}</p>
+            
+      
+      <div class="table-responsive">
+        <table class="table table table-strip">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>Année Universitaire</th>
+              <th>Est Valide</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of Reservations">
+              <td>{{ m.idReservation }}</td>
+              <!-- <td>{{ m.anneeUniversitaire | date:'shortDate' }}</td> -->
+              <td>{{ m.idReservation | academicYear }}</td>
+              <td>{{ m.estValide ? 'Oui' : 'Non' }}</td>
+              <td [ngClass]="getStatusClass(m.status)">{{ m.status }}</td>
+              <td>
+                <button class="btn btn-outline-success" (click)="onAccept(m.idReservation)">✔ Accepter</button>
+                <button class="btn btn-outline-warning" (click)="onRefuse(m.idReservation)">✘ Refuser</button>
+                 <!-- <button class="btn btn-outline-danger" (click)="cancelReservations(m.idReservation)">🗑 Supprimer</button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+         <app-add-reservation
+          (fetchRooms)="handleFetchedRooms($event)"
+          (fetchCINs)="handleFetchedCINs($event)"
+          #addReservationComponent
+          hidden>
+        </app-add-reservation>
+      <button class="btn btn-info" (click)="toggleNonReservedRooms()">Liste des Chambres non reservées</button>
+      <button class="btn btn-info" (click)="toggleNonReservedCins()">Liste des CINs non reservés</button>
+
+
+
+      <div *ngIf="showNonReservedRooms">
+        <h2>chambre non reservé : </h2>
+        <ul>
+          <li *ngFor="let room of fetchRooms">{{ room }}</li>
+        </ul>
+
+      </div> 
+
+      <div *ngIf="showNonReservedCINs">
+        <h2>Cins non reservé : </h2>
+        <ul>
+          <li *ngFor="let cin of getAllCINs">{{ cin }}</li>
+        </ul>
       </div>
     </div>
-  </div>
-</div>
-</div>
-  
-    
+  </div>   

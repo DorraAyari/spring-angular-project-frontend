@@ -20,15 +20,27 @@ import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { ToastModule } from 'primeng/toast';
+
+import { AcademicYearPipe } from './academic-year.pipe';
+import { ReportingModule } from './reservations/reporting/reporting.module';
+
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
 import { DetailsUniversiteComponent } from './universite/details-universite/details-universite.component';
+
 import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { DeleteBlocComponent } from './manage-bloc/delete-bloc/delete-bloc.component';
 import { EditBlocComponent } from './manage-bloc/edit-bloc/edit-bloc.component';
 import { ShowBlocComponent } from './manage-bloc/show-bloc/show-bloc.component';
-import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+import { UniversitesComponent } from './universite/universites/universites.component';
+import { UniversitComponent } from './universite/universit/universit.component';
+import { CouleurDirective } from './directive/couleur.directive';
+import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
+import { HighlightDirective } from './directive/highlight.directive';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { PopupComponent } from './universite/popup/popup.component';
+
 import { HomeComponent } from './home/home.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { NgToastModule } from 'ng-angular-popup';
@@ -44,6 +56,17 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
 import { DetailComponent } from './chambre/detail/detail.component';
 import { HighlightDirective } from './chambre/highlightDirective.component';
 
+
+import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
+import { BarSideComponent } from './shared/bar-side/bar-side.component';
+
+
+
+import { DetailComponent } from './chambre/detail/detail.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,21 +79,50 @@ import { HighlightDirective } from './chambre/highlightDirective.component';
     ChambreAjouterComponent,
     ReservationComponent,
     AddReservationComponent,
+    AcademicYearPipe,
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
+
     DetailsChambreComponent,
+
+
+    MessageErreurComponent,
+
+
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
     HighlightDirective,
     ShowBlocComponent,
+    UniversitesComponent,
+    UniversitComponent,
+    CouleurDirective,
+    MessageErreurComponent,
+    HighlightDirective,
+    CapitalizePipe,
+    PopupComponent,
+
+
+
+
+
+
     LoginRegisterComponent,
     HomeComponent,
     AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent,
+
     DetailComponent
+
+
+    SidebarComponent,
+
+    DetailComponent,
+    DetailsChambreComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -79,12 +131,14 @@ import { HighlightDirective } from './chambre/highlightDirective.component';
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
-    NgToastModule,
-    BrowserAnimationsModule,
     MatSnackBarModule,
     ToastModule
+
+
+    BrowserAnimationsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 
   providers: [
     {
@@ -96,3 +150,23 @@ import { HighlightDirective } from './chambre/highlightDirective.component';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+    ],
+
+
+
+
+  providers: [
+
+    HttpClient,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+
+    ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+

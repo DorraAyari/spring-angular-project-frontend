@@ -1,0 +1,40 @@
+<div class="">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="content-page">
+  <div class="content">
+    <div class="container">
+      <div class="my-4">
+        <h2 class="mb-4">Liste des Report</h2>
+        <div class="table-responsive">
+          <table class="table table table-strip">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Probleme</th>
+                <th>Description</th>
+                <th>Date report</th>
+                <th>Actions</th>  
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let report of reports">
+                <td>{{ report.id }}</td>
+                <td>{{ report.problem }}</td>
+                <td>{{ report.description }}</td>
+                <td>{{ report.dateReport }}</td>
+                <td>
+                  <button class="btn btn-outline-success" (click)="navigate(report.id)">✔ Modifier</button> 
+                  <button class="btn btn-outline-danger" (click)="deleteReport(report.id)">✘ Supprimer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+</div>

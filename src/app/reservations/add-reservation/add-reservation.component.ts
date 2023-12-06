@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
@@ -16,7 +16,11 @@ export class AddReservationComponent {
 
   allRooms: any[] = [];
   allCINs: any[] = [];
- 
+  @Input() getAllRooms: any[] = [];
+  @Input() getAllCINs: any[] = [];
+  @Output() fetchRooms = new EventEmitter<any[]>();
+  @Output() fetchCINs = new EventEmitter<any[]>();
+
 
  // Initialize your reservation object
  reservation = {
@@ -29,15 +33,11 @@ export class AddReservationComponent {
     private router: Router,  
     private reservationService: ReservationService // Inject the service
   ) 
-  {
-    
-  }
+  {  }
   
   ngOnInit(): void {
-    this.fetchAllRooms();
-    this.fetchAllCINs();
-    
-   
+    this.fetchAllUnreservedRooms();
+    this.fetchAllUnreservedCINs();
   }
 
   addReservationToRoomAndStudent(): void {
@@ -47,6 +47,8 @@ export class AddReservationComponent {
       (reservation) => {
         console.log("Reservation added", reservation);
         alert('Nouvelle réservation ajoutée avec succès!');
+
+        // Navigate to the home page
         this.router.navigate(['/gestionreservation']);
       },
       (error)=>{
@@ -57,14 +59,14 @@ export class AddReservationComponent {
 
 
 
-    fetchAllRooms() {
-      this.reservationService.getAllRooms().subscribe(
+
+    fetchAllUnreservedRooms(){
+      this.reservationService.getAllUnreservedRooms().subscribe(
         (rooms)=>
         {
           this.allRooms = rooms;
-          console.log("Rooms fetched successfully", rooms);
-          console.log(this.allRooms);
-          
+          this.fetchRooms.emit(this.allRooms);
+          console.log("Rooms not reserved fetched successfully", rooms);  
         },
         (error)=>{
           console.log("Error fetching rooms", error);
@@ -73,10 +75,55 @@ export class AddReservationComponent {
       )
     }
 
-    fetchAllCINs() {
+    fetchAllUnreservedCINs() {
+      this.reservationService.getAllUnreservedCins().subscribe(
+        (cin)=>
+          { 
+            this.allCINs = cin;
+            this.fetchCINs.emit(this.allCINs);
+            console.log("CINs not reserved fetched successfully", cin);
+          },
+          (error)=>{
+            console.log("Error fetching CINs", error);
+          }
+      )
+    }
+
+   
+   
+    fetchRoomsClicked() {
+      this.fetchRooms.emit();
+    }
+
+    fetchCINsClicked() {
+      this.fetchCINs.emit();
+    }
+ 
+
+    navigateToPreviousPage(): void {
+      this.router.navigate(['/gestionreservation']);
+    }
+
+    
+   /*  fetchAllRooms() {
+      this.reservationService.getAllRooms().subscribe(
+        (rooms)=>
+        {
+          this.allRooms = rooms;
+          console.log("Rooms fetched successfully", rooms);  
+        },
+        (error)=>{
+          console.log("Error fetching rooms", error);
+        }
+        
+      )
+    } */
+
+/*     fetchAllCINs() {
       this.reservationService.getAllCINs().subscribe(
         (cin)=>
           { 
+
             this.allCINs = cin;
             console.log("CINs fetched successfully", cin);
           },
@@ -84,10 +131,5 @@ export class AddReservationComponent {
             console.log("Error fetching CINs", error);
           }
       )
-    }
-  
-   
-  
- 
-
+    } */
 }

@@ -53,10 +53,12 @@ export class ChambreService {
   isChambreOccupee(chambreId: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/chambre/${chambreId}/occupee`);
   }
+
   searchChambresByBloc(nomBloc: string): Observable<Chambre[]> {
     const url = `${this.apiUrl}/chambre/searchByBloc?nomBloc=${nomBloc}`;
     return this.http.get<Chambre[]>(url);
   }
+
 
 
 }

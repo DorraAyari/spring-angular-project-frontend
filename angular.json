@@ -25,6 +25,7 @@
               "src/app/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -104,7 +105,9 @@
               "src/app/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
+
               "src/styles.css"
             ],
             "scripts": []
@@ -114,7 +117,8 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "9a52ae7e-f946-48fe-aef9-405413880473"
+
 
   }
 }

@@ -1,40 +1,63 @@
-.content-page {
-    background-color: #f4f7f6; /* Light gray background for content area */
-    padding: 20px;
-  }
-  
-  .container-fluid {
-    max-width: 600px; /* Limit the form width */
-    margin: auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333; /* Dark color for text for better readability */
-  }
-  
-  .form-group input {
-    border-radius: 4px;
-    border: 1px solid #ccc; /* Light border for inputs */
-    padding: 10px;
-    margin-bottom: 20px; /* Space out elements */
-  }
-  
-  .btn-success {
-    background-color: #5cb85c; /* Bootstrap green */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .btn-success:hover {
-    background-color: #4cae4c; /* Darker green on hover */
-  }
-  
+.reservation-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #0056b3;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #218838;
+}
+
+.btn-return {
+  background-color: #f44336; /* Or your preferred return button color */
+  color: white;
+}
+
+.btn-return {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
