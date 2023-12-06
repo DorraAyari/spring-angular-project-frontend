@@ -1,3 +1,6 @@
+<div class="">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 <div class="content-page">
     <div class="content">
         <div class="site-section">
@@ -10,9 +13,9 @@
                                 <label for="numeroChambreSelect" class="form-label">Numéro Chambre:</label>
                                <select formControlName="chambre" id="numeroChambreSelect" class="form-control" required>
                                     <option value="" disabled selected>Choisissez une chambre</option>
-                                    <option *ngFor="let room of allRooms" [value]="room.idChambre">{{ room }}</option>
+                                    <option *ngFor="let room of allRooms" [ngValue]="room">{{ room.idChambre }}</option>
                                 </select> 
-    
+                               <!--  ngValue will bing the value of idChambre  -->
                                 <div *ngIf="reportForm.controls['chambre'].touched ">
                                     <small class="form-text text-danger" *ngIf="reportForm.controls['chambre'].errors?.['required']">
                                         The room number is required.
@@ -76,4 +79,5 @@
         </div>
     </div>
 </div>
-<router-outlet></router-outlet> <!-- changed here -->
+<router-outlet></router-outlet>
+</div>

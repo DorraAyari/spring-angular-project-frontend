@@ -1,28 +1,43 @@
+<div class="">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 
 <div class="content-page">
       <div class="content">
         <div class="container">
      <div class="container my-4" >
       <h2 class="mb-4">Liste des Réservations</h2>
-      <div class="d-flex justify-content-between mb-3">
-        <button class="btn btn-success" (click)="navigateToAddreservation()">+ Ajouter reservation</button>
-        <button class="btn btn-info" (click)="toggleDateInput()">Compter par Date</button>
-      </div>
-    
-      <div class="row mb-3" *ngIf="showDateInput">
+
+                <!-- Search and Add Reservation Section -->
+                <div class="search-add-section my-4">
+                 
+                  <div class="button-group mb-3">
+                      <button class="btn-add btn-primary" (click)="navigateToAddreservation()">+ Ajouter reservation</button>
+                      <button class="btn-info" (click)="toggleDateInput()">Compter par Date</button>
+                  </div>
+                  <br>
+                  <br>
+                  <input type="text" class="search-input" placeholder="chercher par status ....." (input)="filter($event)">
+                  
+              </div>
+    <br>
+       <!-- Date Filter Section -->
+       <div class="date-filter row mb-3" *ngIf="showDateInput">
         <div class="col">
-          <input type="date" class="form-control" [(ngModel)]="startDate" placeholder="Start Date" />
+            <input type="date" class="form-control" [(ngModel)]="startDate" placeholder="Start Date" />
         </div>
         <div class="col">
-          <input type="date" class="form-control" [(ngModel)]="endDate" placeholder="End Date" />
+            <input type="date" class="form-control" [(ngModel)]="endDate" placeholder="End Date" />
         </div>
         <div class="col-auto">
-          <button class="btn btn-primary" (click)="getReservationCount()">Compter</button>
+            <button class="btn-count btn-primary" (click)="getReservationCount()">Compter</button>
         </div>
-      </div>
+    </div>
 
   
-      <p *ngIf="showDateInput" class="mb-3">Nombre de réservations : {{reservationCount}}</p>
+                <!-- Reservation Count Display -->
+            <p class="reservation-count" *ngIf="showDateInput">Nombre de réservations : {{reservationCount}}</p>
+            
       
       <div class="table-responsive">
         <table class="table table table-strip">
@@ -77,4 +92,4 @@
         </ul>
       </div>
     </div>
-    
+  </div>   

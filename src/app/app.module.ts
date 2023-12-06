@@ -119,9 +119,13 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
-
     MatSnackBarModule,
+
+    BrowserAnimationsModule,
+  ],
+
     ],
+
 
 
 

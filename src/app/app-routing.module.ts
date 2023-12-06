@@ -87,7 +87,7 @@ const routes: Routes = [
 
   {
     path: 'reporting',
-    loadChildren: () => import('./reservations/reporting/reporting.module').then(m => m.ReportingModule)
+    loadChildren: () => import('../app/reservations/reporting/reporting.module').then(m => m.ReportingModule)
   },
 
 
@@ -125,7 +125,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
