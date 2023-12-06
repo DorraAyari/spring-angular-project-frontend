@@ -23,6 +23,9 @@ const routes: Routes = [
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
+
+
+ // { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
   {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
   {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
