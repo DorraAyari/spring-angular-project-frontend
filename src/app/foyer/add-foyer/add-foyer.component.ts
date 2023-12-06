@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class AddFoyerComponent implements OnInit {
 
+
    foyer : Foyer = {
      idFoyer: 0,
      nomFoyer: '',
@@ -27,6 +28,11 @@ export class AddFoyerComponent implements OnInit {
    selectuniversite!: number;
 
    
+  newFoyer: Foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+    idUniversite:0,
+    nomUniversite:'',
+    adresse:''  }};
+ 
 
   constructor(
     private foyerService: FoyerService,
@@ -85,8 +91,21 @@ export class AddFoyerComponent implements OnInit {
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(() => {
+
           // Optionally, reload the chambre list or navigate to another route
           this.router.navigate(['/home-foyer']);
+
+          this.loadFoyers();
+          this.router.navigate(['foyer/home-foyer']);
+          this.newFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,  universite: {
+            idUniversite:0,
+            nomUniversite:'',
+            adresse:''  } };
+        });
+      },
+      (error) => {
+        console.error('Error adding foyer', error);
+
 
           // Reset the newChambre object for a new entry
           this.foyer = {

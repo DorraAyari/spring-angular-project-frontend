@@ -1,9 +1,10 @@
-<!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
+
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 <div class="content-page">
   <div class="content">
     <div class="container-fluid">
@@ -11,31 +12,69 @@
       <button class="btn btn-success mb-3" (click)="navigateToAjouter()">
         <i class="fas fa-plus"></i> Ajouter une chambre
       </button>
+      <!-- chambre.component.html -->
+      <div class="mb-3">
+        <label for="numeroChambreSearch">Recherche par numéro de chambre:</label>
+        <input type="number" id="numeroChambreSearch"
+          [(ngModel)]="numeroChambreSearch" class="form-control">
+        <button class="btn btn-primary" (click)="searchChambreByNumeroChambre()">Rechercher</button>
+      </div>
+      <div class="mb-3">
+  <label for="nomBlocSearch">Recherche par nom du bloc:</label>
+  <input type="text" id="nomBlocSearch" [(ngModel)]="nomBlocSearch" class="form-control">
+  <button class="btn btn-primary" (click)="searchChambresByBloc()">Rechercher par bloc</button>
+</div>
+
+      <button (click)="navigateToDetails()" class="btn btn-info btn-sm">Détails</button>
 
       <div class="table-responsive">
-        <table id="chambresTable" class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover"
+          #chambresTable datatable [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger">
           <thead class="thead-custom">
+
             <tr>
               <th>ID Chambre</th>
               <th>Numéro Chambre</th>
               <th>Type Chambre</th>
+              <th>Occupée</th> <!-- Nouvelle colonne -->
+              <th>Nom du Bloc</th> <!-- Nouvelle colonne -->
+
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let chambre of chambres">
+            <tr *ngFor="let chambre of chambres" [appHighlight]="chambre.isOccupied">
               <td>{{ chambre.idChambre }}</td>
               <td>{{ chambre.numeroChambre }}</td>
               <td>
-                <span class="badge badge-pill badge-custom" [ngStyle]="{'background-color': getTypeChambreColor(chambre.typeChambre)}">
+                <span class="badge badge-pill badge-custom"
+                  [ngStyle]="{'background-color': getTypeChambreColor(chambre.typeChambre)}">
                   {{ chambre.typeChambre }}
                 </span>
               </td>
+
+              <!-- Update the 'Occupée' column in your table -->
+
               <td>
-                <button class="btn btn-primary btn-sm" (click)="openModificationPopup(chambre)">
+                <span class="badge badge-occupied" *ngIf="chambre.isOccupied; else notOccupied">Oui</span>
+                <ng-template #notOccupied>
+                  <span class="badge badge-not-occupied">Non</span>
+                </ng-template>
+              </td>
+
+
+  <td>{{ chambre.bloc?.nomBloc }}</td> <!-- Nouvelle colonne -->
+
+
+              <td>
+
+                <button class="btn btn-primary btn-sm"
+                  (click)="openModificationPopup(chambre)">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="btn btn-danger btn-sm" (click)="deleteChambre(chambre.idChambre)">
+                <button class="btn btn-danger btn-sm"
+                  (click)="deleteChambre(chambre.idChambre)">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </td>
@@ -45,4 +84,8 @@
       </div>
     </div>
   </div>
+
 </div>
+
+</div>
+<app-footer></app-footer>

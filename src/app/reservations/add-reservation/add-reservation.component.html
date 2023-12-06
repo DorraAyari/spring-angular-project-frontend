@@ -1,0 +1,27 @@
+<div class="">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar> 
+   <div class="content-page">
+      <div class="content">
+        <button type="button" class="btn-return" (click)="navigateToPreviousPage()">Retour</button>
+        <div class="container-fluid reservation-form">
+          <h2 class="form-title">Ajouter une nouvelle reservation</h2>
+          <form (ngSubmit)="addReservationToRoomAndStudent()">
+            <div class="form-group">
+              <label for="numeroChambre" class="form-label">Numéro Chambre:</label>
+              <select id="numeroChambre" [(ngModel)]="reservation.numeroChambre" name="numeroChambre" class="form-control" required>
+                <option *ngFor="let room of allRooms" [value]="room">{{ room }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cin" class="form-label">CIN:</label>
+              <select id="cin" [(ngModel)]="reservation.cin" name="cin" class="form-control" required>
+                <option *ngFor="let cin of allCINs" [value]="cin">{{ cin }}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit">Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
