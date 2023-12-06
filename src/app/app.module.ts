@@ -124,7 +124,6 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     BrowserAnimationsModule,
   ],
 
-    ],
 
 
 
