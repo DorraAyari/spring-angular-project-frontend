@@ -20,7 +20,7 @@ export class ChambreAjouterComponent {
     idChambre: 0,
     numeroChambre: 0,
     typeChambre: '',
-    bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0 },
+    bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0 ,foyer_id_foyer:0},
     bloc_id_bloc: 0,
     isOccupied: false
   };
@@ -31,7 +31,7 @@ export class ChambreAjouterComponent {
     private blocService: BlocService,
     private cdr: ChangeDetectorRef
   ) {
-    this.selectedBloc = { idBloc: 0, nomBloc: '', capaciteBloc: 0 };
+    this.selectedBloc = { idBloc: 0, nomBloc: '', capaciteBloc: 0,foyer_id_foyer:0 };
   }
 
   ngOnInit() {
@@ -93,7 +93,7 @@ export class ChambreAjouterComponent {
             idChambre: 0,
             numeroChambre: 0,
             typeChambre: '',
-            bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0 },
+            bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0,foyer_id_foyer:0 },
             bloc_id_bloc: 0,
             isOccupied: false
           };

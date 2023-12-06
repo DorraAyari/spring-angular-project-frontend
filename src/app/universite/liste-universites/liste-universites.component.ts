@@ -86,13 +86,13 @@ export class ListeUniversitesComponent implements OnInit{
   }
 
   navigateTo(id : number){
-    this.router.navigate(['/ajouterUniversite/'+id]);
+    this.router.navigate(['/universite/ajouterUniversite/'+id]);
   }
 
   navigateToAjouter(){
     console.log("*******");
     
-    this.router.navigate(['/ajouterUniversite']);
+    this.router.navigate(['/universite/ajouterUniversite']);
     //http://localhost:4200/showUniversites/ajouterUniversite 
 
   }
@@ -111,13 +111,13 @@ export class ListeUniversitesComponent implements OnInit{
   }
 
   navigateToDetails(){
-    this.router.navigate(['/detailsUniversites']);
+    this.router.navigate(['/universite/detailsUniversites']);
 
   }
  
 
   navigateToUniversites(){
-    this.router.navigate(['/universites']);
+    this.router.navigate(['/universite/universites']);
   }
 
 }

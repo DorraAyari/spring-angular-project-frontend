@@ -52,7 +52,6 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
-import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
 
 import { DetailComponent } from './chambre/detail/detail.component';
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
@@ -87,7 +86,7 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     MessageErreurComponent,
     HighlightDirective,
     CapitalizePipe,
-    PopupComponent
+    PopupComponent,
 
 
 
@@ -111,11 +110,11 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     DataTablesModule,
     ReactiveFormsModule,
 
-
+    MatSnackBarModule,
     ],
 
-    MatSnackBarModule,
-  ],
+  
+ 
 
 
   providers: [

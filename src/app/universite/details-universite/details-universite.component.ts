@@ -10,17 +10,17 @@ import { UniversiteService } from 'src/app/services/universite.service';
 })
 export class DetailsUniversiteComponent {
 
-   universiteDetails :   Universite = {
-    idUniversite:0,
-    nomUniversite:'',
-    adresse:'',
-    foyer  : {
-      idFoyer: 0  ,
-    nomFoyer:'' ,
-    capaciteFoyer: 0
-    } 
-  }  
-
+  universiteDetails: Universite = {
+    idUniversite: 0,
+    nomUniversite: '',
+    adresse: '',
+    foyer: {
+      idFoyer: 0,
+      nomFoyer: '',
+      capaciteFoyer: 0
+    }
+  };
+  
   
   nombreTotalChambres : number = 0 ;
   nombreMinChambres : number = 0 ;

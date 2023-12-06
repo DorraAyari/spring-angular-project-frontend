@@ -8,6 +8,6 @@ export interface Foyer {
 
   //  bloc: Bloc;
   //  reservations: Reservation[];
-  universite: Universite | null;
+  universite ?: Universite ;
 
   }
