@@ -19,7 +19,7 @@ import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
-  {path:'f',loadChildren:()=>import('../app/foyer/foyer/foyer.module').then((t)=>t.FoyerModule)},
+  {path:'home-foyer',loadChildren:()=>import('../app/foyer/foyer/foyer.module').then((t)=>t.FoyerModule)},
   {path:'chambre',component:ChambreComponent},
   {path:'auth',component:LoginRegisterComponent},
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },

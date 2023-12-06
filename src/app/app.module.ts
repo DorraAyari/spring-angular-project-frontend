@@ -55,6 +55,13 @@ import { FoyerModule } from './foyer/foyer/foyer.module';
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
 
+    AddFoyerComponent,
+    EditFoyerComponent,
+    HomeFoyerComponent,
+    DetailsFoyerComponent,
+    DetailComponent,
+    SidebarComponent,
+    NavbarComponent,
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
@@ -76,7 +83,16 @@ import { FoyerModule } from './foyer/foyer/foyer.module';
     BrowserAnimationsModule,
     MatSnackBarModule,
     ToastModule,
-    FoyerModule
+    FoyerModule,BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    DataTablesModule,
+    ReactiveFormsModule,
+    NgToastModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    ToastModule
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA

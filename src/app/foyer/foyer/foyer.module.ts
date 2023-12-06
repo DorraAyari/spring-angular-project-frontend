@@ -25,18 +25,18 @@ import { NavbarComponent } from 'src/app/shared/navbar-foyer/navbar.component';
 @NgModule({
   declarations: [
 
-    AddFoyerComponent,
+   /* AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent,
     DetailsFoyerComponent,
     DetailComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent*/
   ],
   imports: [
     CommonModule,
     FoyerRoutingModule,
-    BrowserModule,
+    /*BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -45,7 +45,7 @@ import { NavbarComponent } from 'src/app/shared/navbar-foyer/navbar.component';
     NgToastModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    ToastModule
+    ToastModule*/
     
   ],
   schemas: [

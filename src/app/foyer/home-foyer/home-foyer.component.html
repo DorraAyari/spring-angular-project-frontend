@@ -61,7 +61,7 @@
                 <tr *ngFor="let foyer of foyer">
                   <td>{{foyer.idFoyer}}</td>
                   <td>{{foyer.nomFoyer}}</td>
-                  <td [ngStyle]="{'background-color': (foyer.universite?.nomUniversite) ? 'BlanchedAlmond' : 'white'}">{{foyer.capaciteFoyer}}</td>
+                  <td [ngStyle]="{'background-color': (foyer.universite?.nomUniversite) ? 'BlanchedAlmond' : 'BurlyWood'}">{{foyer.capaciteFoyer}}</td>
                   
                    <td>
                     <button  (click)="deleteFoyer(foyer.idFoyer)" class="btn btn-danger btn-sm">Effacer</button>

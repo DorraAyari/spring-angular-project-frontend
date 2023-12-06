@@ -6,12 +6,17 @@ import { AddFoyerComponent } from '../add-foyer/add-foyer.component';
 import { DetailsFoyerComponent } from '../details-foyer/details-foyer.component';
 import { authGuard } from 'src/app/guards/auth.guard';
 
-const routes: Routes = [
-  {path:'home-foyer',component:HomeFoyerComponent,canActivate: [authGuard]},
-  { path:'editFoyer/:id', component:EditFoyerComponent,canActivate: [authGuard]},
-  { path:'add-foyer', component:AddFoyerComponent,canActivate: [authGuard] },
-  { path:'detailsFoyer', component:DetailsFoyerComponent,canActivate: [authGuard] },
+const routes: Routes = [{
+  path: '',
+  children: [
+    {path:'',component:HomeFoyerComponent},
+    { path:'editFoyer/:id', component:EditFoyerComponent,canActivate: [authGuard]},
+    { path:'add-foyer', component:AddFoyerComponent,canActivate: [authGuard] },
+    { path:'detailsFoyer', component:DetailsFoyerComponent,canActivate: [authGuard] },
+  ]
+}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
