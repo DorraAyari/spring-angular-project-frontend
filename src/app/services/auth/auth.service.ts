@@ -9,6 +9,7 @@ import { VerificationRequest } from 'src/app/models/auth-models/verification-req
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenApiModel } from 'src/app/models/auth-models/token-api.model';
+import { Student } from 'src/app/models/auth-models/student';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +92,7 @@ export class AuthService {
 
     renewToken(refreshToken: any){
       const headers = new HttpHeaders({
-        Authorization: `Bearer ${refreshToken}`,
+        Authorization: `Bearer ${refreshToken}`
       });
       return this.http.post(this.baseApiUrl + "/etudiant/refresh-token",{headers});
     }
@@ -99,5 +100,23 @@ export class AuthService {
 
     getBlocs(): Observable<any>{
       return this.http.get<any>(this.baseApiUrl + '/bloc/findAll');
+    }
+
+    getStudents() : Observable<any[]>{
+      return this.http.get<any[]>(this.baseApiUrl + '/etudiant/findAll');
+    }
+
+
+    AddStudent(student:Student): Observable<Student>{
+      return this.http.post<Student>(this.baseApiUrl + '/etudiant/add', student);
+    }
+
+    updateUser(updateUser: Student, id: any):Observable<Student> {
+      updateUser.dateNaissance = '2000-05-13';
+      return this.http.put<Student>(this.baseApiUrl + '/etudiant/update/'+id, updateUser);
+    }
+
+    deleteStudent(etudiantId: number) : Observable<any>{
+      return this.http.delete<any>(this.baseApiUrl + '/etudiant/delete/' + etudiantId);
     }
 }

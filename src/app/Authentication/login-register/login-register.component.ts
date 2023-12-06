@@ -51,6 +51,7 @@ export class LoginRegisterComponent implements OnInit {
 
   registerUser() {
     this.registerRequest.cin='134919191';
+    this.registerRequest.ecole='ESPRIT';
     this.registerRequest.dateNaissance='2000-05-13'
     this.registerRequest.role='ADMIN';
     //console.log(this.registerRequest);

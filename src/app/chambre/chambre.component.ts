@@ -16,6 +16,7 @@ import { Bloc } from '../models/bloc';
 
 declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
 
+// Déclaration de $ pour éviter les erreurs de TypeScript
 import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({

@@ -1,64 +1,141 @@
 <app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-  <div class="content-page">
-    <div class="content">
-  
-        <!-- Start Content-->
-        <div class="center-container">
-        <div class="container-fluid">
-          <div class="row">
-  <div class="col-xl-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="dropdown float-end">
-            <a href="#" class="dropdown-toggle arrow-none card-drop"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="mdi mdi-dots-vertical"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end">
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Action</a>
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Another
-                action</a>
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Something
-                else</a>
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">Separated
-                link</a>
-            </div>
-          </div>
-  
-          <h4 class="header-title mt-0 mb-3">Détails Université </h4>
-  
-          <div class="table-responsive">
 
-            <div class="form-container">
-                <label for="idUniversite">ID de l'université:</label>
-                <input type="number" id="universiteId" [(ngModel)]="universiteDetails.idUniversite" />
-                <div>
-                <button class="button-rechercher" (click)="rechercherDetailsUniversite(universiteDetails.idUniversite)">Rechercher</button>
+<div class="content-page">
+  <div class="content">
+    <div class="container">
+      <h2 class="text-center mb-4">More Details </h2>
+
+
+
+
+
+      <div class="container mt-4 section" id="about">
+
+        <div class="row m-2">
+
+          <div class="col-md-4">
+            <img src="/app/assets/images/users/rechercheimage.webp" alt="user-img" class="img-fluid" />
+          </div>
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-md-4">
+
+            <h4 class="card-title" appHighlight>Recherche By ID & <br>
+              Nom & <br>
+              ID Foyer</h4>
+            <div class="row m-2">
+            </div>
+            <div>
+              <!-- <label for="idUniversite">ID de l'université:</label> -->
+              <div class="form-group"><input type="number" id="universiteId"
+                  [(ngModel)]="universiteDetails.idUniversite" placeholder="ID de l'université" /></div>
+              <!-- <label for="nomUniversite">Nom de l'université:</label> -->
+              <div class="form-group"><input type="text" id="nomUniversite"
+                  [(ngModel)]="universiteDetails.nomUniversite" placeholder="Nom de l'université" /></div>
+              <div class="form-group"><input type="text" id="nomFoyer" [(ngModel)]="universiteDetails.foyer!.nomFoyer"
+                  placeholder="Nom du Foyer" /></div>
+              <div>
+                <button class="btn-sec3" (click)="rechercherDetailsUniversite()"> <i class="fas fa-search"> </i> Rechercher</button>
               </div>
             </div>
-              
-              <div *ngIf="universiteDetails">
-                <h2>Détails de l'université</h2>
-                <p>Nom: {{ universiteDetails.nomUniversite }}</p>
-                <p>Adresse: {{ universiteDetails.adresse}}</p>
-              </div>
-           
 
           </div>
+          <div class="col-md-3">
+
+            <div *ngIf="universiteDetails">
+              <h4 class="card-title">Détails de l'université</h4>
+              <p>Nom: {{ universiteDetails.nomUniversite }}</p>
+              <p>Adresse: {{ universiteDetails.adresse}}</p>
+            </div>
+          </div>
+          
         </div>
       </div>
-  
+
+
+      <div class="container mt-3 section" id="about">
+
+        <div class="row m-2">
+          <div class="col-md-4">
+            <img src="/app/assets/images/users/charts.jpg" alt="user-img" class="img-fluid" />
+          </div>
+
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-md-3">
+            <div class="row m-3"></div>
+
+            <h4 class="card-title" appHighlight>Statistique du <br>
+              Nombre total <br>
+              De chambres</h4>
+            <div class="row m-2">
+            </div>
+
+
+          </div>
+          <div class="col-md-4">
+            <div>
+
+              <p>Nom Université : <input [(ngModel)]="universiteDetails.nomUniversite" /></p>
+              <button class="btn-sec3" (click)="getStatistique()">  <i class="fas fa-chart-bar"></i> Obtenir Statistique</button>
+              <div class="row m-2"></div>
+              <p class="badge2">Nombre total de chambres: {{ nombreTotalChambres }}</p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="container mt-3 section" id="about">
+
+        <div class="row m-2">
+          <div class="col-md-4">
+            <img src="/app/assets/images/users/imagesfoyer.jpeg" alt="user-img" class="img-fluid" />
+          </div>
+
+
+          <div class="col-md-1">
+          </div>
+
+          <div class="col-md-3">
+            <div class="row m-3"></div>
+
+            <h4 class="card-title" appHighlight>Universités avec <br>
+              un nombre minimum <br>
+              De chambres</h4>
+            <div class="row m-2">
+            </div>
+
+
+          </div>
+          <div class="col-md-4">
+            <div>
+
+              <label>Nombre minimum de chambres: <input [(ngModel)]="nombreMinChambres" name="nombreMinChambres" type="number" required /></label><br>
+              <button class="btn btn-warning mb-3" (click)="getUniversitesByNombreMinChambres()"><i class="fas fa-search"></i> Rechercher </button>
+              <div class="row m-2"></div>
+              <ul *ngIf="universites && universites.length">
+                <li *ngFor="let universite of universites">{{ universite.nomUniversite }}</li>
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+     
+
+      <button class="btn btn-primary" (click)="goToList()"> <i class="fas fa-list"></i> Retour à la liste des universités</button>
+
+
+
+
     </div>
   </div>
-  </div>
 </div>
-  
-  </div>
-  </div>
-
-
