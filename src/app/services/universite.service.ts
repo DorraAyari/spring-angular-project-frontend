@@ -14,7 +14,7 @@ export class UniversiteService {
 
   getAllUniversities() : Observable<Universite[]>{
     return this.httpClient.get<Universite[]>(`${this.baseUrl}/findAll`);
-    
+
   }
 
   getUniversiteById(idUniversite : number) : Observable<Universite> {

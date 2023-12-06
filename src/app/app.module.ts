@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,12 +7,20 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { BodyComponent } from './shared/body/body.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ChambreComponent } from './chambre/chambre.component';
-import { HttpClient ,HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient ,HttpClientModule } from '@angular/common/http';
 import { ChambreService } from './services/chambre.service';
-import { ChambreModificationComponent } from './chambre-modification/chambre-modification.component';
+import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChambreAjouterComponent } from './chambre-ajouter/chambre-ajouter.component';
+import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ReservationComponent } from './reservations/reservation/reservation.component';
+import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
+import { AcademicYearPipe } from './academic-year.pipe';
+import { ReportingModule } from './reservations/reporting/reporting.module';
+
+
+
+
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
 import { ListeUniversitesComponent } from './universite/liste-universites/liste-universites.component';
@@ -30,6 +38,26 @@ import { HighlightDirective } from './directive/highlight.directive';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { PopupComponent } from './universite/popup/popup.component';
 
+import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+import { HomeComponent } from './home/home.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { NgToastModule } from 'ng-angular-popup';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { ToastModule } from 'primeng/toast';
+
+
+import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
+import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
+import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
+import { FoyerService } from './services/foyer.service';
+import { MessageErreurComponent } from './shared/message-erreur/message-erreur.component';
+
+import { DetailComponent } from './chambre/detail/detail.component';
+import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +68,15 @@ import { PopupComponent } from './universite/popup/popup.component';
     ChambreComponent,
     ChambreModificationComponent,
     ChambreAjouterComponent,
+    ReservationComponent,
+    AddReservationComponent,
+    AcademicYearPipe,
     AjouterUniversiteComponent,
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
+
+    MessageErreurComponent,
+
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
@@ -59,6 +93,15 @@ import { PopupComponent } from './universite/popup/popup.component';
 
 
 
+
+    LoginRegisterComponent,
+    HomeComponent,
+    AddFoyerComponent,
+    EditFoyerComponent,
+    HomeFoyerComponent,
+    DetailComponent,
+    DetailsChambreComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -68,13 +111,32 @@ import { PopupComponent } from './universite/popup/popup.component';
     DataTablesModule,
     ReactiveFormsModule,
 
+
     ],
+
+    MatSnackBarModule,
+  ],
+
 
   providers: [
     ChambreService, // Add this line
-    UniversiteService,
+    NgToastModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    ToastModule,
+    HttpClient,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    ],
+    schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+   
 
   ],
+
+    
   bootstrap: [AppComponent]
 })
 export class AppModule { }

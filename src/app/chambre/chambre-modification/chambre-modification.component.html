@@ -1,4 +1,6 @@
 <!-- chambre-modification.component.html -->
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 <div class="content-page">
   <div class="content">
       <div class="container-fluid">
@@ -24,9 +26,12 @@
                 class="error-message">
                 Type Chambre est requis.
               </div>
-
-              <!-- Other input fields for chambre properties -->
-
+              <div class="form-group">
+                <label for="bloc">Bloc:</label>
+                <select id="bloc" [(ngModel)]="selectedBlocNom" name="selectedBlocNom">
+                  <option *ngFor="let blocItem of bloc" [ngValue]="blocItem.nomBloc">{{ blocItem.nomBloc }}</option>
+                </select>
+              </div>
               <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
           </form>
       </div>
