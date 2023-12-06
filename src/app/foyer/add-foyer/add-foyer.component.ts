@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Foyer } from 'src/app/models/foyer';
-import { Universite } from 'src/app/models/universite'; // Assurez-vous d'importer l'interface Universite
+import { Universite } from 'src/app/models/universite';
 import { FoyerService } from 'src/app/services/foyer.service';
-import { UniversiteService } from 'src/app/services/universite.service'; // Assurez-vous d'importer le service UniversiteService
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,52 +13,88 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-foyer.component.css']
 })
 export class AddFoyerComponent implements OnInit {
-  universite: Universite[] = []; // Liste des universités
 
+
+   foyer : Foyer = {
+     idFoyer: 0,
+     nomFoyer: '',
+     capaciteFoyer: 0
+   }  
+   addfoyerForm !: FormGroup ;
+   title : String = 'Ajouter une nouvelle foyer' ;
+   id : any;
+
+   universities!: Universite[];
+   selectuniversite!: number;
+
+   
   newFoyer: Foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
     idUniversite:0,
     nomUniversite:'',
     adresse:''  }};
  
+
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private foyerService: FoyerService,
-    private universiteService: UniversiteService // Injection du service UniversiteService
+    private router : Router,
+    private activateRoute : ActivatedRoute,
+   
   ) { }
 
   ngOnInit(): void {
-    // Charger la liste des universités lors de l'initialisation du composant
-    this.universiteService.getAllUniversities().subscribe(
-      (universites: Universite[]) => {
-        this.universite = universites;
-        console.log(this.universiteService.getAllUniversities()) ;
-          },
-      (error) => {
-        console.error('Error loading universities', error);
-        // Gérer l'erreur selon les besoins
-      }
-    );
-  }
-
-  ajouterFoyer(): void {
-    if (!this.newFoyer.nomFoyer || !this.newFoyer.capaciteFoyer || this.newFoyer.universite === null) {
-      alert('Veuillez remplir le formulaire avant de soumettre.');
-      return;
+    this.id = this.activateRoute.snapshot.params['id'];
+    if (this.id) {
+      this.title = 'Modifier Université';
+      this.getFoyerById();
     }
+    this.ajoute();  // Call the ajoute() method to fetch universities
+  }
+  
 
-    this.newFoyer.capaciteFoyer = +this.newFoyer.capaciteFoyer;
+  
 
-    this.foyerService.ajouterFoyer(this.newFoyer).subscribe(
-      (addedFoyer: Foyer) => {
-        console.log('Foyer added successfully', addedFoyer);
+  addFoyer() : void {
 
+    if (this.id) {
+
+      this.foyerService.updateFoyer(this.foyer.idFoyer, this.foyer).subscribe(
+        (data: Foyer) => {
+          console.log('foyer updated successfully', data);
+ 
+          Swal.fire({
+            title: 'Succès!',
+            text: 'foyer a été modifié avec succés',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            // Optionally, reload the chambre list or navigate to another route
+            this.router.navigate(['/home-foyer']);
+          });
+        },
+        (error) => {
+          console.error('Error updating', error);
+          // Handle error as needed
+        }
+      )
+      
+      
+    } else {
+
+      this.foyerService.ajouterFoyer(this.foyer,this.selectuniversite).subscribe(
+        (response : Foyer) => {
+          console.log('add success',response);
+          //alert("L'université a été ajouté avec succés");
+        
         Swal.fire({
           title: 'Succès!',
-          text: 'Foyer ajoutée avec succès.',
+          text: 'foyer a été ajouté avec succés',
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(() => {
+
+          // Optionally, reload the chambre list or navigate to another route
+          this.router.navigate(['/home-foyer']);
+
           this.loadFoyers();
           this.router.navigate(['foyer/home-foyer']);
           this.newFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,  universite: {
@@ -70,17 +106,51 @@ export class AddFoyerComponent implements OnInit {
       (error) => {
         console.error('Error adding foyer', error);
 
-        Swal.fire({
-          title: 'Erreur!',
-          text: 'Une erreur s\'est produite lors de l\'ajout de la foyer.',
-          icon: 'error',
-          confirmButtonText: 'OK'
+
+          // Reset the newChambre object for a new entry
+          this.foyer = {
+            idFoyer: 0,
+            nomFoyer: '',
+            capaciteFoyer: 0
+         }
         });
-      }
-    );
+        },
+        (error) => {
+          console.error('foyer erreur', error);
+          Swal.fire({
+            title: 'Erreur!',
+            text: 'Une erreur s\'est produite lors de l\'ajout de la chambre.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+  
+        }
+      );  
+      
+    }
+   
+  }
+  ajoute(): void {
+    this.foyerService.findAllUniversite().subscribe(data => {
+      this.universities = data;
+    });
   }
 
-  loadFoyers(): void {
-    // Implémentez la méthode pour charger les foyers depuis le service si nécessaire
+  getFoyerById(){
+    this.foyerService.getFoyerById(this.id).subscribe(
+      (data : Foyer )=>{
+         console.log("Get Univesite By Id",data) ;
+         this.foyer = data ;
+        
+       },
+       (error) => {
+         console.error('Error loading chambre', error);
+       }
+    );
+   }
+
+   goToHome() {
+    this.router.navigate(['/home-foyer']); // Remplacez '/' par le chemin de votre page d'accueil si nécessaire
   }
-}
+
+  }

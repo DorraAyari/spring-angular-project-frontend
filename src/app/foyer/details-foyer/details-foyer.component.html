@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<main class="content-page">
+    <section class="content">
+        <div class="container-fluid">
+            <header class="row">
+                <h1 class="page-title mb-4 text-primary">Détails du Foyer</h1>
+            </header>
+
+            <section class="row">
+                <div class="col-xl-4" *ngFor="let f of foyer">
+                    <app-detail [foyer]="f" (passId)="parentDeleteFoyer($event)"></app-detail>
+                </div>
+            </section>
+
+            <footer class="row text-center mt-3">
+                <button type="button" class="btn btn-secondary mx-auto" (click)="goToHome()">
+                    Retour à la page d'accueil
+                </button>
+            </footer>
+        </div>
+    </section>
+</main>

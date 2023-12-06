@@ -1,5 +1,4 @@
 
-<!-- chambre-ajouter.component.html -->
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 
@@ -36,6 +35,12 @@
       <!-- Remove (ngModelChange)="updateBlocId()" from the following line -->
 <div class="form-group">
   <label for="bloc">Bloc:</label>
+
+  <select id="bloc" [(ngModel)]="selectedBlocNom" (change)="updateBlocId($event)" name="selectedBlocNom">
+    <option *ngFor="let blocItem of bloc" [value]="blocItem.nomBloc">{{ blocItem.nomBloc }}</option>
+  </select>
+
+
   <select id="bloc" [(ngModel)]="newChambre.bloc!.idBloc" (change)="updateBlocId($event)" name="selectedBlocNom">
     <option *ngFor="let blocItem of bloc" [ngValue]="blocItem.idBloc">{{ blocItem.nomBloc }}</option>
   </select>
