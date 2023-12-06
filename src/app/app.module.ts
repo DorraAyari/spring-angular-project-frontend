@@ -52,8 +52,10 @@ import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
 
+
 import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
 import { BarSideComponent } from './shared/bar-side/bar-side.component';
+
 
 
 import { DetailComponent } from './chambre/detail/detail.component';
@@ -118,7 +120,7 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     DataTablesModule,
     ReactiveFormsModule,
 
-
+    MatSnackBarModule,
     ],
 
 
@@ -133,6 +135,11 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
 
     ],
 
+<<<<<<< HEAD
+=======
+    CUSTOM_ELEMENTS_SCHEMA
+    ],
+>>>>>>> 4c1ea1881311efcde0d85134775210f4f32079dd
   bootstrap: [AppComponent]
 })
 export class AppModule { }

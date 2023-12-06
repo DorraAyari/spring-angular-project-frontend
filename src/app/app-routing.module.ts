@@ -65,15 +65,19 @@ const routes: Routes = [
   {path:'bloc', component:ShowBlocComponent},
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
+  {
+    path: 'universite',
+    loadChildren: () => import('./universite/universite-root/universite-root.module').then(m => m.UniversiteRootModule)
+  },
 
 
  // { path: '', redirectTo: '/home', pathMatch: 'full' },
 
-  {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
-  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
-  {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
-  {path : 'universites' , component : UniversitesComponent},
-  { path : 'showUniversites' , component : ListeUniversitesComponent},
+  // {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
+  // {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
+  // {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
+  // {path : 'universites' , component : UniversitesComponent},
+  // { path : 'showUniversites' , component : ListeUniversitesComponent},
 
   { path: 'gestionreservation', component: ReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
