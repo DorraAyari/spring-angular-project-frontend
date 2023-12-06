@@ -1,6 +1,20 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 <div class="content-page">
+
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-xl-4" *ngFor="let f of chambre">
+          <app-detail [chambre]="f" (passId)="parentDeleteChambre(f.idChambre)"></app-detail>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
     <div class="content">
         <div class="container-fluid">
 
@@ -12,4 +26,5 @@
             </div>
         </div>
     </div>
+
 </div>

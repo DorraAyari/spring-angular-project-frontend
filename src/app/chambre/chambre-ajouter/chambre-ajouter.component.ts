@@ -34,13 +34,17 @@ export class ChambreAjouterComponent {
     this.selectedBloc = { idBloc: 0, nomBloc: '', capaciteBloc: 0,foyer_id_foyer:0 };
   }
 
+
   ngOnInit() {
     this.loadBlocs();
     this.selectedBlocNom = this.bloc.length > 0 ? String(this.bloc[0].nomBloc) : '';
   }
 
   updateBlocId(event: any) {
-    const selectedBlocValue: string = event.target.value.split(': ')[1];
+    const selectedBlocValue: string = event.target.value;
+
+ //   const selectedBlocValue: string = event.target.value.split(': ')[1];
+
     const selectedBloc = this.bloc.find(b => b.nomBloc === selectedBlocValue);
 
     if (selectedBloc) {
@@ -49,10 +53,12 @@ export class ChambreAjouterComponent {
     }
   }
 
+
   loadBlocs(): void {
     this.blocService.findAll().subscribe(
       (blocs: Bloc[]) => {
         this.bloc = blocs;
+
         this.cdr.detectChanges();
       },
       (error) => {
@@ -93,7 +99,7 @@ export class ChambreAjouterComponent {
             idChambre: 0,
             numeroChambre: 0,
             typeChambre: '',
-            bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0 ,foyer_id_foyer:0},
+            bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0,foyer_id_foyer:0 },
             bloc_id_bloc: 0,
             isOccupied: false
           };
@@ -102,7 +108,9 @@ export class ChambreAjouterComponent {
       (error) => {
         console.error('Error adding chambre', error);
 
-        if (error.status === 409) {
+
+        if (error.status === 409 || error.status === 403 || error.status === 500) {
+
           Swal.fire({
             title: 'Erreur!',
             text: 'Le numéro de chambre doit être unique.',

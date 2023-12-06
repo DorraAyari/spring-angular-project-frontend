@@ -1,6 +1,7 @@
 import { Component, createPlatform } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChambreService } from 'src/app/services/chambre.service';
 import { ReportService } from 'src/app/services/report.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 
@@ -14,7 +15,7 @@ export class ReportRoomComponent {
 
 
   reportForm = new FormGroup({
-    chambre: new FormControl(null, Validators.required), 
+   chambre: new FormControl(null, Validators.required), 
     problem: new FormControl('', Validators.required),
     description: new FormControl('', [
       Validators.required,
@@ -31,11 +32,14 @@ export class ReportRoomComponent {
   room: any = {};
   reportData : any[] = [];
 
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private reservationService: ReservationService,
-    private reportService: ReportService
+    private reportService: ReportService,
+    private roomservice: ChambreService
   ) { }
   
   ngOnInit(): void {
@@ -44,7 +48,7 @@ export class ReportRoomComponent {
 
 
   fetchAllRooms(): void {
-    this.reservationService.getAllidRooms().subscribe(
+    this.roomservice.getChambres().subscribe(
       (rooms)=>
       {
         this.allRooms = rooms;
@@ -60,18 +64,25 @@ export class ReportRoomComponent {
 
 
   onSubmit(): void {
-    
-      this.reportService.createReport(this.reportForm.value).subscribe(     
+    console.log(this.reportForm.value);
+      this.reportService.createReport(this.reportForm.value).subscribe(      
         res => {
           console.log('Report added successfully', res);
-          this.router.navigate(['/list']);
+          this.router.navigate(['/reporting/list']);
         },
         error => {
           console.log('Error adding report', error);
           console.log(this.reportForm.value);
         }
       );
-    } 
+    }
+     
+
+
+    
+    
+
+
 
 
 

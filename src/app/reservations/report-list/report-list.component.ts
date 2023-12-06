@@ -20,7 +20,6 @@ export class ReportListComponent {
   ngOnInit(): void {
     this.loadReports();
   }
-  ///commmends
 
   // Read (List Reports)
   loadReports(): void { 
@@ -34,7 +33,7 @@ export class ReportListComponent {
     );
   }
 
-
+/* 
   // Add report
   addReport(): void {
     this.reportService.createReport(this.newReport).subscribe(
@@ -47,7 +46,7 @@ export class ReportListComponent {
         console.log('Error adding report', error);
       }
     );
-  }
+  } */
 
    // Delete (Remove Report)
    deleteReport(reportId: number): void {
@@ -63,7 +62,8 @@ export class ReportListComponent {
   }
 
   navigate(reportId: number): void {
-    this.router.navigate([`/update/${reportId}`]);
+    this.router.navigate([`/reporting/update/${reportId}`]);
   }
+
 
 }

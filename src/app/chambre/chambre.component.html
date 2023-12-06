@@ -1,13 +1,10 @@
-<!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
-<link rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
+
 <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 <div class="content-page">
   <div class="content">
     <div class="container-fluid">
@@ -22,6 +19,12 @@
           [(ngModel)]="numeroChambreSearch" class="form-control">
         <button class="btn btn-primary" (click)="searchChambreByNumeroChambre()">Rechercher</button>
       </div>
+      <div class="mb-3">
+  <label for="nomBlocSearch">Recherche par nom du bloc:</label>
+  <input type="text" id="nomBlocSearch" [(ngModel)]="nomBlocSearch" class="form-control">
+  <button class="btn btn-primary" (click)="searchChambresByBloc()">Rechercher par bloc</button>
+</div>
+
       <button (click)="navigateToDetails()" class="btn btn-info btn-sm">Détails</button>
 
       <div class="table-responsive">
@@ -41,7 +44,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let chambre of chambres">
+            <tr *ngFor="let chambre of chambres" [appHighlight]="chambre.isOccupied">
               <td>{{ chambre.idChambre }}</td>
               <td>{{ chambre.numeroChambre }}</td>
               <td>
@@ -81,4 +84,8 @@
       </div>
     </div>
   </div>
+
 </div>
+
+</div>
+<app-footer></app-footer>

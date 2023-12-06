@@ -16,13 +16,22 @@ export class EditBlocComponent implements OnInit {
   foyer:Foyer[]=[];
   selectedFoyerNom: string = ''; // Declare selectedFoyerNom here
   selectedFoyer: Foyer;
-  newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 , foyer:{ idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite:null},foyer_id_foyer:0};
+  newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 , foyer:{ idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+    idUniversite:0,
+    nomUniversite:'',
+    adresse:''  }},foyer_id_foyer:0};
   @Output() erreurClique: EventEmitter<void> = new EventEmitter<void>();
 
   constructor( private service: BlocService, private route: ActivatedRoute, private router: Router,private foyerService: FoyerService,
     private cdr: ChangeDetectorRef) {
-    this.selectedFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: null };
-    this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: null }; // Assurez-vous que newBloc.foyer est initialisé
+    this.selectedFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+      idUniversite:0,
+      nomUniversite:'',
+      adresse:''  }};
+    this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+      idUniversite:0,
+      nomUniversite:'',
+      adresse:''  } }; // Assurez-vous que newBloc.foyer est initialisé
 
   }
 

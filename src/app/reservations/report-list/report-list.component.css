@@ -1,0 +1,50 @@
+.table th {
+    background-color: #0056b3;
+    color: white;
+  }
+  .container {
+    padding: 20px;
+    margin: auto;
+    max-width: 900px; /* Adjust as needed */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-text.text-danger {
+    color: #d9534f;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}

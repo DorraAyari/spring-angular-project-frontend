@@ -28,10 +28,11 @@ export class DetailsChambreComponent {
     )
   }
 
-  parentDeleteChambre(idChambre : number){
+  parentDeleteChambre(chambreId: number) {
 
     if (confirm('Are you sure you want to delete this chambre ?')) {
-      this.chambreService.deleteChambre(idChambre).subscribe(
+      this.chambreService.deleteChambre(chambreId).subscribe(
+
         () => {
           console.log('chambre deleted successfully');
           // Recharger les données DataTables

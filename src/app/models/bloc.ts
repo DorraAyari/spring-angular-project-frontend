@@ -5,7 +5,11 @@ export class Bloc {
     nomBloc!: String;
     capaciteBloc!: number;
     foyer?: Foyer;
-    foyer_id_foyer: number;
+
+    foyer_id_foyer: number; // Add this line
+ // Add this line
+
+
 
 
     constructor() {

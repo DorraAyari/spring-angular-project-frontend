@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ReservationService {
 
+
   reservationURL="http://localhost:8088/reservation"
 
   constructor(private client:HttpClient) { }
@@ -25,7 +26,7 @@ export class ReservationService {
   }
 
   deleteReservation(id:any){
-    return this.client.delete(`${this.reservationURL}/delete/${id}`) 
+    return this.client.delete(`${this.reservationURL}/delete/${id}`)
   }
 
   updateReservation(reservation:any){
@@ -51,6 +52,7 @@ export class ReservationService {
   getAllCINs(): Observable<any[]> {
     return this.client.get<any[]>(`${this.reservationURL}/cins`);
   }
+
 
   getReservationCount(startDate:string,endDate:string): Observable<any> {
     return this.client.get<any>(`${this.reservationURL}/getReservationParAnneeUniversitaire`,{

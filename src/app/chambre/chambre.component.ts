@@ -8,15 +8,17 @@ import {
   OnDestroy,
   ViewChild,
   ChangeDetectorRef,
+  NgModule,
+
 } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { Bloc } from '../models/bloc';
+import { HighlightDirective } from './highlightDirective.component';
 
 declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
 
-// Déclaration de $ pour éviter les erreurs de TypeScript
 import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
@@ -56,6 +58,15 @@ export class CustomDirective {
 })
 
 export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
+  @NgModule({
+    declarations: [
+      // ... other components and directives
+      HighlightDirective,
+    ],
+    // ... other module configuration
+  })
+
+
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective | undefined;
 
@@ -67,6 +78,18 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   chambreToDeleteId!: number;
   dataTablesInstance: any;
   numeroChambreSearch: number | undefined;
+  nomBlocSearch: string | undefined;
+  constructor(
+    private chambreService: ChambreService,
+    private router: Router,
+    private cdRef: ChangeDetectorRef
+  ) {}
+  ngOnInit(): void {
+    this.dtOptions = {
+      destroy: true,
+    };
+
+
 
   constructor(
     private chambreService: ChambreService,
@@ -131,6 +154,47 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.dtElement) {
       this.dtTrigger.unsubscribe();
+    }
+  }
+  searchChambresByBloc(): void {
+    if (this.nomBlocSearch !== undefined) {
+      this.chambreService.searchChambresByBloc(this.nomBlocSearch).subscribe(
+        (chambres: Chambre[]) => {
+          // Fetch Bloc information for each chambre
+          const fetchBlocInfo = (chambre: Chambre) => {
+            this.chambreService.getBlocByChambre(chambre.idChambre).subscribe(
+              (bloc: Bloc) => {
+                // Assign the retrieved bloc to the chambre
+                chambre.bloc = bloc;
+              },
+              (error) => {
+                console.error('Error fetching bloc for chambre', error);
+                // Handle error as needed
+              }
+            );
+          };
+
+          // Update chambres array with fetched Bloc information
+          this.chambres = chambres.map((chambre) => {
+            chambre.isOccupied = chambre.isOccupied !== null ? chambre.isOccupied : false;
+            fetchBlocInfo(chambre);
+            return chambre;
+          });
+
+          // Update the DataTable with the new data
+          if (this.dataTablesInstance) {
+            this.dataTablesInstance.clear();
+            this.dataTablesInstance.rows.add(this.chambres);
+            this.dataTablesInstance.draw();
+            this.cdRef.detectChanges();
+          }
+        },
+        (error) => {
+          console.error('Error searching chambres by bloc', error);
+          // Handle error as needed
+        }
+      );
+
     }
   }
 
@@ -223,11 +287,13 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openModificationPopup(chambre: Chambre): void {
     // Navigate to the chambre modification route, passing the chambre ID
-    this.router.navigate(['/chambre-modification', chambre.idChambre]);
+    this.router.navigate(['/chambre/chambre-modification', chambre.idChambre]);
   }
   navigateToDetails(){
-    this.router.navigate(['detailsChambre'])
+    this.router.navigate(['/chambre/detailsChambre'])
   }
+
+ 
   deleteChambre(chambreId: number): void {
     Swal.fire({
       title: 'Confirmation',
@@ -264,7 +330,7 @@ export class ChambreComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   navigateToAjouter(): void {
-    this.router.navigate(['/chambre-ajouter']);
+    this.router.navigate(['/chambre/chambre-ajouter']);
   }
   getTypeChambreColor(typeChambre: string): string {
     switch (typeChambre) {

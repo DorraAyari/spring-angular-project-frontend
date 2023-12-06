@@ -14,12 +14,21 @@ export class AddBlocComponent {
   foyer:Foyer[]=[];
   selectedFoyerNom: string = ''; // Declare selectedFoyerNom here
   selectedFoyer: Foyer;
-  newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 , foyer:{ idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite:null},foyer_id_foyer:0};
+  newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 , foyer:{ idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+    idUniversite:0,
+    nomUniversite:'',
+    adresse:''  }},foyer_id_foyer:0};
   
   constructor(private service: BlocService, private route: ActivatedRoute, private router: Router, private foyerService: FoyerService,
     private cdr: ChangeDetectorRef) {
-    this.selectedFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: null };
-    this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: null }; // Assurez-vous que newBloc.foyer est initialisé
+    this.selectedFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+      idUniversite:0,
+      nomUniversite:'',
+      adresse:''  } };
+    this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
+      idUniversite:0,
+      nomUniversite:'',
+      adresse:''  } }; // Assurez-vous que newBloc.foyer est initialisé
   }
   
 
@@ -66,7 +75,10 @@ export class AddBlocComponent {
 
     // Ensure that newBloc.bloc is defined before accessing its properties
     if (!this.newBloc.foyer) {
-      this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,universite:null };
+      this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,universite: {
+        idUniversite:0,
+        nomUniversite:'',
+        adresse:''  } };
     }
 
     // Use selectedFoyer from updateBlocId directly
@@ -105,7 +117,10 @@ export class AddBlocComponent {
               idBloc: 0,
               nomBloc: '',
               capaciteBloc: 0,
-              foyer: { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,universite:null }, // Initialize bloc
+              foyer: { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,universite: {
+                idUniversite:0,
+                nomUniversite:'',
+                adresse:''  } }, // Initialize bloc
               foyer_id_foyer: 0
             };
           });
