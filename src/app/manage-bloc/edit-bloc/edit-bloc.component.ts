@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit ,EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BlocService } from '../Service/bloc.service';
+import { BlocService } from '../../services/bloc.service';
 import { Bloc } from 'src/app/models/bloc';
 import { Foyer } from 'src/app/models/foyer';
 import { FoyerService } from 'src/app/services/foyer.service';

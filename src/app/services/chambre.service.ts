@@ -28,7 +28,6 @@ export class ChambreService {
   }
 
 
-
   updateChambre(chambreId: number, updatedChambre: Chambre): Observable<Chambre> {
     const url = `${this.apiUrl}/chambre/update/${chambreId}`;
     return this.http.put<Chambre>(url, updatedChambre);

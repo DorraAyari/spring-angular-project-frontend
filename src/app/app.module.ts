@@ -48,6 +48,8 @@ import { MessageErreurComponent } from './shared/message-erreur/message-erreur.c
 
 import { DetailComponent } from './chambre/detail/detail.component';
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+import { DetailsBlocComponent } from './manage-bloc/details-bloc/details-bloc.component';
+import { AddBlocDirectiveDirective } from './add-bloc-directive.directive';
 
 
 @NgModule({
@@ -76,8 +78,9 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent,
-    DetailComponent,
     DetailsChambreComponent,
+    
+    AddBlocDirectiveDirective,
   ],
   imports: [
     BrowserModule,
