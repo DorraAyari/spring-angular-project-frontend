@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BlocService } from '../Service/bloc.service';
+import { BlocService } from '../../services/bloc.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -1,0 +1,13 @@
+
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-4" *ngFor="let f of bloc">
+                    <app-detail [bloc]="f" (passId)="parentDeleteBloc($event)" ></app-detail>
+                  </div>
+                  
+            </div>
+        </div>
+    </div>
+</div>

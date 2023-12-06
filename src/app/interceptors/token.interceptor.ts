@@ -28,12 +28,17 @@ export class TokenInterceptor implements HttpInterceptor {
       })
     }
 
+
     return next.handle(request).pipe(
       catchError((err:any)=>{
         if(err instanceof HttpErrorResponse){
           console.log('err: ',err);
 
           if(err.status === 403 || err.status === 0){
+          //  this.auth.signOut();
+            //console.log('err: ',err);
+            //return this.handleUnAuthorizedError(request,next);
+          }
            // this.auth.signOut();
         }
       }
@@ -89,6 +94,8 @@ export class TokenInterceptor implements HttpInterceptor {
         return throwError(()=>{
           //this.toast.warning({detail:"WARNING", summary:"Token is expired, Please login again !", duration:3000});
           //this.router.navigate(['auth']);
+          this.auth.signOut();
+         
           // this.auth.signOut();
         })
       })
