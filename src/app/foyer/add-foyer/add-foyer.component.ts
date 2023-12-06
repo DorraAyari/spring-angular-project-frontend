@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Foyer } from 'src/app/models/foyer';
+import { Universite } from 'src/app/models/universite';
 import { FoyerService } from 'src/app/services/foyer.service';
 import Swal from 'sweetalert2';
 
@@ -21,7 +22,9 @@ export class AddFoyerComponent implements OnInit {
    addfoyerForm !: FormGroup ;
    title : String = 'Ajouter une nouvelle foyer' ;
    id : any;
-   
+
+   universities!: Universite[];
+   selectuniversite!: number;
 
    
 
@@ -33,13 +36,16 @@ export class AddFoyerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.id = this.activateRoute.snapshot.params['id'] ;
-      if (this.id) {
-        this.title = 'Modifier Université';
-        this.getFoyerById();
-      } ;
-
+    this.id = this.activateRoute.snapshot.params['id'];
+    if (this.id) {
+      this.title = 'Modifier Université';
+      this.getFoyerById();
+    }
+    this.ajoute();  // Call the ajoute() method to fetch universities
   }
+  
+
+  
 
   addFoyer() : void {
 
@@ -68,7 +74,7 @@ export class AddFoyerComponent implements OnInit {
       
     } else {
 
-      this.foyerService.ajouterFoyer(this.foyer).subscribe(
+      this.foyerService.ajouterFoyer(this.foyer,this.selectuniversite).subscribe(
         (response : Foyer) => {
           console.log('add success',response);
           //alert("L'université a été ajouté avec succés");
@@ -105,6 +111,11 @@ export class AddFoyerComponent implements OnInit {
     }
    
   }
+  ajoute(): void {
+    this.foyerService.findAllUniversite().subscribe(data => {
+      this.universities = data;
+    });
+  }
 
   getFoyerById(){
     this.foyerService.getFoyerById(this.id).subscribe(
@@ -118,5 +129,9 @@ export class AddFoyerComponent implements OnInit {
        }
     );
    }
+
+   goToHome() {
+    this.router.navigate(['/home-foyer']); // Remplacez '/' par le chemin de votre page d'accueil si nécessaire
+  }
 
   }

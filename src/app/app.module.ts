@@ -37,6 +37,9 @@ import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
 import { DetailsFoyerComponent } from './foyer/details-foyer/details-foyer.component';
 import { DetailComponent } from './foyer/detail/detail.component';
+import { CouleurDirective } from './foyer/CouleurDirective';
+import { HighlightDirective } from './foyer/highlight.directive';
+import { FoyerModule } from './foyer/foyer/foyer.module';
 
 @NgModule({
   declarations: [
@@ -58,11 +61,9 @@ import { DetailComponent } from './foyer/detail/detail.component';
     ShowBlocComponent,
     LoginRegisterComponent,
     HomeComponent,
-    AddFoyerComponent,
-    EditFoyerComponent,
-    HomeFoyerComponent,
-    DetailsFoyerComponent,
-    DetailComponent
+   
+    CouleurDirective,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,8 @@ import { DetailComponent } from './foyer/detail/detail.component';
     NgToastModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    ToastModule
+    ToastModule,
+    FoyerModule
     ],
     schemas: [
       CUSTOM_ELEMENTS_SCHEMA

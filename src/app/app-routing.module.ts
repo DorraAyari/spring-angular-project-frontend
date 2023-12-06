@@ -15,12 +15,11 @@ import { AddBlocComponent } from './manage-bloc/add-bloc/add-bloc.component';
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { authGuard } from './guards/auth.guard';
-import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
-import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
-import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
-import { DetailsFoyerComponent } from './foyer/details-foyer/details-foyer.component';
+
 
 const routes: Routes = [
+
+  {path:'f',loadChildren:()=>import('../app/foyer/foyer/foyer.module').then((t)=>t.FoyerModule)},
   {path:'chambre',component:ChambreComponent},
   {path:'auth',component:LoginRegisterComponent},
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
@@ -36,10 +35,7 @@ const routes: Routes = [
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
   {path:'home',component:HomeComponent,canActivate: [authGuard]},
-  {path:'home-foyer',component:HomeFoyerComponent,canActivate: [authGuard]},
-  { path:'editFoyer/:id', component:EditFoyerComponent,canActivate: [authGuard]},
-  { path:'add-foyer', component:AddFoyerComponent,canActivate: [authGuard] },
-  { path:'detailsFoyer', component:DetailsFoyerComponent,canActivate: [authGuard] },
+  
 
 
 ];

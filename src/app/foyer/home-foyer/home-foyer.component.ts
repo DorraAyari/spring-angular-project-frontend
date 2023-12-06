@@ -2,26 +2,33 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Foyer } from 'src/app/models/foyer';
 import { FoyerService } from 'src/app/services/foyer.service';
-import Swal from 'sweetalert2';
-import { debounceTime } from 'rxjs/operators';
-import { fromEvent } from 'rxjs';
+import { Universite } from 'src/app/models/universite';
+import { UniversiteService } from 'src/app/services/universite.service';
 declare var $: any; // Déclaration de $ pour éviter les erreurs de TypeScript
+
+
 
 @Component({
   selector: 'app-home-foyer',
   templateUrl: './home-foyer.component.html',
   styleUrls: ['./home-foyer.component.css']
 })
+
+
 export class HomeFoyerComponent implements OnInit, AfterViewInit {
   foyer : Foyer[] = [] ;
   dataTablesInstance: any ;
   rechercherParNom: boolean = false;
   nomRecherchee: Foyer['nomFoyer'] = '' ;
+  universiteName: string = '';
+  universite!: Universite[];
   
 
   constructor(
     private router : Router,
     private foyerService : FoyerService
+    
+   
   ){}
 
   ngOnInit(): void {
@@ -29,16 +36,38 @@ export class HomeFoyerComponent implements OnInit, AfterViewInit {
     this.getFoyes();
   }
 
-  ngAfterViewInit(): void {
-    this.dataTablesInstance = $('#foyerTable').DataTable({});
-    
+  searchByUniversite() {
+    this.foyerService.findByUniversite(this.universiteName).subscribe(
+      (data) => {
+        this.foyer = data;
+      },
+      (error) => {
+        console.error('Erreur lors de la recherche par université', error);
+      }
+    );
   }
 
-  getFoyes(){
-    this.foyerService.getFoyes().subscribe(
-      reponse => this.foyer = reponse 
-    )
+  ngAfterViewInit(): void {
+    this.dataTablesInstance = $('#foyerTable').DataTable({});
+   
   }
+  
+
+  
+  getFoyes() {
+    this.foyerService.getFoyes().subscribe(
+      (reponse: Foyer[]) => {
+        this.foyer = reponse;
+  
+       
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des foyers', error);
+      }
+    );
+  }
+  
+  
 
   deleteFoyer(idFoyer : number){
 
@@ -84,6 +113,7 @@ export class HomeFoyerComponent implements OnInit, AfterViewInit {
 
   annulerRecherche(): void {
     this.nomRecherchee = '';
+    this.universiteName = '';
     this.getFoyes() // Réinitialisez la liste filtrée avec toutes les universités
   }
 }

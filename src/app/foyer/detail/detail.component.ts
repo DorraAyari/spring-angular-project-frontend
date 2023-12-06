@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Foyer } from 'src/app/models/foyer';
+import { Universite } from 'src/app/models/universite';
 import { FoyerService } from 'src/app/services/foyer.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { FoyerService } from 'src/app/services/foyer.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent {
+  //universite : Universite;
   @Input() foyer : Foyer = {
     idFoyer:0,
     nomFoyer:'',
@@ -28,6 +30,7 @@ export class DetailComponent {
         (count) => (this.nombreChambres = count),
         (error) => console.error(error)
       );
-    }
+    
 
+}
 }

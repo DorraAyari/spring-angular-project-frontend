@@ -55,5 +55,8 @@ export class DetailsFoyerComponent {
     }
 
   }
+  goToHome(){
+    this.router.navigate(['/home-foyer'])
+  }
 
 }

@@ -1,9 +1,9 @@
-  <!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
+ <div class=""> <!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
+  <app-sidebar></app-sidebar>
   <div class="content-page">
     <div class="content">
       <div class="container-fluid">
@@ -19,45 +19,66 @@
             <div class="input-group-append">
               <button class="btn btn-success" (click)="rechercherParNomm()">Rechercher</button>
               <button class="btn btn-danger" (click)="annulerRecherche()">Annuler la recherche</button>
+             
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="universiteName">Rechercher par nom Univeristé :</label>
+          <div class="input-group">
+            <input type="text" id="universiteName" class="form-control" [(ngModel)]="universiteName" />
+            <div class="input-group-append">
+              <button class="btn btn-success" (click)="searchByUniversite()">Rechercher </button>
+              <button class="btn btn-danger" (click)="annulerRecherche()">Annuler la recherche</button>
+             
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="nomFoyer">Pour plus de details :</label>
+          <div class="input-group">
+            <div class="input-group-append">
+              <button (click)="navigateToDetails()" class="btn btn-warning">   Détails    </button>
             </div>
           </div>
         </div>
   
         <div class="table-responsive" >
-          <table id="foyerTables" class="table table-striped table-bordered table-hover" appCouleur>
+          
+           <table id="foyerTables" class="table table-striped table-bordered table-hover" >
               <thead class="thead-custom">
                 <tr>
                   <th>ID foyer</th>
                   <th>Nom Foyer</th>
                   <th> Capacité </th>
+                  
                   <th>Delete</th>
                   <th>Edit</th>
-                  <th>Details</th>
+                  
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let foyer of foyer">
                   <td>{{foyer.idFoyer}}</td>
                   <td>{{foyer.nomFoyer}}</td>
-                  <td>{{foyer.capaciteFoyer}}</td>
-                  <td>
+                  <td [ngStyle]="{'background-color': (foyer.universite?.nomUniversite) ? 'BlanchedAlmond' : 'white'}">{{foyer.capaciteFoyer}}</td>
+                  
+                   <td>
                     <button  (click)="deleteFoyer(foyer.idFoyer)" class="btn btn-danger btn-sm">Effacer</button>
-
                   </td>
                   <td>
                     <button  (click)="navigateTo(foyer.idFoyer)" class="btn btn-primary btn-sm">Modifier</button>
                   </td>
-                  <td>
-                    <button (click)="navigateToDetails()" class="btn btn-info btn-sm">Détails</button>
-                  </td>
+        
                 </tr>
               </tbody>
             </table>
+         
         </div>
         
       </div>
     </div>
   </div>
-  
+</div>
   
   

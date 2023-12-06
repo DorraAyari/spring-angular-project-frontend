@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Foyer } from 'src/app/models/foyer';
+import { Universite } from 'src/app/models/universite';
 
 import { FoyerService } from 'src/app/services/foyer.service';
+import { UniversiteService } from 'src/app/services/universite.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,18 +16,20 @@ import Swal from 'sweetalert2';
 export class EditFoyerComponent implements OnInit {
 
   foyer!: Foyer;
+  universite:Universite[]=[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private foyerService: FoyerService
+    private foyerService: FoyerService,
+    private universiteService: UniversiteService
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = +params['id']; // '+' is used to convert the id to a number
+      const id = +params['id'];
       this.loadFoyer(id);
-
+      this.loadUniversite();
     });
   }
 
@@ -39,12 +43,24 @@ export class EditFoyerComponent implements OnInit {
       }
     );
   }
+  
+  
+
+  loadUniversite(): void {
+    this.universiteService.getAllUniversities().subscribe(
+      (universites: Universite[]) => {
+        this.universite = universites;
+      },
+      (error) => {
+        console.error('Error fetching blocs', error);
+      }
+    );
+  }
 
   updateFoyer(): void {
     this.foyerService.updateFoyer(this.foyer.idFoyer, this.foyer).subscribe(
       (updatedFoyer: Foyer) => {
         console.log('Foyer updated successfully', updatedFoyer);
-
         // Show SweetAlert2 confirmation popup
         Swal.fire({
           title: 'Succès!',
@@ -58,7 +74,6 @@ export class EditFoyerComponent implements OnInit {
       },
       (error) => {
         console.error('Error updating foyer', error);
-
         // Show SweetAlert2 error popup
         Swal.fire({
           title: 'Erreur!',
@@ -66,9 +81,12 @@ export class EditFoyerComponent implements OnInit {
           icon: 'error',
           confirmButtonText: 'OK'
         });
-
         // Handle error as needed
       }
     );
-}
+  }
+
+  goToHome() {
+    this.router.navigate(['/home-foyer']);
+  }
 }
