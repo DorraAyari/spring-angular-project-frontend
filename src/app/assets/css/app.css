@@ -2869,10 +2869,11 @@ textarea.form-control-lg {
   background-size: contain;
   border: var(--ct-form-check-input-border);
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
+  print-color-adjust: exact;
 }
+
 
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;

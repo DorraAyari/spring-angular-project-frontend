@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ReservationService {
 
   reservationURL="http://localhost:8088/reservation"
+
   constructor(private client:HttpClient) { }
 
   addReservation(reservation:any){
@@ -51,6 +52,26 @@ export class ReservationService {
     return this.client.get<any[]>(`${this.reservationURL}/cins`);
   }
 
-  
-  
+  getReservationCount(startDate:string,endDate:string): Observable<any> {
+    return this.client.get<any>(`${this.reservationURL}/getReservationParAnneeUniversitaire`,{
+    params: {
+        debutAnnee: startDate,
+        finAnnee: endDate
+      }
+    });
+  }
+
+  getAllUnreservedRooms(): Observable<any[]>{
+    return this.client.get<any[]>(`${this.reservationURL}/unreservedchambre`);
+  }
+
+  getAllUnreservedCins(): Observable<any[]>{
+    return this.client.get<any[]>(`${this.reservationURL}/unreservedcins`);
+  }
+
+
+  getAllidRooms(): Observable<any[]> {
+    return this.client.get<any[]>(`${this.reservationURL}/idchambres`);
+  }
+ 
 }
