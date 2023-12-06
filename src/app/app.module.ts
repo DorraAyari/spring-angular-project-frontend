@@ -134,12 +134,6 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     },
 
     ],
-
-<<<<<<< HEAD
-=======
-    CUSTOM_ELEMENTS_SCHEMA
-    ],
->>>>>>> 4c1ea1881311efcde0d85134775210f4f32079dd
   bootstrap: [AppComponent]
 })
 export class AppModule { }
