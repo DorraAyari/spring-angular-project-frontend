@@ -1,0 +1,61 @@
+
+    <div class="container">
+
+      <form [formGroup]="addStudentForm" class="etudiant-form">
+
+          <h2 class="text-center mb-4">Ajouter une nouvelle Etudiant</h2>
+        <div class="form-group pt-3">
+          <div class="input-field" [class.error]="addStudentForm.controls['nomEt'].dirty && addStudentForm.hasError('required','nomEt')">
+            <span class="fa fa-id-card p-2"></span>
+            <input formControlName="nomEt" type="text" placeholder="FirstName">
+          </div>
+        </div>
+        <small *ngIf="addStudentForm.controls['nomEt'].dirty && addStudentForm.hasError('required','nomEt')" class="text-danger ml-1">*FirstName is required</small>
+
+        <div class="form-group pt-3">
+          <div class="input-field" [class.error]="addStudentForm.controls['prenomEt'].dirty && addStudentForm.hasError('required','prenomEt')">
+            <span class="fa fa-id-card p-2"></span>
+            <input formControlName="prenomEt" type="text" placeholder="LastName">
+          </div>
+        </div>
+        <small *ngIf="addStudentForm.controls['prenomEt'].dirty && addStudentForm.hasError('required','prenomEt')" class="text-danger ml-1">*LastName is required</small>
+
+        <div class="form-group pt-3">
+          <div class="input-field" [class.error]="addStudentForm.controls['email'].dirty && addStudentForm.hasError('required','email')">
+            <span class="fa fa-id-card p-2"></span>
+            <input formControlName="email" type="text" placeholder="Email">
+          </div>
+        </div>
+        <small *ngIf="addStudentForm.controls['email'].dirty && addStudentForm.hasError('required','email')" class="text-danger ml-1">*Email is invalid</small>
+
+        <div class="form-group pt-3">
+          <div class="input-field" [class.error]="addStudentForm.controls['cin'].dirty && addStudentForm.hasError('required','cin')">
+            <span class="fa fa-id-card p-2"></span>
+            <input formControlName="cin" type="text" placeholder="CIN">
+          </div>
+        </div>
+        <small *ngIf="addStudentForm.controls['cin'].dirty && addStudentForm.hasError('required','cin')" class="text-danger ml-1">*UserName is required</small>
+
+
+
+        <div class="form-group pt-3">
+          <div class="input-field" [class.error]="addStudentForm.controls['ecole'].dirty && addStudentForm.hasError('required','ecole')">
+            <span class="fa fa-id-card p-2"></span>
+            <input formControlName="ecole" type="text" placeholder="Ecole">
+          </div>
+        </div>
+        <small *ngIf="addStudentForm.controls['ecole'].dirty && addStudentForm.hasError('required','ecole')" class="text-danger ml-1">*University is required</small>
+
+        <div class="form-group pt-3">
+          <div class="input-field" [class.error]="addStudentForm.controls['password'].dirty && addStudentForm.hasError('required','password')">
+            <span class="fa fa-lock p-2"></span>
+            <input formControlName="password" [type]="type" placeholder="Password">
+            <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+          </div>
+        </div>
+        <small *ngIf="addStudentForm.controls['password'].dirty && addStudentForm.hasError('required','password')" class="text-danger ml-1">*Password is required</small>
+
+        <button (click)="addStudent()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Add Student</button>
+
+      </form>
+    </div>

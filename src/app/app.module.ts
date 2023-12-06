@@ -38,7 +38,6 @@ import { HighlightDirective } from './directive/highlight.directive';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { PopupComponent } from './universite/popup/popup.component';
 
-import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { NgToastModule } from 'ng-angular-popup';
@@ -53,8 +52,16 @@ import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
 
+
+import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
+import { BarSideComponent } from './shared/bar-side/bar-side.component';
+
+
+
 import { DetailComponent } from './chambre/detail/detail.component';
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
+import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+
 
 
 @NgModule({
@@ -98,6 +105,9 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent,
+
+    SidebarComponent,
+
     DetailComponent,
     DetailsChambreComponent,
 
@@ -113,29 +123,21 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     MatSnackBarModule,
     ],
 
-  
- 
 
 
   providers: [
-    ChambreService, // Add this line
-    NgToastModule,
-    BrowserAnimationsModule,
-    MatSnackBarModule,
-    ToastModule,
+
     HttpClient,{
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
     },
+
     ],
     schemas: [
-      CUSTOM_ELEMENTS_SCHEMA
-   
 
-  ],
-
-    
+    CUSTOM_ELEMENTS_SCHEMA
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -32,12 +32,33 @@ import { authGuard } from './guards/auth.guard';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
+
+import { NotfoundComponent } from './shared/notfound/notfound.component';
+
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 
 
 const routes: Routes = [
-  {path:'chambre',component:ChambreComponent},
+
   {path:'auth',component:LoginRegisterComponent},
+
+
+  //Manage Users
+  {path:'u',loadChildren:()=>import('../app/manageUser/module/manage-user/manage-user.module').then((t)=>t.ManageUserModule)},
+
+
+  {path:'chambre',component:ChambreComponent,canActivate: [authGuard]},
+  { path: 'chambre-modification/:id', component: ChambreModificationComponent ,canActivate: [authGuard]},
+  { path: 'chambre-ajouter', component: ChambreAjouterComponent,canActivate: [authGuard] },
+  {path : 'ajouterUniversite', component : AjouterUniversiteComponent,canActivate: [authGuard]},
+  {path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]},
+  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent,canActivate: [authGuard]},
+  {path : 'detailsUniversites' , component : DetailsUniversiteComponent,canActivate: [authGuard]},
+  { path: 'gestionreservation', component: ReservationComponent },
+  { path: 'confirmreservation', component: AddReservationComponent },
+  { path: 'ajouterreservation', component: AddReservationComponent },
+
+
   { path: 'chambre-modification/:id', component: ChambreModificationComponent },
   { path: 'chambre-ajouter', component: ChambreAjouterComponent },
 
@@ -61,14 +82,15 @@ const routes: Routes = [
   { path: 'gestionreservation', component: ReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
 /*   { path: 'reporting', component: ReportRoomComponent },
-  { path: 'listreport', component: ReportListComponent }, 
+  { path: 'listreport', component: ReportListComponent },
   { path: 'updatereport/:id', component: UpdateReportsComponent },  */
-  
+
   {
     path: 'reporting',
     loadChildren: () => import('./reservations/reporting/reporting.module').then(m => m.ReportingModule)
   },
- 
+
+
 
   {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
   {path : 'showUniversites' , component : ListeUniversitesComponent},
@@ -91,10 +113,14 @@ const routes: Routes = [
   {path:'bloc/:id',component:EditBlocComponent},
   {path:'add',component:AddBlocComponent},
   {path:'home',component:HomeComponent,canActivate: [authGuard]},
-  {path:'foyer/home-foyer',component:HomeFoyerComponent},
-  { path:'foyer/editFoyer/:id', component:EditFoyerComponent },
-  { path:'foyer/add-foyer', component:AddFoyerComponent },
 
+  {path:'foyer/home-foyer',component:HomeFoyerComponent,canActivate: [authGuard]},
+  { path:'foyer/editFoyer/:id', component:EditFoyerComponent,canActivate: [authGuard] },
+  { path:'foyer/add-foyer', component:AddFoyerComponent,canActivate: [authGuard] },
+
+
+
+  {path:'**',component:NotfoundComponent}
 
 ];
 
