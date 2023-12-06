@@ -132,21 +132,7 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     },
 
     ],
-    schemas: [
 
-    CUSTOM_ELEMENTS_SCHEMA
-    ],
-
-
-
-
-  providers: [
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
