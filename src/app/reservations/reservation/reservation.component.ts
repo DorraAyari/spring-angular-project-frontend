@@ -40,14 +40,13 @@ export class ReservationComponent {
       (res) => {
         console.log("response from BackEnd", res);
         this.Reservations = res;
+        this.copyList=res;
        // console.log("testtttttt",this.fetchRooms);
       },
       (error) => {
         console.log("Error fetching reservations", error);
       }
     );
-
-  
   }
 
   getStatusClass(status: string): string {
@@ -161,7 +160,14 @@ export class ReservationComponent {
     }
 
 
-
+    copyList:any[]=[]
+    filter(value:any){
+      let v=value.target.value;
+      this.Reservations=this.copyList.filter(l=>{
+        return l.status.toLowerCase().includes(v.toLowerCase());
+      })
+  
+    }
 
 
   }

@@ -100,6 +100,10 @@ export class AddReservationComponent {
     }
  
 
+    navigateToPreviousPage(): void {
+      this.router.navigate(['/gestionreservation']);
+    }
+
     
    /*  fetchAllRooms() {
       this.reservationService.getAllRooms().subscribe(

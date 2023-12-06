@@ -1,3 +1,7 @@
+<div class="">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
 <div class="content-page">
     <div class="content">
         <div class="site-section">
@@ -8,16 +12,16 @@
                             <!-- Chambre Selection -->
                             <div class="form-group">
                                 <label for="numeroChambre" class="form-label">Numéro Chambre:</label>
-                                <select formControlName="chambre" id="numeroChambreSelect" class="form-control">
-                                    <option value="" disabled>Choisissez une chambre</option>
-                                    <option *ngFor="let roomId of allRooms" [value]="roomId">{{ roomId.idChambre }}</option>
-                                </select>
+                                 <select formControlName="chambre" [(ngModel)]="romm.chambre"  id="numeroChambreSelect" class="form-control">
+                                    <option *ngFor="let room of allRooms" [ngValue]="room">{{room.idChambre}}</option>
+                                </select> 
+                                
                             </div>
 
                             <!-- Problem Type Selection -->
                             <div class="form-group">
                                 <label for="problemType" class="form-label">Type de problème:</label>
-                                <select formControlName="problem" id="problemTypeSelect" class="form-control">
+                                <select formControlName="problem" id="problemTypeSelect" class="form-control" [(ngModel)]="romm.problem">
                                     <option value="" disabled>Choisissez le type de problème</option>
                                     <option value="BINOME">BINOME</option>
                                     <option value="CHAUFFAGE">CHAUFFAGE</option>
@@ -30,13 +34,13 @@
                             <!-- Description Input -->
                             <div class="form-group">
                                 <label for="description" class="form-label">Description:</label>
-                                <input formControlName="description" type="text" class="form-control" placeholder="Description" name="description">
+                                <input formControlName="description" [(ngModel)]="romm.description" type="text" class="form-control" placeholder="Description" name="description">
                             </div>
 
                             <!-- Date of Report Input -->
                             <div class="form-group">
                                 <label for="dateReport" class="form-label">Date of Report:</label>
-                                <input formControlName="dateReport" type="date" class="form-control" placeholder="Date of Report" name="dateReport">
+                                <input formControlName="dateReport" [(ngModel)]="romm.dateReport" type="date" class="form-control" placeholder="Date of Report" name="dateReport">
                             </div>
 
                             <!-- Submit Button -->
@@ -50,4 +54,5 @@
         </div>
     </div>
 </div>
-
+<router-outlet></router-outlet>
+</div>

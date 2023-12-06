@@ -6,16 +6,23 @@ import { UpdateReportsComponent } from '../update-reports/update-reports.compone
 
 
 
-const routes: Routes = [
- 
-   {
-    path: '',component: ReportRoomComponent,
-    children: [
-      { path: 'list', component: ReportListComponent },
-      { path: 'update/:id', component: UpdateReportsComponent },
-    ]
-  } 
-];
+/* const routes: Routes = [
+  { path: '',component: ReportRoomComponent}, // for : /reporting
+  { path: 'list', component: ReportListComponent }, //for : /reporting/list
+  { path: 'update/:id', component: UpdateReportsComponent },// for :  /reporting/update/:id
+]; */
+
+ const routes: Routes = [{
+  path: '',
+  children: [
+    { path: '',component: ReportRoomComponent}, // for : /reporting
+    { path: 'list', component: ReportListComponent }, //for : /reporting/list
+    { path: 'update/:id', component: UpdateReportsComponent },// for :  /reporting/update/:id
+  ]
+}
+]; 
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -46,3 +46,18 @@
 .btn-submit:hover {
   background-color: #218838;
 }
+
+.btn-return {
+  background-color: #f44336; /* Or your preferred return button color */
+  color: white;
+}
+
+.btn-return {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s;
+}

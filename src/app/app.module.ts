@@ -84,8 +84,8 @@ import { DetailsChambreComponent } from './chambre/details-chambre/details-chamb
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
-
     MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
 
 

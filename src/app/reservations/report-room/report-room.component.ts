@@ -15,7 +15,7 @@ export class ReportRoomComponent {
 
 
   reportForm = new FormGroup({
-   chambre: new FormControl('', Validators.required), 
+   chambre: new FormControl(null, Validators.required), 
     problem: new FormControl('', Validators.required),
     description: new FormControl('', [
       Validators.required,
@@ -31,6 +31,8 @@ export class ReportRoomComponent {
   allRooms: any[] = [];
   room: any = {};
   reportData : any[] = [];
+
+
 
   constructor(
     private router: Router,
@@ -63,19 +65,24 @@ export class ReportRoomComponent {
 
   onSubmit(): void {
     console.log(this.reportForm.value);
-      this.reportService.createReport(this.reportForm.value).subscribe( 
-        
-            
+      this.reportService.createReport(this.reportForm.value).subscribe(      
         res => {
           console.log('Report added successfully', res);
-          this.router.navigate(['/list']);
+          this.router.navigate(['/reporting/list']);
         },
         error => {
           console.log('Error adding report', error);
           console.log(this.reportForm.value);
         }
       );
-    } 
+    }
+     
+
+
+    
+    
+
+
 
 
 

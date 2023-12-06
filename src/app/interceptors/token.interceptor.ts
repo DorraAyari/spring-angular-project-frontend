@@ -38,7 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if(err instanceof HttpErrorResponse){
           console.log('err: ',err);
           if(err.status === 403 || err.status === 0){
-            this.auth.signOut();
+           // this.auth.signOut();
             //console.log('err: ',err);
             //return this.handleUnAuthorizedError(request,next);
           }
