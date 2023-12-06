@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Bloc } from 'src/app/models/bloc';
 import { BlocService } from 'src/app/services/bloc.service';
 
@@ -16,15 +17,21 @@ export class DetailComponent {
     foyer_id_foyer:0 // Initialize bloc
     // Ajoutez le champ isOccupee avec la valeur initiale
 }  ;
-  constructor(private service: BlocService){}
+  constructor(private service: BlocService, private router: Router){}
    //nasna3 fi evenement wahdek l evenement hedha yabeeoth data
  
 
-   @Output() passId = new EventEmitter <number>();
+ 
+   @Output() passId = new EventEmitter<number>();
 
    deleteBloc(id: number) {
      this.passId.emit(id);
    }
-    ngOnInit() {
-    }
-}
+ 
+   detailBloc(id: number) {
+     this.router.navigate(['/details', id]);
+   }
+ 
+   ngOnInit() {
+   }
+ }

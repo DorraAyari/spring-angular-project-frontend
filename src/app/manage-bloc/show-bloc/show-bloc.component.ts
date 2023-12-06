@@ -90,7 +90,7 @@ export class ShowBlocComponent implements OnInit {
     this.service.findAll().subscribe((bloc) => (this.blocs = bloc));
   }
 
-  detailBloc() {
-    this.router.navigate(['/details']);
+  detailBloc(id:number) {
+    this.router.navigate(['bloc/details', id]);
   }
 }

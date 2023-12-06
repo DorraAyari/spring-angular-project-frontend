@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Bloc } from 'src/app/models/bloc';
 import { BlocService } from 'src/app/services/bloc.service';
 import Swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details-bloc',
@@ -13,16 +14,22 @@ import Swal from 'sweetalert2';
 })
 export class DetailsBlocComponent {
   bloc: Bloc[] = [];
-
   constructor(
     private BlocService: BlocService,
     private router: Router,
-  ) { }
+    private route: ActivatedRoute
+  ) {}
+  
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const id = +params['id'];
+      // Utilisez l'ID comme nécessaire dans votre composant
+      console.log(id); // Vérifiez si l'ID est correctement récupéré
+    });
+  
     this.getAllBloc();
   }
-
   getAllBloc() {
     this.BlocService.findAll().subscribe(
       reponse => this.bloc = reponse

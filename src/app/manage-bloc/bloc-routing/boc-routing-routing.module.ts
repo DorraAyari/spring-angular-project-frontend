@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: '', component: ShowBlocComponent },
       { path: 'bloc/:id', component: EditBlocComponent },
       { path: 'add', component: AddBlocComponent },
-      { path: 'details', component: DetailsBlocComponent } // Assurez-vous que cette route pointe vers le composant correct
+      { path: 'details/:id', component: DetailsBlocComponent }
     ]
   }
 ];
