@@ -51,6 +51,11 @@ import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
 import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
 import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { FoyerService } from './services/foyer.service';
+import { DetailsFoyerComponent } from './foyer/details-foyer/details-foyer.component';
+import { DetailComponent } from './foyer/detail/detail.component';
+import { CouleurDirective } from './foyer/CouleurDirective';
+import { HighlightDirective } from './foyer/highlight.directive';
+import { FoyerModule } from './foyer/foyer/foyer.module';
 
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 import { DetailComponent } from './chambre/detail/detail.component';
@@ -84,10 +89,20 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     ListeUniversitesComponent,
     DetailsUniversiteComponent,
 
+
+    AddFoyerComponent,
+    EditFoyerComponent,
+    HomeFoyerComponent,
+    DetailsFoyerComponent,
+    DetailComponent,
+    SidebarComponent,
+    NavbarComponent,
+
     DetailsChambreComponent,
 
 
     MessageErreurComponent,
+
 
 
     AddBlocComponent,
@@ -110,6 +125,11 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
 
     LoginRegisterComponent,
     HomeComponent,
+
+   
+    CouleurDirective,
+    HighlightDirective
+
     AddFoyerComponent,
     EditFoyerComponent,
     HomeFoyerComponent,
@@ -123,6 +143,7 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     DetailsChambreComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -131,6 +152,16 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     FormsModule,
     DataTablesModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
+    ToastModule,
+    FoyerModule,BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    DataTablesModule,
+    ReactiveFormsModule,
+    NgToastModule,
+    BrowserAnimationsModule,
     MatSnackBarModule,
     ToastModule
 

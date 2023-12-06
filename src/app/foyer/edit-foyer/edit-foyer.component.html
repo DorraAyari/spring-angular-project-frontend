@@ -8,24 +8,44 @@
                 <label>ID Foyer: </label>
                 <input type="text" [(ngModel)]="foyer.idFoyer" name="idFoyer" class="form-control" disabled>
   
-                <label>Nom Foyer: </label>
-                <input type="text" [(ngModel)]="foyer.nomFoyer" name="nomFoyer" class="form-control" required>
-                <div *ngIf="foyerForm.controls['nomFoyer'].hasError('required') && (foyerForm.submitted || foyerForm.controls['nomFoyer'].touched)"
-                  class="error-message">
-                  nom foyer est requis.
+                <div class="form-group">
+                  <label for="nomFoyer" class="form-label">Nom foyer</label>
+                  <input type="text" id="nomFoyer" class="form-control" [(ngModel)]="foyer.nomFoyer" name="nomFoyer" pattern="^[a-zA-Z\s]+$" required>
+        
+                    <div *ngIf="foyerForm.controls['nomFoyer'].hasError('required') && (foyerForm.controls['nomFoyer'].dirty || foyerForm.controls['nomFoyer'].touched)"
+                    class="error-message">
+                    <div *ngIf="foyerForm.controls['nomFoyer'].errors?.['required']">
+                      Nom foyer est requis.
+                    </div>
+                    <div *ngIf="foyerForm.controls['nomFoyer'].errors?.['pattern']">
+                      Le nom doit contenir uniquement des lettres minuscules ou majuscules.
+                    </div>
+               
+                  </div>
+        
                 </div>
   
-                <label>capacité foyer: </label>
-                <input type="number" [(ngModel)]="foyer.capaciteFoyer" name="capaciteFoyer" class="form-control" required>
-                <div *ngIf="foyerForm.controls['capaciteFoyer'].hasError('required') && (foyerForm.submitted || foyerForm.controls['capaciteFoyer'].touched)"
-                  class="error-message">
-                  Capacité foyer est requis.
+                <div class="form-group">
+                  <label for="capaciteFoyer" class="form-label">Capacité Foyer</label>
+                  <input type="number" id="capaciteFoyer" class="form-control" [(ngModel)]="foyer.capaciteFoyer" name="capaciteFoyer" required min="101">
+                  <div *ngIf="(foyerForm.controls['capaciteFoyer'].hasError('required') || foyerForm.controls['capaciteFoyer'].hasError('min')) && (foyerForm.controls['capaciteFoyer'].dirty || foyerForm.controls['capaciteFoyer'].touched)"
+                    class="error-message">
+                    <div *ngIf="foyerForm.controls['capaciteFoyer'].hasError('required')">
+                      Capacité est requis.
+                    </div>
+                    <div *ngIf="foyerForm.controls['capaciteFoyer'].hasError('min')" >
+                      La capacité doit être supérieure à 100.
+                    </div>
+                  </div>
                 </div>
-                
-  
+              
                 <!-- Other input fields for chambre properties -->
   
-                <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                <button type="submit" class="btn btn-success btn-block" [disabled]="foyerForm.invalid">Save Change</button>
+<div *ngIf="foyerForm.invalid" class="error-message">
+  Veuillez remplir le formulaire correctement avant de soumettre.
+</div>
+<button type="button" class="btn btn-secondary btn-block mt-3" (click)="goToHome()">Retour à la page d'accueil</button>
             </form>
         </div>
     </div>

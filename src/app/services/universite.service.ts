@@ -12,10 +12,11 @@ export class UniversiteService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getAllUniversities() : Observable<Universite[]>{
-    return this.httpClient.get<Universite[]>(`${this.baseUrl}/findAll`);
 
-  }
+  getAllUniversities() : Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/findAll`);
+    
+
 
   getUniversiteById(idUniversite : number) : Observable<Universite> {
     return this.httpClient.get<Universite>(`${this.baseUrl}/findById/${idUniversite}` );
