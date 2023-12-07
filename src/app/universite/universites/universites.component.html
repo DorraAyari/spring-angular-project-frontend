@@ -1,5 +1,5 @@
-
-<app-sidebar></app-sidebar>
+<app-bar-side></app-bar-side>
+<app-navbar></app-navbar>
 <div class="content-page">
     <div class="content">
         <div class="container-fluid">
@@ -9,7 +9,7 @@
                 <div class="col-xl-4" *ngFor="let u of universites">
                    <app-universit [universite]="u" (passId)="parentDeleteUnive($event)" ></app-universit>
                    <app-popup #popup (confirmed)="getUniversites()"></app-popup>
-                  
+
                 </div>
             </div>
         </div>

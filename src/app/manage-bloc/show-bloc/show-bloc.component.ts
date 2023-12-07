@@ -79,18 +79,18 @@ export class ShowBlocComponent implements OnInit {
   }
 
   updateBloc(id: number) {
-    this.router.navigate([`./bloc/${id}`], { relativeTo: this.route });
+    this.router.navigate([`bloc/bloc/${id}`]);
   }
 
   addBloc() {
-    this.router.navigate(['./add'], { relativeTo: this.route });
+    this.router.navigate(['bloc/add']);
   }
 
   getBloc(): void {
     this.service.findAll().subscribe((bloc) => (this.blocs = bloc));
   }
 
-  detailBloc(id:number) {
-    this.router.navigate(['bloc/details', id]);
+  detailBloc() {
+    this.router.navigate([`bloc/details`]);
   }
 }

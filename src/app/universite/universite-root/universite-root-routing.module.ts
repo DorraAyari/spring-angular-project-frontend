@@ -4,15 +4,16 @@ import { AjouterUniversiteComponent } from '../ajouter-universite/ajouter-univer
 import { DetailsUniversiteComponent } from '../details-universite/details-universite.component';
 import { UniversitesComponent } from '../universites/universites.component';
 import { ListeUniversitesComponent } from '../liste-universites/liste-universites.component';
+import { authGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
   children: [
-    {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
-    {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
-    {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
-    {path : 'universites' , component : UniversitesComponent},
-    { path : 'showUniversites' , component : ListeUniversitesComponent},
+    {path : 'ajouterUniversite', component : AjouterUniversiteComponent,canActivate: [authGuard]},
+    {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent,canActivate: [authGuard]},
+    {path : 'detailsUniversites' , component : DetailsUniversiteComponent,canActivate: [authGuard]},
+    {path : 'universites' , component : UniversitesComponent,canActivate: [authGuard]},
+    { path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]},
   ]
 }
 ];

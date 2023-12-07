@@ -29,10 +29,6 @@ import { UniversitesComponent } from './universite/universites/universites.compo
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { authGuard } from './guards/auth.guard';
-
-import { HomeFoyerComponent } from './foyer/home-foyer/home-foyer.component';
-import { EditFoyerComponent } from './foyer/edit-foyer/edit-foyer.component';
-import { AddFoyerComponent } from './foyer/add-foyer/add-foyer.component';
 import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 import { DetailsBlocComponent } from './manage-bloc/details-bloc/details-bloc.component';
 
@@ -45,7 +41,6 @@ const routes: Routes = [
 
 
   {path:'home-foyer',loadChildren:()=>import('../app/foyer/foyer/foyer.module').then((t)=>t.FoyerModule)},
-  {path:'chambre',component:ChambreComponent},
 
 
   { path: 'gestionreservation', component: ReservationComponent },
@@ -61,29 +56,14 @@ const routes: Routes = [
   {path:'u',loadChildren:()=>import('../app/manageUser/module/manage-user/manage-user.module').then((t)=>t.ManageUserModule)},
 
 
-  {path:'chambre',component:ChambreComponent,canActivate: [authGuard]},
-  { path: 'chambre-modification/:id', component: ChambreModificationComponent ,canActivate: [authGuard]},
-  { path: 'chambre-ajouter', component: ChambreAjouterComponent,canActivate: [authGuard] },
-  {path : 'ajouterUniversite', component : AjouterUniversiteComponent,canActivate: [authGuard]},
-  {path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]},
-  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent,canActivate: [authGuard]},
-  {path : 'detailsUniversites' , component : DetailsUniversiteComponent,canActivate: [authGuard]},
   { path: 'gestionreservation', component: ReservationComponent },
   { path: 'confirmreservation', component: AddReservationComponent },
   { path: 'ajouterreservation', component: AddReservationComponent },
 
 
-  { path: 'chambre-modification/:id', component: ChambreModificationComponent },
-  { path: 'chambre-ajouter', component: ChambreAjouterComponent },
 
-  {path : 'ajouterUniversite', component : AjouterUniversiteComponent,canActivate: [authGuard]},
-  {path : 'showUniversites' , component : ListeUniversitesComponent,canActivate: [authGuard]},
-  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent,canActivate: [authGuard]},
-  {path : 'detailsUniversites' , component : DetailsUniversiteComponent,canActivate: [authGuard]},
 
-  {path:'bloc', component:ShowBlocComponent},
-  {path:'bloc/:id',component:EditBlocComponent},
-  {path:'add',component:AddBlocComponent},
+
   {
     path: 'universite',
     loadChildren: () => import('./universite/universite-root/universite-root.module').then(m => m.UniversiteRootModule)
@@ -111,13 +91,7 @@ const routes: Routes = [
 
 
 
-  {path : 'ajouterUniversite', component : AjouterUniversiteComponent},
-  {path : 'showUniversites' , component : ListeUniversitesComponent},
-  {path : 'ajouterUniversite/:id', component : AjouterUniversiteComponent},
-  {path : 'detailsUniversites' , component : DetailsUniversiteComponent},
 
-
-  { path:'detailsChambre', component:DetailsChambreComponent },
 
 {
     path: 'reporting',
@@ -146,10 +120,6 @@ const routes: Routes = [
   //     {path : 'universites' , component : UniversitesComponent}
   //   ]
   // }
-
-  {path:'bloc', component:ShowBlocComponent},
-  {path:'bloc/:id',component:EditBlocComponent},
-  {path:'add',component:AddBlocComponent},
 
   {path:'home',component:HomeComponent,canActivate: [authGuard]},
 

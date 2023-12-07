@@ -1,6 +1,7 @@
 
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
+<div class="">
+  <app-bar-side></app-bar-side>
+  <app-navbar></app-navbar>
 
 <div class="content-page">
   <div class="content">
@@ -40,10 +41,6 @@
     <option *ngFor="let blocItem of bloc" [value]="blocItem.nomBloc">{{ blocItem.nomBloc }}</option>
   </select>
 
-
-  <select id="bloc" [(ngModel)]="newChambre.bloc!.idBloc" (change)="updateBlocId($event)" name="selectedBlocNom">
-    <option *ngFor="let blocItem of bloc" [ngValue]="blocItem.idBloc">{{ blocItem.nomBloc }}</option>
-  </select>
 </div>
 
 
@@ -57,3 +54,4 @@
   </div>
 </div>
 
+</div>

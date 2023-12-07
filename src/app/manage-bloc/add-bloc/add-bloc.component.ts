@@ -14,39 +14,29 @@ export class AddBlocComponent {
   foyer:Foyer[]=[];
   selectedFoyerNom: string = ''; // Declare selectedFoyerNom here
   selectedFoyer: Foyer;
-  newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 , foyer:{ idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
-    idUniversite:0,
-    nomUniversite:'',
-    adresse:''  }},foyer_id_foyer:0};
-  
+  newBloc: Bloc = { idBloc: 0, nomBloc: "", capaciteBloc: 0 , foyer:{ idFoyer: 0, nomFoyer: '', capaciteFoyer: 0},foyer_id_foyer:0};
+
   constructor(private service: BlocService, private route: ActivatedRoute, private router: Router, private foyerService: FoyerService,
     private cdr: ChangeDetectorRef) {
-    this.selectedFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
-      idUniversite:0,
-      nomUniversite:'',
-      adresse:''  } };
-    this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0, universite: {
-      idUniversite:0,
-      nomUniversite:'',
-      adresse:''  } }; // Assurez-vous que newBloc.foyer est initialisé
+    this.selectedFoyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0 };
   }
-  
 
- 
+
+
       ngOnInit() {
         this.loadBlocs();
         this.loadFoeyer(); // Ajoutez cette ligne pour charger les foyers
         this.selectedFoyerNom = this.foyer.length > 0 ? String(this.foyer[0].nomFoyer) : '';
       }
-      
+
 
       updateFoyerId(event: any) {
         const selectedFoyerValue: string = event.target.value.split(': ')[1];
         console.log('Selected Foyer Value:', selectedFoyerValue);
         console.log('Foyers:', this.foyer);
-    
+
         const selectedFoyer = this.foyer.find(b => b.nomFoyer === selectedFoyerValue);
-    
+
         if (selectedFoyer) {
           this.selectedFoyer = selectedFoyer;
           this.selectedFoyerNom = selectedFoyerValue; // Set selectedBlocNom here
@@ -75,10 +65,7 @@ export class AddBlocComponent {
 
     // Ensure that newBloc.bloc is defined before accessing its properties
     if (!this.newBloc.foyer) {
-      this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,universite: {
-        idUniversite:0,
-        nomUniversite:'',
-        adresse:''  } };
+      this.newBloc.foyer = { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0};
     }
 
     // Use selectedFoyer from updateBlocId directly
@@ -117,10 +104,7 @@ export class AddBlocComponent {
               idBloc: 0,
               nomBloc: '',
               capaciteBloc: 0,
-              foyer: { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0,universite: {
-                idUniversite:0,
-                nomUniversite:'',
-                adresse:''  } }, // Initialize bloc
+              foyer: { idFoyer: 0, nomFoyer: '', capaciteFoyer: 0}, // Initialize bloc
               foyer_id_foyer: 0
             };
           });
@@ -138,7 +122,7 @@ export class AddBlocComponent {
     }
 
   loadBlocs(): void {
-    
+
   }
 
 }

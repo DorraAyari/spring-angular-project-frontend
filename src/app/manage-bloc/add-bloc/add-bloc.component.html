@@ -1,46 +1,46 @@
 <div class=""><app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-<div class="content-page">
-  <div class="content">
-    <div class="container">
-      <h2 class="text-center mb-4">Ajouter un nouveau Bloc</h2>
-      <form (ngSubmit)="addBloc()" #blocForm="ngForm" class="bloc-form" *ngIf="newBloc" appAddBlocDirective>
+  <app-sidebar></app-sidebar>
+  <div class="content-page">
+    <div class="content">
+      <div class="container">
+        <h2 class="text-center mb-4">Ajouter un nouveau Bloc</h2>
+        <form (ngSubmit)="addBloc()" #blocForm="ngForm" class="bloc-form" *ngIf="newBloc" appAddBlocDirective>
 
-        <div class="form-group">
-          <label for="nomBloc">Nom bloc </label><br>
-          <input type="text" id="nomBloc" [(ngModel)]="newBloc.nomBloc" name="nomBloc" class="form-control" required minlength="3">
-          <div
-            *ngIf="blocForm.controls['nomBloc'].hasError('minlength') && (blocForm.controls['nomBloc'].dirty || blocForm.controls['nomBloc'].touched)"
-            class="error-message">
-            <app-message-erreur [erreur]="blocForm.controls['nomBloc']"></app-message-erreur>
+          <div class="form-group">
+            <label for="nomBloc">Nom bloc </label><br>
+            <input type="text" id="nomBloc" [(ngModel)]="newBloc.nomBloc" name="nomBloc" class="form-control" required minlength="3">
+            <div
+              *ngIf="blocForm.controls['nomBloc'].hasError('minlength') && (blocForm.controls['nomBloc'].dirty || blocForm.controls['nomBloc'].touched)"
+              class="error-message">
+              <app-message-erreur [erreur]="blocForm.controls['nomBloc']"></app-message-erreur>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label>Capacité Bloc</label>
-          <input type="text" id="capaciteBloc" [(ngModel)]="newBloc.capaciteBloc" name="capaciteBloc"
-            class="form-control" required pattern="[0-9]+">
-          <div
-            *ngIf="blocForm.controls['capaciteBloc'].hasError('required') && (blocForm.controls['capaciteBloc'].dirty || blocForm.controls['capaciteBloc'].touched)"
-            class="error-message">
-                        La capacité doit contenir uniquement des chiffres.
-            <app-message-erreur [erreur]="blocForm.controls['capaciteBloc']"></app-message-erreur>
+          <div class="form-group">
+            <label>Capacité Bloc</label>
+            <input type="text" id="capaciteBloc" [(ngModel)]="newBloc.capaciteBloc" name="capaciteBloc"
+              class="form-control" required pattern="[0-9]+">
+            <div
+              *ngIf="blocForm.controls['capaciteBloc'].hasError('required') && (blocForm.controls['capaciteBloc'].dirty || blocForm.controls['capaciteBloc'].touched)"
+              class="error-message">
+                          La capacité doit contenir uniquement des chiffres.
+              <app-message-erreur [erreur]="blocForm.controls['capaciteBloc']"></app-message-erreur>
+            </div>
+
           </div>
-       
-        </div>
-        <div class="form-group">
-          <label for="Foyer">Foyer:</label>
-          <select id="foyer" [(ngModel)]="newBloc.foyer!.idFoyer" (change)="updateFoyerId($event)"
-            name="selectedFoyerNom">
-            <option *ngFor="let foyerItem of foyer" [ngValue]="foyerItem.idFoyer">{{ foyerItem.nomFoyer }}</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-success btn-block" [disabled]="blocForm.invalid">Ajouter</button>
-        <div *ngIf="(blocForm.invalid || !newBloc.idBloc) && (blocForm.dirty || blocForm.touched)"
-             class="error-message">
-          Veuillez remplir le formulaire avant de soumettre.
-        </div>
-      </form>
+          <div class="form-group">
+            <label for="Foyer">Foyer:</label>
+            <select id="foyer" [(ngModel)]="newBloc.foyer!.idFoyer" (change)="updateFoyerId($event)"
+              name="selectedFoyerNom">
+              <option *ngFor="let foyerItem of foyer" [ngValue]="foyerItem.idFoyer">{{ foyerItem.nomFoyer }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success btn-block" [disabled]="blocForm.invalid">Ajouter</button>
+          <div *ngIf="(blocForm.invalid || !newBloc.idBloc) && (blocForm.dirty || blocForm.touched)"
+               class="error-message">
+            Veuillez remplir le formulaire avant de soumettre.
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-</div></div>
+  </div></div>

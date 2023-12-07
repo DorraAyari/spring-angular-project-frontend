@@ -1,32 +1,31 @@
 /* Ajoutez ces styles pour améliorer le design */
 .bloc-form {
-    max-width: 400px; /* Ajustez selon votre mise en page */
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  max-width: 400px; /* Ajustez selon votre mise en page */
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #d9534f; /* Rouge */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.btn-success {
+  margin-top: 10px;
+}
+
+/* Ajoutez ces styles pour rendre le formulaire plus réactif sur les petits écrans */
+@media (max-width: 768px) {
+  .bloc-form {
+    max-width: 100%;
   }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .error-message {
-    color: #d9534f; /* Rouge */
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  .btn-success {
-    margin-top: 10px;
-  }
-  
-  /* Ajoutez ces styles pour rendre le formulaire plus réactif sur les petits écrans */
-  @media (max-width: 768px) {
-    .bloc-form {
-      max-width: 100%;
-    }
-  }
-  
+}

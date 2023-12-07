@@ -6,23 +6,18 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { BodyComponent } from './shared/body/body.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { ChambreComponent } from './chambre/chambre.component';
 import {
   HTTP_INTERCEPTORS,
   HttpClient,
   HttpClientModule,
 } from '@angular/common/http';
-import { ChambreService } from './services/chambre.service';
-import { ChambreModificationComponent } from './chambre/chambre-modification/chambre-modification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChambreAjouterComponent } from './chambre/chambre-ajouter/chambre-ajouter.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { AddReservationComponent } from './reservations/add-reservation/add-reservation.component';
 import { ToastModule } from 'primeng/toast';
 
 import { AcademicYearPipe } from './academic-year.pipe';
-import { ReportingModule } from './reservations/reporting/reporting.module';
 
 import { AjouterUniversiteComponent } from './universite/ajouter-universite/ajouter-universite.component';
 import { UniversiteService } from './services/universite.service';
@@ -60,15 +55,16 @@ import { FoyerModule } from './foyer/foyer/foyer.module';
 
 
 import { ManageUserModule } from './manageUser/module/manage-user/manage-user.module';
-import { BarSideComponent } from './shared/bar-side/bar-side.component';
 
 
 
-import { DetailsChambreComponent } from './chambre/details-chambre/details-chambre.component';
 import { DetailsBlocComponent } from './manage-bloc/details-bloc/details-bloc.component';
 import { AddBlocDirectiveDirective } from './add-bloc-directive.directive';
 
 import { LoginRegisterComponent } from './Authentication/login-register/login-register.component';
+import { ChambreRouteModule } from './chambre/chambre-route/chambre-route.module';
+import { ChambreRouteRoutingModule } from './chambre/chambre-route/chambre-route-routing.module';
+import { UniversiteRootModule } from './universite/universite-root/universite-root.module';
 
 
 @NgModule({
@@ -78,15 +74,10 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     FooterComponent,
     BodyComponent,
     SidebarComponent,
-    ChambreComponent,
-    ChambreModificationComponent,
-    ChambreAjouterComponent,
     ReservationComponent,
     AddReservationComponent,
     AcademicYearPipe,
-    AjouterUniversiteComponent,
-    ListeUniversitesComponent,
-    DetailsUniversiteComponent,
+
 
 
     AddFoyerComponent,
@@ -94,23 +85,12 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     HomeFoyerComponent,
     DetailsFoyerComponent,
     DetailComponent,
-    SidebarComponent,
-    NavbarComponent,
-
-    DetailsChambreComponent,
-
-
     MessageErreurComponent,
-
-
-
     AddBlocComponent,
     DeleteBlocComponent,
     EditBlocComponent,
     HighlightDirective,
     ShowBlocComponent,
-    UniversitesComponent,
-    UniversitComponent,
     CouleurDirective,
     MessageErreurComponent,
     HighlightDirective,
@@ -124,15 +104,8 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     HighlightDirective,
     EditFoyerComponent,
     HomeFoyerComponent,
-    DetailsChambreComponent,
-
-    AddBlocDirectiveDirective,
-
-
-
-    DetailComponent,
-    DetailsChambreComponent,
-
+    AddBlocDirectiveDirective
+    ,DetailsBlocComponent
 
 
   ],
@@ -144,17 +117,13 @@ import { LoginRegisterComponent } from './Authentication/login-register/login-re
     DataTablesModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    ToastModule,
-    FoyerModule,BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    DataTablesModule,
-    ReactiveFormsModule,
+    FoyerModule,
     NgToastModule,
     BrowserAnimationsModule,
-    MatSnackBarModule,
-    ToastModule
+    ToastModule,
+    ManageUserModule,
+    ChambreRouteRoutingModule,
+    UniversiteRootModule
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

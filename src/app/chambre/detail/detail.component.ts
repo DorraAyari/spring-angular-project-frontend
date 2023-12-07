@@ -20,21 +20,7 @@ export class DetailComponent {
 }  ;
 
 
-  constructor(private chambreService: ChambreService){}
-   //nasna3 fi evenement wahdek l evenement hedha yabeeoth data
-   @Output() passId: EventEmitter<number> = new EventEmitter<number>();
 
-
-   deleteChambre(chambreId: number) {
-    this.passId.emit(chambreId);
-  }
-
-    ngOnInit() {
-      
-    bloc: { idBloc: 0, nomBloc: '', capaciteBloc: 0 , foyer_id_foyer : 0}, // Initialize bloc
-    bloc_id_bloc: 0,
-    isOccupied: false  // Ajoutez le champ isOccupee avec la valeur initiale
-}  ;
   constructor(private chambreService: ChambreService){}
    //nasna3 fi evenement wahdek l evenement hedha yabeeoth data
    @Output() passId = new EventEmitter <number> () ;
